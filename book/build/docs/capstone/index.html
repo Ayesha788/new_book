@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-capstone" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Capstone Project: Integrated Physical AI &amp; Humanoid Robotics System | Physical AI &amp; Humanoid Robotics Hackathon Book</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://ayesha788.github.io/my_book/docs/capstone"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Capstone Project: Integrated Physical AI &amp; Humanoid Robotics System | Physical AI &amp; Humanoid Robotics Hackathon Book"><meta data-rh="true" name="description" content="Project Overview"><meta data-rh="true" property="og:description" content="Project Overview"><link data-rh="true" rel="icon" href="/my_book/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://ayesha788.github.io/my_book/docs/capstone"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/capstone" hreflang="en"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/capstone" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Capstone Project: Integrated Physical AI & Humanoid Robotics System","item":"https://ayesha788.github.io/my_book/docs/capstone"}]}</script><link rel="stylesheet" href="/my_book/assets/css/styles.26d1bab7.css">
+<script src="/my_book/assets/js/runtime~main.cc4ca827.js" defer="defer"></script>
+<script src="/my_book/assets/js/main.3daa9b1f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/my_book/"><div class="navbar__logo"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Robotics Book</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/my_book/docs/intro">Book Chapters</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/intro"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/environment-setup"><span title="Environment Setup" class="linkLabel_WmDU">Environment Setup</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter1-ros2"><span title="ROS 2 Fundamentals" class="categoryLinkLabel_W154">ROS 2 Fundamentals</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter2-digital-twin"><span title="Digital Twin &amp; Simulation" class="categoryLinkLabel_W154">Digital Twin &amp; Simulation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter3-isaac"><span title="AI-Robot Brain" class="categoryLinkLabel_W154">AI-Robot Brain</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter4-vla"><span title="Vision-Language-Action" class="categoryLinkLabel_W154">Vision-Language-Action</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter5-path-planning"><span title="Path Planning &amp; Navigation" class="categoryLinkLabel_W154">Path Planning &amp; Navigation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter6-computer-vision"><span title="Computer Vision" class="categoryLinkLabel_W154">Computer Vision</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter7-manipulation"><span title="Manipulation &amp; Grasping" class="categoryLinkLabel_W154">Manipulation &amp; Grasping</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter8-multirobot"><span title="Multi-Robot Coordination" class="categoryLinkLabel_W154">Multi-Robot Coordination</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter9-learning"><span title="Learning &amp; Adaptation" class="categoryLinkLabel_W154">Learning &amp; Adaptation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter10-hri"><span title="Human-Robot Interaction" class="categoryLinkLabel_W154">Human-Robot Interaction</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter11-safety"><span title="Safety &amp; Ethics" class="categoryLinkLabel_W154">Safety &amp; Ethics</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter12-future"><span title="Future Trends &amp; Applications" class="categoryLinkLabel_W154">Future Trends &amp; Applications</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/practice-tasks-ros2"><span title="Practice Tasks" class="categoryLinkLabel_W154">Practice Tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/my_book/docs/glossary"><span title="Reference" class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/my_book/docs/glossary"><span title="Glossary of Terms" class="linkLabel_WmDU">Glossary of Terms</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/my_book/docs/capstone"><span title="Capstone Project: Integrated Physical AI &amp; Humanoid Robotics System" class="linkLabel_WmDU">Capstone Project: Integrated Physical AI &amp; Humanoid Robotics System</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/my_book/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Capstone Project: Integrated Physical AI &amp; Humanoid Robotics System</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1 id="capstone-project-integrated-physical-ai--humanoid-robotics-system">Capstone Project: Integrated Physical AI &amp; Humanoid Robotics System</h1></header>
+<h2 id="project-overview">Project Overview</h2>
+<p>The capstone project brings together all the concepts learned throughout this book into a comprehensive Physical AI &amp; Humanoid Robotics system. You&#x27;ll create a complete application that integrates ROS 2 fundamentals, digital twin simulation, AI-powered control, and voice-driven interaction.</p>
+<h2 id="project-requirements">Project Requirements</h2>
+<h3 id="core-functionality">Core Functionality</h3>
+<ol>
+<li><strong>ROS 2 Integration</strong>: Implement a complete ROS 2 system with multiple nodes communicating via topics and services</li>
+<li><strong>Simulation Environment</strong>: Create a Gazebo simulation with a humanoid robot and interactive environment</li>
+<li><strong>AI Control</strong>: Develop AI algorithms for perception, planning, and control</li>
+<li><strong>Voice Interface</strong>: Implement voice command recognition and execution</li>
+<li><strong>Humanoid Control</strong>: Execute complex humanoid robot behaviors</li>
+</ol>
+<h3 id="technical-constraints">Technical Constraints</h3>
+<ul>
+<li>Use ROS 2 Humble Hawksbill</li>
+<li>Implement GPU-accelerated processing where possible</li>
+<li>Ensure system runs in simulation before considering real hardware</li>
+<li>Include comprehensive error handling and safety measures</li>
+</ul>
+<h2 id="system-architecture">System Architecture</h2>
+<h3 id="high-level-design">High-Level Design</h3>
+<pre><code>┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Voice Input   │───▶│  NLP Processing  │───▶│ Action Planning │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                              │                          │
+                              ▼                          ▼
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Camera Feed   │───▶│ Visual Analysis  │───▶│ Motion Control  │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                              │                          │
+                              ▼                          ▼
+                    ┌─────────────────────────────────────────┐
+                    │           Robot Platform              │
+                    │  ┌─────────────┐  ┌─────────────────┐  │
+                    │  │ Simulation  │  │ Real Hardware   │  │
+                    │  │   (Gazebo)  │  │   (Optional)    │  │
+                    │  └─────────────┘  └─────────────────┘  │
+                    └─────────────────────────────────────────┘
+</code></pre>
+<h3 id="component-breakdown">Component Breakdown</h3>
+<ol>
+<li><strong>Voice Processing Module</strong>: Handles speech-to-text conversion and command interpretation</li>
+<li><strong>Visual Perception Module</strong>: Processes camera feeds for object detection and scene understanding</li>
+<li><strong>Cognitive Planning Module</strong>: Combines voice and visual inputs to determine appropriate actions</li>
+<li><strong>Motion Control Module</strong>: Translates high-level actions into low-level joint commands</li>
+<li><strong>Robot Platform</strong>: Either simulated in Gazebo or on real hardware</li>
+</ol>
+<h2 id="implementation-steps">Implementation Steps</h2>
+<h3 id="step-1-project-setup">Step 1: Project Setup</h3>
+<p>First, create the package structure for your capstone project:</p>
+<pre><code class="language-bash">cd ~/ros2_ws/src
+ros2 pkg create --build-type ament_python capstone_project --dependencies rclpy std_msgs sensor_msgs geometry_msgs nav_msgs message_generation
+</code></pre>
+<h3 id="step-2-define-custom-messages">Step 2: Define Custom Messages</h3>
+<p>Create a message file for the capstone project:</p>
+<p>File: <code>capstone_project/msg/RobotCommand.msg</code></p>
+<pre><code>string command_type
+string target_object
+float64[] target_position
+string description
+</code></pre>
+<p>Update your <code>package.xml</code> to include message generation dependencies:</p>
+<pre><code class="language-xml">&lt;depend&gt;message_runtime&lt;/depend&gt;
+&lt;depend&gt;builtin_interfaces&lt;/depend&gt;
+</code></pre>
+<h3 id="step-3-voice-command-node">Step 3: Voice Command Node</h3>
+<p>Create the main voice processing node:</p>
+<p>File: <code>capstone_project/voice_processor.py</code></p>
+<pre><code class="language-python">#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+import whisper
+import pyaudio
+import wave
+import numpy as np
+from std_msgs.msg import String
+from sensor_msgs.msg import Image
+from capstone_project.msg import RobotCommand
+import threading
+import queue
+
+class VoiceProcessorNode(Node):
+    def __init__(self):
+        super().__init__(&#x27;voice_processor&#x27;)
+
+        # Initialize Whisper model
+        self.model = whisper.load_model(&quot;base&quot;)
+
+        # Audio parameters
+        self.chunk = 1024
+        self.format = pyaudio.paInt16
+        self.channels = 1
+        self.rate = 44100
+        self.record_seconds = 3
+
+        # Publishers and subscribers
+        self.command_pub = self.create_publisher(RobotCommand, &#x27;robot_command&#x27;, 10)
+        self.status_pub = self.create_publisher(String, &#x27;voice_status&#x27;, 10)
+
+        # Initialize audio
+        self.audio = pyaudio.PyAudio()
+
+        # Create a thread for continuous listening
+        self.listening = True
+        self.command_queue = queue.Queue()
+
+        # Start listening thread
+        self.listen_thread = threading.Thread(target=self.continuous_listening)
+        self.listen_thread.start()
+
+        self.get_logger().info(&quot;Voice Processor initialized&quot;)
+
+    def continuous_listening(self):
+        &quot;&quot;&quot;Continuously listen for voice commands&quot;&quot;&quot;
+        while self.listening:
+            try:
+                # Record audio
+                frames = self.record_audio()
+
+                # Transcribe
+                command_text = self.transcribe_audio(frames)
+
+                if command_text:
+                    self.get_logger().info(f&quot;Recognized: {command_text}&quot;)
+
+                    # Process and publish command
+                    self.process_command(command_text)
+
+            except Exception as e:
+                self.get_logger().error(f&quot;Error in listening loop: {e}&quot;)
+
+            # Small delay to prevent excessive CPU usage
+            time.sleep(0.1)
+
+    def record_audio(self):
+        &quot;&quot;&quot;Record audio from microphone&quot;&quot;&quot;
+        stream = self.audio.open(
+            format=self.format,
+            channels=self.channels,
+            rate=self.rate,
+            input=True,
+            frames_per_buffer=self.chunk
+        )
+
+        frames = []
+        for i in range(0, int(self.rate / self.chunk * self.record_seconds)):
+            data = stream.read(self.chunk)
+            frames.append(data)
+
+        stream.stop_stream()
+        stream.close()
+
+        return frames
+
+    def transcribe_audio(self, frames):
+        &quot;&quot;&quot;Transcribe audio using Whisper&quot;&quot;&quot;
+        # Save to temp file
+        filename = &quot;/tmp/temp_recording.wav&quot;
+        wf = wave.open(filename, &#x27;wb&#x27;)
+        wf.setnchannels(self.channels)
+        wf.setsampwidth(self.audio.get_sample_size(self.format))
+        wf.setframerate(self.rate)
+        wf.writeframes(b&#x27;&#x27;.join(frames))
+        wf.close()
+
+        # Transcribe
+        result = self.model.transcribe(filename)
+        transcription = result[&quot;text&quot;]
+
+        # Clean up
+        import os
+        os.remove(filename)
+
+        return transcription.strip()
+
+    def process_command(self, command_text):
+        &quot;&quot;&quot;Process the recognized command&quot;&quot;&quot;
+        command_text = command_text.lower().strip()
+
+        # Create robot command message
+        cmd_msg = RobotCommand()
+        cmd_msg.description = command_text
+
+        if &quot;move forward&quot; in command_text:
+            cmd_msg.command_type = &quot;MOVE&quot;
+            cmd_msg.target_position = [1.0, 0.0, 0.0]  # Move 1m forward
+        elif &quot;turn left&quot; in command_text:
+            cmd_msg.command_type = &quot;ROTATE&quot;
+            cmd_msg.target_position = [0.0, 0.0, 1.57]  # 90 degrees left
+        elif &quot;turn right&quot; in command_text:
+            cmd_msg.command_type = &quot;ROTATE&quot;
+            cmd_msg.target_position = [0.0, 0.0, -1.57]  # 90 degrees right
+        elif &quot;wave&quot; in command_text or &quot;hello&quot; in command_text:
+            cmd_msg.command_type = &quot;GESTURE&quot;
+            cmd_msg.target_object = &quot;wave&quot;
+        elif &quot;pick up&quot; in command_text:
+            obj = command_text.replace(&quot;pick up&quot;, &quot;&quot;).strip()
+            cmd_msg.command_type = &quot;GRASP&quot;
+            cmd_msg.target_object = obj
+        else:
+            cmd_msg.command_type = &quot;UNKNOWN&quot;
+            cmd_msg.description = f&quot;Unknown command: {command_text}&quot;
+
+        self.command_pub.publish(cmd_msg)
+
+    def destroy_node(self):
+        &quot;&quot;&quot;Clean up resources&quot;&quot;&quot;
+        self.listening = False
+        if hasattr(self, &#x27;listen_thread&#x27;):
+            self.listen_thread.join()
+        if hasattr(self, &#x27;audio&#x27;):
+            self.audio.terminate()
+        super().destroy_node()
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = VoiceProcessorNode()
+
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
+
+if __name__ == &#x27;__main__&#x27;:
+    main()
+</code></pre>
+<h3 id="step-4-visual-perception-node">Step 4: Visual Perception Node</h3>
+<p>Create the visual perception component:</p>
+<p>File: <code>capstone_project/visual_perceptor.py</code></p>
+<pre><code class="language-python">#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+import cv2
+import numpy as np
+from cv_bridge import CvBridge
+from sensor_msgs.msg import Image
+from vision_msgs.msg import Detection2DArray
+from std_msgs.msg import String
+from capstone_project.msg import RobotCommand
+import threading
+
+class VisualPerceptorNode(Node):
+    def __init__(self):
+        super().__init__(&#x27;visual_perceptor&#x27;)
+
+        # Initialize CV bridge
+        self.bridge = CvBridge()
+
+        # Subscribers
+        self.image_sub = self.create_subscription(
+            Image, &#x27;camera/image_raw&#x27;, self.image_callback, 10
+        )
+
+        self.command_sub = self.create_subscription(
+            RobotCommand, &#x27;robot_command&#x27;, self.command_callback, 10
+        )
+
+        # Publishers
+        self.detection_pub = self.create_publisher(
+            Detection2DArray, &#x27;object_detections&#x27;, 10
+        )
+
+        self.status_pub = self.create_publisher(String, &#x27;vision_status&#x27;, 10)
+
+        # Object detection model (using OpenCV DNN for simplicity)
+        # In practice, you&#x27;d use a more sophisticated model like YOLO
+        self.detector = cv2.dnn_DetectionModel()
+
+        self.get_logger().info(&quot;Visual Perceptor initialized&quot;)
+
+    def image_callback(self, msg):
+        &quot;&quot;&quot;Process incoming camera images&quot;&quot;&quot;
+        try:
+            # Convert ROS image to OpenCV
+            cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding=&#x27;bgr8&#x27;)
+
+            # Perform object detection
+            detections = self.detect_objects(cv_image)
+
+            # Publish detections
+            self.publish_detections(detections, msg.header)
+
+        except Exception as e:
+            self.get_logger().error(f&quot;Error processing image: {e}&quot;)
+
+    def detect_objects(self, image):
+        &quot;&quot;&quot;Detect objects in the image&quot;&quot;&quot;
+        # For this example, we&#x27;ll use a simple color-based detection
+        # In practice, use a deep learning model
+        height, width = image.shape[:2]
+
+        # Detect red objects (potential targets)
+        hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+        lower_red = np.array([0, 120, 70])
+        upper_red = np.array([10, 255, 255])
+        mask1 = cv2.inRange(hsv, lower_red, upper_red)
+
+        # Upper red range (for colors that wrap around)
+        lower_red = np.array([170, 120, 70])
+        upper_red = np.array([180, 255, 255])
+        mask2 = cv2.inRange(hsv, lower_red, upper_red)
+
+        mask = mask1 + mask2
+
+        # Find contours
+        contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+        detections = []
+        for contour in contours:
+            area = cv2.contourArea(contour)
+            if area &gt; 500:  # Filter out small detections
+                x, y, w, h = cv2.boundingRect(contour)
+                detections.append({
+                    &#x27;class&#x27;: &#x27;red_object&#x27;,
+                    &#x27;confidence&#x27;: 0.8,
+                    &#x27;bbox&#x27;: [x, y, w, h],
+                    &#x27;center&#x27;: [x + w/2, y + h/2]
+                })
+
+        return detections
+
+    def publish_detections(self, detections, header):
+        &quot;&quot;&quot;Publish object detections&quot;&quot;&quot;
+        detection_array = Detection2DArray()
+        detection_array.header = header
+
+        for det in detections:
+            detection = Detection2D()
+            detection.header = header
+
+            # Set bounding box
+            detection.bbox.size_x = det[&#x27;bbox&#x27;][2]
+            detection.bbox.size_y = det[&#x27;bbox&#x27;][3]
+            detection.bbox.center.x = det[&#x27;bbox&#x27;][0] + det[&#x27;bbox&#x27;][2] / 2
+            detection.bbox.center.y = det[&#x27;bbox&#x27;][1] + det[&#x27;bbox&#x27;][3] / 2
+
+            # Set classification
+            hypothesis = ObjectHypothesisWithPose()
+            hypothesis.id = det[&#x27;class&#x27;]
+            hypothesis.score = det[&#x27;confidence&#x27;]
+            detection.results.append(hypothesis)
+
+            detection_array.detections.append(detection)
+
+        self.detection_pub.publish(detection_array)
+
+    def command_callback(self, msg):
+        &quot;&quot;&quot;Process commands that require visual confirmation&quot;&quot;&quot;
+        if msg.command_type == &quot;GRASP&quot; and msg.target_object == &quot;red_object&quot;:
+            # Look for red objects to grasp
+            self.get_logger().info(&quot;Looking for red object to grasp&quot;)
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = VisualPerceptorNode()
+
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
+
+if __name__ == &#x27;__main__&#x27;:
+    main()
+</code></pre>
+<h3 id="step-5-action-planning-node">Step 5: Action Planning Node</h3>
+<p>Create the cognitive planning component:</p>
+<p>File: <code>capstone_project/action_planner.py</code></p>
+<pre><code class="language-python">#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+from capstone_project.msg import RobotCommand
+from geometry_msgs.msg import Twist
+from std_msgs.msg import String
+import json
+
+class ActionPlannerNode(Node):
+    def __init__(self):
+        super().__init__(&#x27;action_planner&#x27;)
+
+        # Subscribers
+        self.command_sub = self.create_subscription(
+            RobotCommand, &#x27;robot_command&#x27;, self.command_callback, 10
+        )
+
+        # Publishers
+        self.cmd_vel_pub = self.create_publisher(Twist, &#x27;cmd_vel&#x27;, 10)
+        self.status_pub = self.create_publisher(String, &#x27;planning_status&#x27;, 10)
+
+        # Robot state
+        self.robot_position = [0.0, 0.0, 0.0]  # x, y, theta
+        self.is_moving = False
+
+        self.get_logger().info(&quot;Action Planner initialized&quot;)
+
+    def command_callback(self, msg):
+        &quot;&quot;&quot;Process incoming robot commands&quot;&quot;&quot;
+        self.get_logger().info(f&quot;Planning action: {msg.command_type} - {msg.description}&quot;)
+
+        if msg.command_type == &quot;MOVE&quot;:
+            self.execute_move_command(msg)
+        elif msg.command_type == &quot;ROTATE&quot;:
+            self.execute_rotate_command(msg)
+        elif msg.command_type == &quot;GESTURE&quot;:
+            self.execute_gesture_command(msg)
+        elif msg.command_type == &quot;GRASP&quot;:
+            self.execute_grasp_command(msg)
+        else:
+            self.get_logger().warn(f&quot;Unknown command type: {msg.command_type}&quot;)
+
+    def execute_move_command(self, msg):
+        &quot;&quot;&quot;Execute movement command&quot;&quot;&quot;
+        if len(msg.target_position) &gt;= 3:
+            linear_x = msg.target_position[0]
+            linear_y = msg.target_position[1] if len(msg.target_position) &gt; 1 else 0.0
+
+            twist = Twist()
+            twist.linear.x = linear_x
+            twist.linear.y = linear_y
+            twist.angular.z = 0.0  # No rotation during linear movement
+
+            self.cmd_vel_pub.publish(twist)
+
+            # Update status
+            status_msg = String()
+            status_msg.data = f&quot;Moving: x={linear_x}, y={linear_y}&quot;
+            self.status_pub.publish(status_msg)
+
+    def execute_rotate_command(self, msg):
+        &quot;&quot;&quot;Execute rotation command&quot;&quot;&quot;
+        if len(msg.target_position) &gt;= 3:
+            angular_z = msg.target_position[2]
+
+            twist = Twist()
+            twist.linear.x = 0.0
+            twist.linear.y = 0.0
+            twist.angular.z = angular_z
+
+            self.cmd_vel_pub.publish(twist)
+
+            # Update status
+            status_msg = String()
+            status_msg.data = f&quot;Rotating: {angular_z} rad/s&quot;
+            self.status_pub.publish(status_msg)
+
+    def execute_gesture_command(self, msg):
+        &quot;&quot;&quot;Execute gesture command (placeholder for humanoid actions)&quot;&quot;&quot;
+        self.get_logger().info(f&quot;Executing gesture: {msg.target_object}&quot;)
+
+        # In a real implementation, this would send commands to joint controllers
+        status_msg = String()
+        status_msg.data = f&quot;Executing gesture: {msg.target_object}&quot;
+        self.status_pub.publish(status_msg)
+
+    def execute_grasp_command(self, msg):
+        &quot;&quot;&quot;Execute grasping command&quot;&quot;&quot;
+        self.get_logger().info(f&quot;Attempting to grasp: {msg.target_object}&quot;)
+
+        # This would integrate with manipulation stack in a real system
+        status_msg = String()
+        status_msg.data = f&quot;Attempting to grasp: {msg.target_object}&quot;
+        self.status_pub.publish(status_msg)
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = ActionPlannerNode()
+
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
+
+if __name__ == &#x27;__main__&#x27;:
+    main()
+</code></pre>
+<h3 id="step-6-launch-file">Step 6: Launch File</h3>
+<p>Create a launch file to start all nodes:</p>
+<p>File: <code>capstone_project/launch/capstone_launch.py</code></p>
+<pre><code class="language-python">import os
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node
+from ament_index_python.packages import get_package_share_directory
+
+def generate_launch_description():
+    # Get package directory
+    pkg_capstone = get_package_share_directory(&#x27;capstone_project&#x27;)
+
+    # Launch arguments
+    use_sim_time = LaunchConfiguration(&#x27;use_sim_time&#x27;, default=&#x27;true&#x27;)
+
+    # Voice processor node
+    voice_processor = Node(
+        package=&#x27;capstone_project&#x27;,
+        executable=&#x27;voice_processor&#x27;,
+        name=&#x27;voice_processor&#x27;,
+        output=&#x27;screen&#x27;,
+    )
+
+    # Visual perceptor node
+    visual_perceptor = Node(
+        package=&#x27;capstone_project&#x27;,
+        executable=&#x27;visual_perceptor&#x27;,
+        name=&#x27;visual_perceptor&#x27;,
+        output=&#x27;screen&#x27;,
+    )
+
+    # Action planner node
+    action_planner = Node(
+        package=&#x27;capstone_project&#x27;,
+        executable=&#x27;action_planner&#x27;,
+        name=&#x27;action_planner&#x27;,
+        output=&#x27;screen&#x27;,
+    )
+
+    # Combined launch description
+    ld = LaunchDescription([
+        DeclareLaunchArgument(
+            &#x27;use_sim_time&#x27;,
+            default_value=&#x27;true&#x27;,
+            description=&#x27;Use simulation (Gazebo) clock if true&#x27;
+        ),
+        voice_processor,
+        visual_perceptor,
+        action_planner,
+    ])
+
+    return ld
+</code></pre>
+<h3 id="step-7-simulation-environment">Step 7: Simulation Environment</h3>
+<p>Create a Gazebo world file for the capstone project:</p>
+<p>File: <code>capstone_project/worlds/capstone_world.sdf</code></p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;sdf version=&quot;1.7&quot;&gt;
+  &lt;world name=&quot;capstone_world&quot;&gt;
+    &lt;!-- Physics --&gt;
+    &lt;physics type=&quot;ode&quot;&gt;
+      &lt;gravity&gt;0 0 -9.8&lt;/gravity&gt;
+      &lt;max_step_size&gt;0.001&lt;/max_step_size&gt;
+      &lt;real_time_factor&gt;1&lt;/real_time_factor&gt;
+      &lt;real_time_update_rate&gt;1000&lt;/real_time_update_rate&gt;
+    &lt;/physics&gt;
+
+    &lt;!-- Ground plane --&gt;
+    &lt;include&gt;
+      &lt;uri&gt;model://ground_plane&lt;/uri&gt;
+    &lt;/include&gt;
+
+    &lt;!-- Lighting --&gt;
+    &lt;include&gt;
+      &lt;uri&gt;model://sun&lt;/uri&gt;
+    &lt;/include&gt;
+
+    &lt;!-- Simple room with objects --&gt;
+    &lt;model name=&quot;wall_1&quot;&gt;
+      &lt;pose&gt;0 5 0 0 0 0&lt;/pose&gt;
+      &lt;link name=&quot;link&quot;&gt;
+        &lt;collision name=&quot;collision&quot;&gt;
+          &lt;geometry&gt;
+            &lt;box&gt;
+              &lt;size&gt;10 0.2 2&lt;/size&gt;
+            &lt;/box&gt;
+          &lt;/geometry&gt;
+        &lt;/collision&gt;
+        &lt;visual name=&quot;visual&quot;&gt;
+          &lt;geometry&gt;
+            &lt;box&gt;
+              &lt;size&gt;10 0.2 2&lt;/size&gt;
+            &lt;/box&gt;
+          &lt;/geometry&gt;
+          &lt;material&gt;
+            &lt;ambient&gt;0.5 0.5 0.5 1&lt;/ambient&gt;
+            &lt;diffuse&gt;0.8 0.8 0.8 1&lt;/diffuse&gt;
+          &lt;/material&gt;
+        &lt;/visual&gt;
+      &lt;/link&gt;
+    &lt;/model&gt;
+
+    &lt;!-- Red object for detection --&gt;
+    &lt;model name=&quot;red_cube&quot;&gt;
+      &lt;pose&gt;2 0 0.5 0 0 0&lt;/pose&gt;
+      &lt;link name=&quot;link&quot;&gt;
+        &lt;collision name=&quot;collision&quot;&gt;
+          &lt;geometry&gt;
+            &lt;box&gt;
+              &lt;size&gt;0.2 0.2 0.2&lt;/size&gt;
+            &lt;/box&gt;
+          &lt;/geometry&gt;
+        &lt;/collision&gt;
+        &lt;visual name=&quot;visual&quot;&gt;
+          &lt;geometry&gt;
+            &lt;box&gt;
+              &lt;size&gt;0.2 0.2 0.2&lt;/size&gt;
+            &lt;/box&gt;
+          &lt;/geometry&gt;
+          &lt;material&gt;
+            &lt;ambient&gt;1 0 0 1&lt;/ambient&gt;
+            &lt;diffuse&gt;1 0 0 1&lt;/diffuse&gt;
+          &lt;/material&gt;
+        &lt;/visual&gt;
+      &lt;/link&gt;
+    &lt;/model&gt;
+
+    &lt;!-- Blue object for detection --&gt;
+    &lt;model name=&quot;blue_cube&quot;&gt;
+      &lt;pose&gt;-2 0 0.5 0 0 0&lt;/pose&gt;
+      &lt;link name=&quot;link&quot;&gt;
+        &lt;collision name=&quot;collision&quot;&gt;
+          &lt;geometry&gt;
+            &lt;box&gt;
+              &lt;size&gt;0.2 0.2 0.2&lt;/size&gt;
+            &lt;/box&gt;
+          &lt;/geometry&gt;
+        &lt;/collision&gt;
+        &lt;visual name=&quot;visual&quot;&gt;
+          &lt;geometry&gt;
+            &lt;box&gt;
+              &lt;size&gt;0.2 0.2 0.2&lt;/size&gt;
+            &lt;/box&gt;
+          &lt;/geometry&gt;
+          &lt;material&gt;
+            &lt;ambient&gt;0 0 1 1&lt;/ambient&gt;
+            &lt;diffuse&gt;0 0 1 1&lt;/diffuse&gt;
+          &lt;/material&gt;
+        &lt;/visual&gt;
+      &lt;/link&gt;
+    &lt;/model&gt;
+  &lt;/world&gt;
+&lt;/sdf&gt;
+</code></pre>
+<h2 id="testing-the-system">Testing the System</h2>
+<h3 id="running-the-complete-system">Running the Complete System</h3>
+<ol>
+<li>
+<p>Build your workspace:</p>
+<pre><code class="language-bash">cd ~/ros2_ws
+colcon build --packages-select capstone_project
+source install/setup.bash
+</code></pre>
+</li>
+<li>
+<p>Launch the simulation:</p>
+<pre><code class="language-bash"># In one terminal, start Gazebo
+gazebo --verbose ~/ros2_ws/src/capstone_project/worlds/capstone_world.sdf
+</code></pre>
+</li>
+<li>
+<p>In another terminal, launch the capstone nodes:</p>
+<pre><code class="language-bash">ros2 launch capstone_project capstone_launch.py
+</code></pre>
+</li>
+<li>
+<p>Test voice commands through the voice processor node.</p>
+</li>
+</ol>
+<h3 id="verification-steps">Verification Steps</h3>
+<ol>
+<li><strong>Voice Recognition</strong>: Verify that voice commands are properly recognized and converted to text</li>
+<li><strong>Visual Detection</strong>: Check that objects are detected in the camera feed</li>
+<li><strong>Command Mapping</strong>: Confirm that voice commands are correctly mapped to robot actions</li>
+<li><strong>Motion Execution</strong>: Verify that the robot executes requested movements</li>
+<li><strong>Integration</strong>: Test the complete pipeline from voice command to robot action</li>
+</ol>
+<h2 id="extensions-and-improvements">Extensions and Improvements</h2>
+<h3 id="advanced-features">Advanced Features</h3>
+<ol>
+<li><strong>Multi-modal Learning</strong>: Train a model that jointly processes voice and visual inputs</li>
+<li><strong>Semantic Mapping</strong>: Create semantic maps of the environment with object locations</li>
+<li><strong>Adaptive Interaction</strong>: Implement learning from user feedback to improve interaction</li>
+<li><strong>Multi-robot Coordination</strong>: Extend to multiple robots working together</li>
+</ol>
+<h3 id="performance-optimizations">Performance Optimizations</h3>
+<ol>
+<li><strong>Real-time Processing</strong>: Optimize for real-time performance</li>
+<li><strong>Edge Deployment</strong>: Optimize models for deployment on robot hardware</li>
+<li><strong>Safety Mechanisms</strong>: Implement safety checks and emergency stops</li>
+<li><strong>Robustness</strong>: Add error recovery and fallback mechanisms</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>The capstone project demonstrates the integration of all key components covered in this book:</p>
+<ul>
+<li>ROS 2 for system integration and communication</li>
+<li>Digital twin simulation for testing and development</li>
+<li>AI algorithms for perception and decision-making</li>
+<li>Voice interfaces for natural human-robot interaction</li>
+</ul>
+<p>This complete system serves as a foundation for more advanced humanoid robotics applications and provides a framework for extending capabilities in specialized domains.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/Ayesha788/my_book/tree/main/docs/capstone.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/my_book/docs/glossary"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Glossary of Terms</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#project-overview" class="table-of-contents__link toc-highlight">Project Overview</a></li><li><a href="#project-requirements" class="table-of-contents__link toc-highlight">Project Requirements</a><ul><li><a href="#core-functionality" class="table-of-contents__link toc-highlight">Core Functionality</a></li><li><a href="#technical-constraints" class="table-of-contents__link toc-highlight">Technical Constraints</a></li></ul></li><li><a href="#system-architecture" class="table-of-contents__link toc-highlight">System Architecture</a><ul><li><a href="#high-level-design" class="table-of-contents__link toc-highlight">High-Level Design</a></li><li><a href="#component-breakdown" class="table-of-contents__link toc-highlight">Component Breakdown</a></li></ul></li><li><a href="#implementation-steps" class="table-of-contents__link toc-highlight">Implementation Steps</a><ul><li><a href="#step-1-project-setup" class="table-of-contents__link toc-highlight">Step 1: Project Setup</a></li><li><a href="#step-2-define-custom-messages" class="table-of-contents__link toc-highlight">Step 2: Define Custom Messages</a></li><li><a href="#step-3-voice-command-node" class="table-of-contents__link toc-highlight">Step 3: Voice Command Node</a></li><li><a href="#step-4-visual-perception-node" class="table-of-contents__link toc-highlight">Step 4: Visual Perception Node</a></li><li><a href="#step-5-action-planning-node" class="table-of-contents__link toc-highlight">Step 5: Action Planning Node</a></li><li><a href="#step-6-launch-file" class="table-of-contents__link toc-highlight">Step 6: Launch File</a></li><li><a href="#step-7-simulation-environment" class="table-of-contents__link toc-highlight">Step 7: Simulation Environment</a></li></ul></li><li><a href="#testing-the-system" class="table-of-contents__link toc-highlight">Testing the System</a><ul><li><a href="#running-the-complete-system" class="table-of-contents__link toc-highlight">Running the Complete System</a></li><li><a href="#verification-steps" class="table-of-contents__link toc-highlight">Verification Steps</a></li></ul></li><li><a href="#extensions-and-improvements" class="table-of-contents__link toc-highlight">Extensions and Improvements</a><ul><li><a href="#advanced-features" class="table-of-contents__link toc-highlight">Advanced Features</a></li><li><a href="#performance-optimizations" class="table-of-contents__link toc-highlight">Performance Optimizations</a></li></ul></li><li><a href="#conclusion" class="table-of-contents__link toc-highlight">Conclusion</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Chapters</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter1-ros2">ROS 2 Fundamentals</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter2-digital-twin">Digital Twin</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter3-isaac">AI-Robot Brain</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter4-vla">Vision-Language-Action</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/ros2" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://answers.ros.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">ROS Answers<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://developer.nvidia.com/" target="_blank" rel="noopener noreferrer" class="footer__link-item">NVIDIA Developer<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Physical AI & Humanoid Robotics Hackathon Project. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

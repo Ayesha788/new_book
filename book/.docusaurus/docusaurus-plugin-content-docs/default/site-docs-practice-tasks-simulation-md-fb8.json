@@ -1,0 +1,24 @@
+{
+  "id": "practice-tasks-simulation",
+  "title": "Practice Tasks: Simulation Concepts",
+  "description": "Complete these hands-on exercises to reinforce your understanding of simulation concepts for humanoid robots.",
+  "source": "@site/docs/practice-tasks-simulation.md",
+  "sourceDirName": ".",
+  "slug": "/practice-tasks-simulation",
+  "permalink": "/my_book/docs/practice-tasks-simulation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayesha788/my_book/tree/main/docs/practice-tasks-simulation.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Practice Tasks: ROS 2 Fundamentals",
+    "permalink": "/my_book/docs/practice-tasks-ros2"
+  },
+  "next": {
+    "title": "Glossary of Terms",
+    "permalink": "/my_book/docs/glossary"
+  }
+}

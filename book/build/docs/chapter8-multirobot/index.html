@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-chapter8-multirobot" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Chapter 8: Multi-Robot Coordination for Humanoid Systems | Physical AI &amp; Humanoid Robotics Hackathon Book</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://ayesha788.github.io/my_book/docs/chapter8-multirobot"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Chapter 8: Multi-Robot Coordination for Humanoid Systems | Physical AI &amp; Humanoid Robotics Hackathon Book"><meta data-rh="true" name="description" content="Introduction to Multi-Robot Systems"><meta data-rh="true" property="og:description" content="Introduction to Multi-Robot Systems"><link data-rh="true" rel="icon" href="/my_book/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://ayesha788.github.io/my_book/docs/chapter8-multirobot"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/chapter8-multirobot" hreflang="en"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/chapter8-multirobot" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Chapter 8: Multi-Robot Coordination for Humanoid Systems","item":"https://ayesha788.github.io/my_book/docs/chapter8-multirobot"}]}</script><link rel="stylesheet" href="/my_book/assets/css/styles.26d1bab7.css">
+<script src="/my_book/assets/js/runtime~main.cc4ca827.js" defer="defer"></script>
+<script src="/my_book/assets/js/main.3daa9b1f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/my_book/"><div class="navbar__logo"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Robotics Book</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/my_book/docs/intro">Book Chapters</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/intro"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/environment-setup"><span title="Environment Setup" class="linkLabel_WmDU">Environment Setup</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter1-ros2"><span title="ROS 2 Fundamentals" class="categoryLinkLabel_W154">ROS 2 Fundamentals</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter2-digital-twin"><span title="Digital Twin &amp; Simulation" class="categoryLinkLabel_W154">Digital Twin &amp; Simulation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter3-isaac"><span title="AI-Robot Brain" class="categoryLinkLabel_W154">AI-Robot Brain</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter4-vla"><span title="Vision-Language-Action" class="categoryLinkLabel_W154">Vision-Language-Action</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter5-path-planning"><span title="Path Planning &amp; Navigation" class="categoryLinkLabel_W154">Path Planning &amp; Navigation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter6-computer-vision"><span title="Computer Vision" class="categoryLinkLabel_W154">Computer Vision</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter7-manipulation"><span title="Manipulation &amp; Grasping" class="categoryLinkLabel_W154">Manipulation &amp; Grasping</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/my_book/docs/chapter8-multirobot"><span title="Multi-Robot Coordination" class="categoryLinkLabel_W154">Multi-Robot Coordination</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/my_book/docs/chapter8-multirobot"><span title="Chapter 8: Multi-Robot Coordination for Humanoid Systems" class="linkLabel_WmDU">Chapter 8: Multi-Robot Coordination for Humanoid Systems</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter9-learning"><span title="Learning &amp; Adaptation" class="categoryLinkLabel_W154">Learning &amp; Adaptation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter10-hri"><span title="Human-Robot Interaction" class="categoryLinkLabel_W154">Human-Robot Interaction</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter11-safety"><span title="Safety &amp; Ethics" class="categoryLinkLabel_W154">Safety &amp; Ethics</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter12-future"><span title="Future Trends &amp; Applications" class="categoryLinkLabel_W154">Future Trends &amp; Applications</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/practice-tasks-ros2"><span title="Practice Tasks" class="categoryLinkLabel_W154">Practice Tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/glossary"><span title="Reference" class="categoryLinkLabel_W154">Reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/my_book/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Multi-Robot Coordination</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Chapter 8: Multi-Robot Coordination for Humanoid Systems</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1 id="chapter-8-multi-robot-coordination-for-humanoid-systems">Chapter 8: Multi-Robot Coordination for Humanoid Systems</h1></header>
+<h2 id="introduction-to-multi-robot-systems">Introduction to Multi-Robot Systems</h2>
+<p>Multi-robot coordination involves multiple autonomous robots working together to achieve common goals. In the context of humanoid robotics, this presents unique challenges due to the complexity of individual robots and their anthropomorphic nature, which makes them suitable for human-centered environments.</p>
+<h2 id="coordination-architectures">Coordination Architectures</h2>
+<h3 id="centralized-vs-decentralized-coordination">Centralized vs. Decentralized Coordination</h3>
+<p>Multi-robot systems can be organized using different coordination architectures, each with specific advantages for humanoid robot teams:</p>
+<pre><code class="language-python">import numpy as np
+from enum import Enum
+from dataclasses import dataclass
+from typing import List, Dict, Optional
+
+class CoordinationType(Enum):
+    CENTRALIZED = &quot;centralized&quot;
+    DECENTRALIZED = &quot;decentralized&quot;
+    HYBRID = &quot;hybrid&quot;
+
+@dataclass
+class RobotState:
+    robot_id: str
+    position: np.ndarray  # [x, y, z]
+    orientation: np.ndarray  # [roll, pitch, yaw]
+    status: str  # idle, moving, working, etc.
+    battery_level: float
+    task_queue: List[str]
+
+class CentralizedCoordinator:
+    def __init__(self):
+        self.robots: Dict[str, RobotState] = {}
+        self.tasks = []
+        self.communication_range = 10.0  # meters
+
+    def register_robot(self, robot_state: RobotState):
+        &quot;&quot;&quot;Register a robot with the central coordinator&quot;&quot;&quot;
+        self.robots[robot_state.robot_id] = robot_state
+
+    def assign_task(self, robot_id: str, task: str):
+        &quot;&quot;&quot;Assign a task to a specific robot&quot;&quot;&quot;
+        if robot_id in self.robots:
+            self.robots[robot_id].task_queue.append(task)
+            return True
+        return False
+
+    def coordinate_movement(self):
+        &quot;&quot;&quot;Coordinate movement to avoid collisions&quot;&quot;&quot;
+        robot_positions = [(id, state.position) for id, state in self.robots.items()]
+
+        for i, (id1, pos1) in enumerate(robot_positions):
+            for id2, pos2 in robot_positions[i+1:]:
+                distance = np.linalg.norm(pos1 - pos2)
+                if distance &lt; 1.0:  # Collision threshold
+                    # Implement collision avoidance
+                    self.resolve_collision(id1, id2, pos1, pos2)
+
+    def resolve_collision(self, id1: str, id2: str, pos1: np.ndarray, pos2: np.ndarray):
+        &quot;&quot;&quot;Resolve collision between two robots&quot;&quot;&quot;
+        # Simple strategy: move one robot aside
+        direction = pos2 - pos1
+        direction = direction / np.linalg.norm(direction)
+
+        # Move robot2 to the side
+        self.robots[id2].position += direction * 0.5
+
+class DecentralizedCoordinator:
+    def __init__(self, robot_id: str):
+        self.robot_id = robot_id
+        self.neighbors: Dict[str, RobotState] = {}
+        self.local_tasks = []
+        self.communication_range = 10.0
+
+    def broadcast_state(self, state: RobotState):
+        &quot;&quot;&quot;Broadcast current state to neighbors&quot;&quot;&quot;
+        # In a real system, this would send messages over network
+        pass
+
+    def receive_neighbor_state(self, neighbor_state: RobotState):
+        &quot;&quot;&quot;Receive state from a neighboring robot&quot;&quot;&quot;
+        self.neighbors[neighbor_state.robot_id] = neighbor_state
+
+    def make_local_decision(self, global_tasks: List[str]):
+        &quot;&quot;&quot;Make coordination decisions based on local information&quot;&quot;&quot;
+        # Check for potential conflicts with neighbors
+        for neighbor_id, neighbor_state in self.neighbors.items():
+            if self.would_conflict(neighbor_state):
+                # Adjust behavior to avoid conflict
+                self.adjust_behavior(neighbor_state)
+
+    def would_conflict(self, neighbor_state: RobotState) -&gt; bool:
+        &quot;&quot;&quot;Check if current plan would conflict with neighbor&quot;&quot;&quot;
+        # Check if paths intersect or if both heading to same location
+        distance = np.linalg.norm(self.robots[self.robot_id].position - neighbor_state.position)
+        return distance &lt; 2.0  # Potential conflict threshold
+
+    def adjust_behavior(self, neighbor_state: RobotState):
+        &quot;&quot;&quot;Adjust behavior to avoid conflict&quot;&quot;&quot;
+        # Implement local coordination strategy
+        pass
+</code></pre>
+<h2 id="communication-protocols-for-humanoid-robots">Communication Protocols for Humanoid Robots</h2>
+<h3 id="ros-2-multi-robot-communication">ROS 2 Multi-Robot Communication</h3>
+<pre><code class="language-python">import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String, Float32MultiArray
+from geometry_msgs.msg import PoseStamped
+from multirobot_msgs.msg import RobotStatus, TaskAssignment
+
+class MultiRobotCommunicator(Node):
+    def __init__(self, robot_id: str):
+        super().__init__(f&#x27;multirobot_comm_{robot_id}&#x27;)
+        self.robot_id = robot_id
+
+        # Publishers
+        self.status_pub = self.create_publisher(RobotStatus, &#x27;robot_status&#x27;, 10)
+        self.task_pub = self.create_publisher(TaskAssignment, &#x27;task_assignments&#x27;, 10)
+        self.pose_pub = self.create_publisher(PoseStamped, &#x27;robot_pose&#x27;, 10)
+
+        # Subscribers
+        self.status_sub = self.create_subscription(
+            RobotStatus, &#x27;robot_status&#x27;, self.status_callback, 10
+        )
+        self.task_sub = self.create_subscription(
+            TaskAssignment, &#x27;task_assignments&#x27;, self.task_callback, 10
+        )
+        self.coordination_sub = self.create_subscription(
+            String, &#x27;coordination_channel&#x27;, self.coordination_callback, 10
+        )
+
+        # Timer for periodic status updates
+        self.status_timer = self.create_timer(1.0, self.publish_status)
+
+        # Robot state
+        self.current_pose = PoseStamped()
+        self.battery_level = 100.0
+        self.task_queue = []
+
+    def publish_status(self):
+        &quot;&quot;&quot;Publish current robot status&quot;&quot;&quot;
+        status_msg = RobotStatus()
+        status_msg.robot_id = self.robot_id
+        status_msg.pose = self.current_pose.pose
+        status_msg.battery_level = self.battery_level
+        status_msg.status = &quot;active&quot;  # idle, working, charging, etc.
+
+        self.status_pub.publish(status_msg)
+
+    def status_callback(self, msg: RobotStatus):
+        &quot;&quot;&quot;Handle incoming robot status&quot;&quot;&quot;
+        if msg.robot_id != self.robot_id:
+            # Update neighbor information
+            self.update_neighbor_status(msg)
+
+    def task_callback(self, msg: TaskAssignment):
+        &quot;&quot;&quot;Handle incoming task assignment&quot;&quot;&quot;
+        if msg.target_robot == self.robot_id:
+            self.task_queue.append(msg.task)
+            self.execute_task(msg.task)
+
+    def coordination_callback(self, msg: String):
+        &quot;&quot;&quot;Handle coordination messages&quot;&quot;&quot;
+        coordination_data = msg.data.split(&#x27;:&#x27;)
+        if coordination_data[0] == &#x27;request&#x27;:
+            self.handle_coordination_request(coordination_data[1:])
+        elif coordination_data[0] == &#x27;response&#x27;:
+            self.handle_coordination_response(coordination_data[1:])
+
+    def update_neighbor_status(self, status: RobotStatus):
+        &quot;&quot;&quot;Update information about neighboring robots&quot;&quot;&quot;
+        # Store in local coordination data structure
+        pass
+
+    def execute_task(self, task: str):
+        &quot;&quot;&quot;Execute a specific task&quot;&quot;&quot;
+        # Implementation depends on task type
+        pass
+
+    def handle_coordination_request(self, request_data):
+        &quot;&quot;&quot;Handle coordination requests from other robots&quot;&quot;&quot;
+        # Process request and send response
+        pass
+
+    def handle_coordination_response(self, response_data):
+        &quot;&quot;&quot;Handle coordination responses&quot;&quot;&quot;
+        # Process response and update plans accordingly
+        pass
+</code></pre>
+<h2 id="task-allocation-algorithms">Task Allocation Algorithms</h2>
+<h3 id="market-based-task-allocation">Market-Based Task Allocation</h3>
+<pre><code class="language-python">class TaskAllocator:
+    def __init__(self, robots: List[str]):
+        self.robots = robots
+        self.tasks = []
+        self.robot_capabilities = {}  # Robot -&gt; capabilities mapping
+        self.task_requirements = {}   # Task -&gt; requirements mapping
+
+    def register_robot_capabilities(self, robot_id: str, capabilities: Dict[str, float]):
+        &quot;&quot;&quot;Register what capabilities a robot has&quot;&quot;&quot;
+        self.robot_capabilities[robot_id] = capabilities
+
+    def register_task(self, task_id: str, requirements: Dict[str, float], value: float = 1.0):
+        &quot;&quot;&quot;Register a task with its requirements and value&quot;&quot;&quot;
+        self.tasks.append({
+            &#x27;id&#x27;: task_id,
+            &#x27;requirements&#x27;: requirements,
+            &#x27;value&#x27;: value,
+            &#x27;assigned_to&#x27;: None
+        })
+
+    def auction_tasks(self) -&gt; Dict[str, List[str]]:
+        &quot;&quot;&quot;Auction tasks to robots using market-based approach&quot;&quot;&quot;
+        robot_assignments = {robot: [] for robot in self.robots}
+
+        for task in self.tasks:
+            if task[&#x27;assigned_to&#x27;] is None:
+                # Calculate bids from all robots
+                bids = {}
+                for robot in self.robots:
+                    bid = self.calculate_bid(robot, task)
+                    if bid &gt; 0:  # Only robots that can perform the task
+                        bids[robot] = bid
+
+                if bids:
+                    # Assign to highest bidder
+                    winning_robot = max(bids, key=bids.get)
+                    robot_assignments[winning_robot].append(task[&#x27;id&#x27;])
+                    task[&#x27;assigned_to&#x27;] = winning_robot
+
+        return robot_assignments
+
+    def calculate_bid(self, robot_id: str, task: Dict) -&gt; float:
+        &quot;&quot;&quot;Calculate how much a robot should bid for a task&quot;&quot;&quot;
+        if robot_id not in self.robot_capabilities:
+            return 0
+
+        robot_caps = self.robot_capabilities[robot_id]
+        task_reqs = task[&#x27;requirements&#x27;]
+
+        # Calculate capability match score
+        match_score = 1.0
+        for req, req_value in task_reqs.items():
+            if req in robot_caps:
+                # Higher capability means higher bid
+                match_score *= (robot_caps[req] / req_value)
+            else:
+                # Robot doesn&#x27;t have required capability
+                return 0
+
+        # Higher task value increases bid
+        bid = task[&#x27;value&#x27;] * match_score
+
+        # Consider robot&#x27;s current workload
+        current_tasks = len([t for t in self.tasks if t[&#x27;assigned_to&#x27;] == robot_id])
+        workload_factor = max(0.5, 1.0 - current_tasks * 0.1)  # Reduce bid with more tasks
+
+        return bid * workload_factor
+
+class ConsensusBasedBundleAlgorithm:
+    &quot;&quot;&quot;Implementation of CBBA (Consensus-Based Bundle Algorithm)&quot;&quot;&quot;
+
+    def __init__(self, robots: List[str], tasks: List[Dict]):
+        self.robots = robots
+        self.tasks = tasks
+        self.robot_bundles = {r: [] for r in robots}
+        self.robot_paths = {r: [] for r in robots}
+        self.time_limit = 10.0  # Consensus time limit
+
+    def run_cbba(self) -&gt; Dict[str, List[str]]:
+        &quot;&quot;&quot;Run the CBBA algorithm to allocate tasks&quot;&quot;&quot;
+        # Initialize bundles
+        for robot in self.robots:
+            self.robot_bundles[robot] = []
+            self.robot_paths[robot] = []
+
+        # Iterative consensus process
+        iteration = 0
+        max_iterations = 50
+        converged = False
+
+        while not converged and iteration &lt; max_iterations:
+            old_assignments = {r: self.robot_bundles[r][:] for r in self.robots}
+
+            # Each robot builds its bundle
+            for robot in self.robots:
+                self.update_robot_bundle(robot)
+
+            # Check for convergence
+            converged = all(
+                self.robot_bundles[r] == old_assignments[r] for r in self.robots
+            )
+            iteration += 1
+
+        return self.robot_bundles
+
+    def update_robot_bundle(self, robot_id: str):
+        &quot;&quot;&quot;Update a robot&#x27;s task bundle&quot;&quot;&quot;
+        current_bundle = self.robot_bundles[robot_id]
+        available_tasks = [t for t in self.tasks if t[&#x27;id&#x27;] not in
+                          [item[&#x27;id&#x27;] for bundle_list in self.robot_bundles.values() for item in bundle_list]]
+
+        # Add best tasks to bundle
+        for task in available_tasks:
+            if self.is_task_beneficial(robot_id, task, current_bundle):
+                current_bundle.append(task)
+
+    def is_task_beneficial(self, robot_id: str, task: Dict, current_bundle: List[Dict]) -&gt; bool:
+        &quot;&quot;&quot;Check if adding a task is beneficial for the robot&quot;&quot;&quot;
+        # Calculate utility of adding this task to current bundle
+        # This would involve path planning and cost calculations
+        return True  # Simplified for example
+</code></pre>
+<h2 id="formation-control-for-humanoid-robots">Formation Control for Humanoid Robots</h2>
+<h3 id="virtual-structure-formation">Virtual Structure Formation</h3>
+<pre><code class="language-python">class FormationController:
+    def __init__(self, robot_id: str, formation_shape: str = &quot;line&quot;):
+        self.robot_id = robot_id
+        self.formation_shape = formation_shape
+        self.neighbors = []
+        self.formation_positions = {}
+        self.current_position = np.array([0.0, 0.0, 0.0])
+        self.formation_scale = 1.0
+
+    def setup_formation(self, robot_ids: List[str], leader_id: str = None):
+        &quot;&quot;&quot;Set up formation positions for all robots&quot;&quot;&quot;
+        n_robots = len(robot_ids)
+
+        if self.formation_shape == &quot;line&quot;:
+            self.calculate_line_formation(robot_ids)
+        elif self.formation_shape == &quot;circle&quot;:
+            self.calculate_circle_formation(robot_ids)
+        elif self.formation_shape == &quot;triangle&quot;:
+            self.calculate_triangle_formation(robot_ids)
+
+    def calculate_line_formation(self, robot_ids: List[str]):
+        &quot;&quot;&quot;Calculate positions for line formation&quot;&quot;&quot;
+        leader_idx = robot_ids.index(self.robot_id)
+
+        for i, robot_id in enumerate(robot_ids):
+            offset = (i - leader_idx) * self.formation_scale
+            self.formation_positions[robot_id] = np.array([offset, 0.0, 0.0])
+
+    def calculate_circle_formation(self, robot_ids: List[str]):
+        &quot;&quot;&quot;Calculate positions for circular formation&quot;&quot;&quot;
+        n_robots = len(robot_ids)
+        angle_step = 2 * np.pi / n_robots
+
+        for i, robot_id in enumerate(robot_ids):
+            angle = i * angle_step
+            x = self.formation_scale * np.cos(angle)
+            y = self.formation_scale * np.sin(angle)
+            self.formation_positions[robot_id] = np.array([x, y, 0.0])
+
+    def calculate_triangle_formation(self, robot_ids: List[str]):
+        &quot;&quot;&quot;Calculate positions for triangular formation&quot;&quot;&quot;
+        n_robots = len(robot_ids)
+
+        for i, robot_id in enumerate(robot_ids):
+            if n_robots &gt;= 3:
+                if i == 0:
+                    # Leader at center
+                    self.formation_positions[robot_id] = np.array([0.0, 0.0, 0.0])
+                elif i == 1:
+                    # First follower
+                    self.formation_positions[robot_id] = np.array([self.formation_scale, 0.0, 0.0])
+                elif i == 2:
+                    # Second follower
+                    angle = np.pi / 3  # 60 degrees
+                    x = self.formation_scale * np.cos(angle)
+                    y = self.formation_scale * np.sin(angle)
+                    self.formation_positions[robot_id] = np.array([x, y, 0.0])
+
+    def compute_formation_control(self, leader_position: np.ndarray) -&gt; np.ndarray:
+        &quot;&quot;&quot;Compute control input to maintain formation&quot;&quot;&quot;
+        desired_position = leader_position + self.formation_positions[self.robot_id]
+
+        # Simple proportional controller
+        error = desired_position - self.current_position
+        control_output = 1.0 * error  # Proportional gain = 1.0
+
+        # Add collision avoidance with other robots
+        avoidance_force = self.compute_collision_avoidance()
+
+        return control_output + avoidance_force
+
+    def compute_collision_avoidance(self) -&gt; np.ndarray:
+        &quot;&quot;&quot;Compute collision avoidance forces&quot;&quot;&quot;
+        avoidance_force = np.zeros(3)
+
+        for neighbor_id, neighbor_pos in self.formation_positions.items():
+            if neighbor_id != self.robot_id:
+                distance = np.linalg.norm(self.current_position - neighbor_pos)
+                if distance &lt; 0.5:  # Collision threshold
+                    # Repulsive force
+                    direction = self.current_position - neighbor_pos
+                    direction = direction / np.linalg.norm(direction)
+                    magnitude = max(0, 0.5 - distance) * 10.0
+                    avoidance_force += direction * magnitude
+
+        return avoidance_force
+</code></pre>
+<h2 id="human-robot-team-coordination">Human-Robot Team Coordination</h2>
+<h3 id="socially-aware-coordination">Socially-Aware Coordination</h3>
+<pre><code class="language-python">class SociallyAwareCoordinator:
+    def __init__(self, robot_id: str):
+        self.robot_id = robot_id
+        self.human_positions = {}
+        self.social_zones = {}  # Personal, social, public space distances
+        self.approach_strategies = {}
+
+    def detect_humans(self, human_detections: List[Dict]):
+        &quot;&quot;&quot;Process human detections and update internal state&quot;&quot;&quot;
+        for detection in human_detections:
+            human_id = detection[&#x27;id&#x27;]
+            position = detection[&#x27;position&#x27;]
+            self.human_positions[human_id] = position
+
+    def plan_socially_compliant_path(self, goal, humans_nearby: List[str]):
+        &quot;&quot;&quot;Plan a path that respects human social spaces&quot;&quot;&quot;
+        # Define social zones
+        personal_space = 0.45  # meters
+        social_space = 1.2    # meters
+        public_space = 3.6    # meters
+
+        # Modify path planning to avoid human personal space
+        modified_goal = self.adjust_goal_for_social_compliance(goal, humans_nearby)
+
+        # Return socially compliant path
+        return self.compute_path_to_goal(modified_goal)
+
+    def adjust_goal_for_social_compliance(self, goal, humans_nearby: List[str]):
+        &quot;&quot;&quot;Adjust goal to respect human social spaces&quot;&quot;&quot;
+        adjusted_goal = goal.copy()
+
+        for human_id in humans_nearby:
+            if human_id in self.human_positions:
+                human_pos = self.human_positions[human_id]
+
+                # Calculate vector from human to goal
+                vec_to_goal = adjusted_goal - human_pos[:3]  # Only x,y,z
+                distance = np.linalg.norm(vec_to_goal)
+
+                if distance &lt; 1.2:  # Within social space
+                    # Adjust goal to maintain minimum distance
+                    direction = vec_to_goal / distance if distance &gt; 0 else np.array([1, 0, 0])
+                    adjusted_goal = human_pos[:3] + direction * 1.2
+
+        return adjusted_goal
+
+    def compute_path_to_goal(self, goal):
+        &quot;&quot;&quot;Compute path to goal (simplified)&quot;&quot;&quot;
+        # In practice, this would use a proper path planning algorithm
+        return [goal]  # Return the goal as the path
+
+    def select_interaction_strategy(self, human_state: Dict):
+        &quot;&quot;&quot;Select appropriate interaction strategy based on human state&quot;&quot;&quot;
+        if human_state[&#x27;is_looking_at_robot&#x27;]:
+            return &quot;direct_interaction&quot;
+        elif human_state[&#x27;is_in_conversation&#x27;]:
+            return &quot;wait_for_turn&quot;
+        elif human_state[&#x27;appears_hurrying&#x27;]:
+            return &quot;minimize_interruption&quot;
+        else:
+            return &quot;normal_interaction&quot;
+</code></pre>
+<h2 id="coordination-algorithms-implementation">Coordination Algorithms Implementation</h2>
+<h3 id="ros-2-coordination-node">ROS 2 Coordination Node</h3>
+<pre><code class="language-python">import rclpy
+from rclpy.node import Node
+from multirobot_msgs.msg import CoordinationCommand, CoordinationStatus
+from geometry_msgs.msg import PoseStamped
+from std_msgs.msg import String
+
+class MultiRobotCoordinator(Node):
+    def __init__(self):
+        super().__init__(&#x27;multirobot_coordinator&#x27;)
+
+        # Publishers
+        self.coord_cmd_pub = self.create_publisher(
+            CoordinationCommand, &#x27;coordination_commands&#x27;, 10
+        )
+        self.coord_status_pub = self.create_publisher(
+            CoordinationStatus, &#x27;coordination_status&#x27;, 10
+        )
+
+        # Subscribers
+        self.pose_sub = self.create_subscription(
+            PoseStamped, &#x27;robot_pose&#x27;, self.pose_callback, 10
+        )
+        self.coord_status_sub = self.create_subscription(
+            CoordinationStatus, &#x27;coordination_status&#x27;, self.coord_status_callback, 10
+        )
+
+        # Coordination components
+        self.task_allocator = TaskAllocator(robots=[])
+        self.formation_controller = FormationController(
+            robot_id=self.get_namespace(), formation_shape=&quot;line&quot;
+        )
+        self.social_coordinator = SociallyAwareCoordinator(
+            robot_id=self.get_namespace()
+        )
+
+        # Timer for coordination updates
+        self.coordination_timer = self.create_timer(0.5, self.coordination_step)
+
+        # Robot states
+        self.robot_states = {}
+        self.human_states = {}
+
+    def pose_callback(self, msg: PoseStamped):
+        &quot;&quot;&quot;Update robot pose in coordination system&quot;&quot;&quot;
+        robot_id = self.get_namespace()  # Simplified
+        self.robot_states[robot_id] = msg.pose
+
+    def coord_status_callback(self, msg: CoordinationStatus):
+        &quot;&quot;&quot;Process coordination status from other robots&quot;&quot;&quot;
+        self.robot_states[msg.robot_id] = msg.pose
+        if msg.robot_id != self.get_namespace():
+            # Update formation controller with neighbor positions
+            self.formation_controller.current_position = np.array([
+                msg.pose.position.x, msg.pose.position.y, msg.pose.position.z
+            ])
+
+    def coordination_step(self):
+        &quot;&quot;&quot;Main coordination step&quot;&quot;&quot;
+        # Update formation
+        if len(self.robot_states) &gt; 1:
+            leader_id = min(self.robot_states.keys())  # Simple leader selection
+            if self.get_namespace() != leader_id:
+                leader_pose = self.robot_states[leader_id]
+                leader_pos = np.array([
+                    leader_pose.position.x,
+                    leader_pose.position.y,
+                    leader_pose.position.z
+                ])
+
+                control_cmd = self.formation_controller.compute_formation_control(leader_pos)
+
+                # Publish coordination command
+                cmd_msg = CoordinationCommand()
+                cmd_msg.robot_id = self.get_namespace()
+                cmd_msg.command = &quot;move_to&quot;
+                cmd_msg.target_position = control_cmd.tolist()
+                self.coord_cmd_pub.publish(cmd_msg)
+
+        # Update coordination status
+        status_msg = CoordinationStatus()
+        status_msg.robot_id = self.get_namespace()
+        if self.get_namespace() in self.robot_states:
+            status_msg.pose = self.robot_states[self.get_namespace()]
+        status_msg.status = &quot;coordinating&quot;
+        self.coord_status_pub.publish(status_msg)
+</code></pre>
+<h2 id="challenges-in-multi-robot-coordination">Challenges in Multi-Robot Coordination</h2>
+<h3 id="communication-constraints">Communication Constraints</h3>
+<p>Humanoid robots face specific communication challenges:</p>
+<ul>
+<li><strong>Bandwidth limitations</strong>: Complex humanoid robots generate large amounts of sensor data</li>
+<li><strong>Latency requirements</strong>: Real-time coordination needs low-latency communication</li>
+<li><strong>Reliability</strong>: Coordination failures can lead to safety issues</li>
+</ul>
+<h3 id="heterogeneous-teams">Heterogeneous Teams</h3>
+<p>Coordination becomes more complex with different robot types:</p>
+<ul>
+<li>Different capabilities and limitations</li>
+<li>Varying mobility and manipulation abilities</li>
+<li>Different sensing modalities</li>
+</ul>
+<h3 id="dynamic-environments">Dynamic Environments</h3>
+<p>Real-world environments require adaptive coordination:</p>
+<ul>
+<li>Moving obstacles</li>
+<li>Changing task requirements</li>
+<li>Unpredictable human interactions</li>
+</ul>
+<h2 id="practice-tasks">Practice Tasks</h2>
+<ol>
+<li>Implement a simple multi-robot communication system using ROS 2</li>
+<li>Create a task allocation algorithm for a team of humanoid robots</li>
+<li>Develop a formation control system for coordinated movement</li>
+<li>Design socially-aware navigation for human-robot teams</li>
+<li>Test coordination algorithms in simulation with multiple robots</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<p>Multi-robot coordination for humanoid systems requires sophisticated algorithms that consider the complexity of individual robots, human-aware interactions, and real-time constraints. By implementing proper coordination architectures, communication protocols, and task allocation strategies, teams of humanoid robots can effectively work together to accomplish complex tasks in human-centered environments.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/Ayesha788/my_book/tree/main/docs/chapter8-multirobot.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/my_book/docs/chapter7-manipulation"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Chapter 7: Manipulation and Grasping for Humanoid Robots</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my_book/docs/chapter9-learning"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Chapter 9: Learning and Adaptation for Humanoid Robots</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduction-to-multi-robot-systems" class="table-of-contents__link toc-highlight">Introduction to Multi-Robot Systems</a></li><li><a href="#coordination-architectures" class="table-of-contents__link toc-highlight">Coordination Architectures</a><ul><li><a href="#centralized-vs-decentralized-coordination" class="table-of-contents__link toc-highlight">Centralized vs. Decentralized Coordination</a></li></ul></li><li><a href="#communication-protocols-for-humanoid-robots" class="table-of-contents__link toc-highlight">Communication Protocols for Humanoid Robots</a><ul><li><a href="#ros-2-multi-robot-communication" class="table-of-contents__link toc-highlight">ROS 2 Multi-Robot Communication</a></li></ul></li><li><a href="#task-allocation-algorithms" class="table-of-contents__link toc-highlight">Task Allocation Algorithms</a><ul><li><a href="#market-based-task-allocation" class="table-of-contents__link toc-highlight">Market-Based Task Allocation</a></li></ul></li><li><a href="#formation-control-for-humanoid-robots" class="table-of-contents__link toc-highlight">Formation Control for Humanoid Robots</a><ul><li><a href="#virtual-structure-formation" class="table-of-contents__link toc-highlight">Virtual Structure Formation</a></li></ul></li><li><a href="#human-robot-team-coordination" class="table-of-contents__link toc-highlight">Human-Robot Team Coordination</a><ul><li><a href="#socially-aware-coordination" class="table-of-contents__link toc-highlight">Socially-Aware Coordination</a></li></ul></li><li><a href="#coordination-algorithms-implementation" class="table-of-contents__link toc-highlight">Coordination Algorithms Implementation</a><ul><li><a href="#ros-2-coordination-node" class="table-of-contents__link toc-highlight">ROS 2 Coordination Node</a></li></ul></li><li><a href="#challenges-in-multi-robot-coordination" class="table-of-contents__link toc-highlight">Challenges in Multi-Robot Coordination</a><ul><li><a href="#communication-constraints" class="table-of-contents__link toc-highlight">Communication Constraints</a></li><li><a href="#heterogeneous-teams" class="table-of-contents__link toc-highlight">Heterogeneous Teams</a></li><li><a href="#dynamic-environments" class="table-of-contents__link toc-highlight">Dynamic Environments</a></li></ul></li><li><a href="#practice-tasks" class="table-of-contents__link toc-highlight">Practice Tasks</a></li><li><a href="#summary" class="table-of-contents__link toc-highlight">Summary</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Chapters</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter1-ros2">ROS 2 Fundamentals</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter2-digital-twin">Digital Twin</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter3-isaac">AI-Robot Brain</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter4-vla">Vision-Language-Action</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/ros2" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://answers.ros.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">ROS Answers<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://developer.nvidia.com/" target="_blank" rel="noopener noreferrer" class="footer__link-item">NVIDIA Developer<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Physical AI & Humanoid Robotics Hackathon Project. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

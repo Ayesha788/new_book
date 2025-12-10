@@ -1,0 +1,20 @@
+{
+  "id": "intro",
+  "title": "Introduction to Physical AI & Humanoid Robotics",
+  "description": "Welcome to the Physical AI & Humanoid Robotics Hackathon Book! This comprehensive guide will take you through the fundamentals of controlling humanoid robots using artificial intelligence in both simulated and real-world environments. This expanded edition now covers 12 comprehensive chapters to provide a complete understanding of humanoid robotics.",
+  "source": "@site/docs/intro.md",
+  "sourceDirName": ".",
+  "slug": "/intro",
+  "permalink": "/my_book/docs/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayesha788/my_book/tree/main/docs/intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Environment Setup",
+    "permalink": "/my_book/docs/environment-setup"
+  }
+}

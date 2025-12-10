@@ -1,0 +1,118 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/my_book/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/my_book/docs",
+          "mainDocId": "intro",
+          "docs": [
+            {
+              "id": "capstone",
+              "path": "/my_book/docs/capstone",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapter1-ros2",
+              "path": "/my_book/docs/chapter1-ros2",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapter10-hri",
+              "path": "/my_book/docs/chapter10-hri",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapter11-safety",
+              "path": "/my_book/docs/chapter11-safety",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapter12-future",
+              "path": "/my_book/docs/chapter12-future",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapter2-digital-twin",
+              "path": "/my_book/docs/chapter2-digital-twin",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapter3-isaac",
+              "path": "/my_book/docs/chapter3-isaac",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapter4-vla",
+              "path": "/my_book/docs/chapter4-vla",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapter5-path-planning",
+              "path": "/my_book/docs/chapter5-path-planning",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapter6-computer-vision",
+              "path": "/my_book/docs/chapter6-computer-vision",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapter7-manipulation",
+              "path": "/my_book/docs/chapter7-manipulation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapter8-multirobot",
+              "path": "/my_book/docs/chapter8-multirobot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapter9-learning",
+              "path": "/my_book/docs/chapter9-learning",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "environment-setup",
+              "path": "/my_book/docs/environment-setup",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "glossary",
+              "path": "/my_book/docs/glossary",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "intro",
+              "path": "/my_book/docs/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "practice-tasks-ros2",
+              "path": "/my_book/docs/practice-tasks-ros2",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "practice-tasks-simulation",
+              "path": "/my_book/docs/practice-tasks-simulation",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/my_book/docs/intro",
+                "label": "Introduction"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

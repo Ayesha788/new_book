@@ -1,0 +1,24 @@
+{
+  "id": "chapter10-hri",
+  "title": "Chapter 10: Human-Robot Interaction for Humanoid Systems",
+  "description": "Introduction to Human-Robot Interaction",
+  "source": "@site/docs/chapter10-hri.md",
+  "sourceDirName": ".",
+  "slug": "/chapter10-hri",
+  "permalink": "/my_book/docs/chapter10-hri",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayesha788/my_book/tree/main/docs/chapter10-hri.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 9: Learning and Adaptation for Humanoid Robots",
+    "permalink": "/my_book/docs/chapter9-learning"
+  },
+  "next": {
+    "title": "Chapter 11: Safety and Ethics in Humanoid Robotics",
+    "permalink": "/my_book/docs/chapter11-safety"
+  }
+}

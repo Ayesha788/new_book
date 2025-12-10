@@ -1,0 +1,24 @@
+{
+  "id": "chapter9-learning",
+  "title": "Chapter 9: Learning and Adaptation for Humanoid Robots",
+  "description": "Introduction to Robot Learning",
+  "source": "@site/docs/chapter9-learning.md",
+  "sourceDirName": ".",
+  "slug": "/chapter9-learning",
+  "permalink": "/my_book/docs/chapter9-learning",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayesha788/my_book/tree/main/docs/chapter9-learning.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 8: Multi-Robot Coordination for Humanoid Systems",
+    "permalink": "/my_book/docs/chapter8-multirobot"
+  },
+  "next": {
+    "title": "Chapter 10: Human-Robot Interaction for Humanoid Systems",
+    "permalink": "/my_book/docs/chapter10-hri"
+  }
+}

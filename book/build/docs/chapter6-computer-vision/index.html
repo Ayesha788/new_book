@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-chapter6-computer-vision" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Chapter 6: Computer Vision for Humanoid Robotics | Physical AI &amp; Humanoid Robotics Hackathon Book</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://ayesha788.github.io/my_book/docs/chapter6-computer-vision"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Chapter 6: Computer Vision for Humanoid Robotics | Physical AI &amp; Humanoid Robotics Hackathon Book"><meta data-rh="true" name="description" content="Introduction to Computer Vision in Robotics"><meta data-rh="true" property="og:description" content="Introduction to Computer Vision in Robotics"><link data-rh="true" rel="icon" href="/my_book/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://ayesha788.github.io/my_book/docs/chapter6-computer-vision"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/chapter6-computer-vision" hreflang="en"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/chapter6-computer-vision" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Chapter 6: Computer Vision for Humanoid Robotics","item":"https://ayesha788.github.io/my_book/docs/chapter6-computer-vision"}]}</script><link rel="stylesheet" href="/my_book/assets/css/styles.26d1bab7.css">
+<script src="/my_book/assets/js/runtime~main.cc4ca827.js" defer="defer"></script>
+<script src="/my_book/assets/js/main.3daa9b1f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/my_book/"><div class="navbar__logo"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Robotics Book</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/my_book/docs/intro">Book Chapters</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/intro"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/environment-setup"><span title="Environment Setup" class="linkLabel_WmDU">Environment Setup</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter1-ros2"><span title="ROS 2 Fundamentals" class="categoryLinkLabel_W154">ROS 2 Fundamentals</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter2-digital-twin"><span title="Digital Twin &amp; Simulation" class="categoryLinkLabel_W154">Digital Twin &amp; Simulation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter3-isaac"><span title="AI-Robot Brain" class="categoryLinkLabel_W154">AI-Robot Brain</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter4-vla"><span title="Vision-Language-Action" class="categoryLinkLabel_W154">Vision-Language-Action</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter5-path-planning"><span title="Path Planning &amp; Navigation" class="categoryLinkLabel_W154">Path Planning &amp; Navigation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/my_book/docs/chapter6-computer-vision"><span title="Computer Vision" class="categoryLinkLabel_W154">Computer Vision</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/my_book/docs/chapter6-computer-vision"><span title="Chapter 6: Computer Vision for Humanoid Robotics" class="linkLabel_WmDU">Chapter 6: Computer Vision for Humanoid Robotics</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter7-manipulation"><span title="Manipulation &amp; Grasping" class="categoryLinkLabel_W154">Manipulation &amp; Grasping</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter8-multirobot"><span title="Multi-Robot Coordination" class="categoryLinkLabel_W154">Multi-Robot Coordination</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter9-learning"><span title="Learning &amp; Adaptation" class="categoryLinkLabel_W154">Learning &amp; Adaptation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter10-hri"><span title="Human-Robot Interaction" class="categoryLinkLabel_W154">Human-Robot Interaction</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter11-safety"><span title="Safety &amp; Ethics" class="categoryLinkLabel_W154">Safety &amp; Ethics</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter12-future"><span title="Future Trends &amp; Applications" class="categoryLinkLabel_W154">Future Trends &amp; Applications</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/practice-tasks-ros2"><span title="Practice Tasks" class="categoryLinkLabel_W154">Practice Tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/glossary"><span title="Reference" class="categoryLinkLabel_W154">Reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/my_book/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Computer Vision</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Chapter 6: Computer Vision for Humanoid Robotics</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1 id="chapter-6-computer-vision-for-humanoid-robotics">Chapter 6: Computer Vision for Humanoid Robotics</h1></header>
+<h2 id="introduction-to-computer-vision-in-robotics">Introduction to Computer Vision in Robotics</h2>
+<p>Computer vision is essential for humanoid robots to perceive and understand their environment. Unlike traditional robots, humanoid robots have multiple sensors positioned similar to human vision systems, enabling them to process visual information in ways that mimic human perception.</p>
+<h2 id="vision-systems-for-humanoid-robots">Vision Systems for Humanoid Robots</h2>
+<h3 id="stereo-vision-setup">Stereo Vision Setup</h3>
+<p>Humanoid robots typically employ stereo vision systems to perceive depth, similar to human binocular vision:</p>
+<pre><code class="language-python">import cv2
+import numpy as np
+
+class StereoVisionSystem:
+    def __init__(self, left_camera_params, right_camera_params):
+        # Camera matrices and distortion coefficients
+        self.left_K = left_camera_params[&#x27;K&#x27;]
+        self.left_dist = left_camera_params[&#x27;dist&#x27;]
+        self.right_K = right_camera_params[&#x27;K&#x27;]
+        self.right_dist = right_camera_params[&#x27;dist&#x27;]
+
+        # Rectification parameters
+        self.R1, self.R2, self.P1, self.P2, self.Q = self.compute_rectification()
+
+    def compute_rectification(self):
+        # Compute rectification transforms
+        R1, R2, P1, P2, Q, _, _ = cv2.stereoRectify(
+            self.left_K, self.left_dist,
+            self.right_K, self.right_dist,
+            (640, 480),  # Image size
+            None, None    # Rotation and translation between cameras
+        )
+        return R1, R2, P1, P2, Q
+
+    def compute_disparity(self, left_img, right_img):
+        # Rectify images
+        left_rectified = cv2.remap(left_img, self.left_map1, self.left_map2, cv2.INTER_LINEAR)
+        right_rectified = cv2.remap(right_img, self.right_map1, self.right_map2, cv2.INTER_LINEAR)
+
+        # Compute disparity
+        stereo = cv2.StereoSGBM_create(
+            minDisparity=0,
+            numDisparities=16*10,  # Must be divisible by 16
+            blockSize=5,
+            P1=8 * 3 * 5**2,
+            P2=32 * 3 * 5**2,
+            disp12MaxDiff=1,
+            uniquenessRatio=15,
+            speckleWindowSize=0,
+            speckleRange=2,
+            preFilterCap=63,
+            mode=cv2.STEREO_SGBM_MODE_SGBM_3WAY
+        )
+
+        disparity = stereo.compute(left_rectified, right_rectified).astype(np.float32) / 16.0
+        return disparity
+
+    def depth_from_disparity(self, disparity):
+        # Convert disparity to depth using Q matrix
+        points = cv2.reprojectImageTo3D(disparity, self.Q)
+        return points
+</code></pre>
+<h3 id="rgb-d-integration">RGB-D Integration</h3>
+<p>RGB-D sensors provide both color and depth information, which is crucial for humanoid robot perception:</p>
+<pre><code class="language-python">import open3d as o3d
+import numpy as np
+
+class RGBDProcessor:
+    def __init__(self, camera_intrinsics):
+        self.intrinsics = camera_intrinsics
+        self.fov_x = camera_intrinsics[&#x27;fov_x&#x27;]
+        self.fov_y = camera_intrinsics[&#x27;fov_y&#x27;]
+
+    def create_point_cloud(self, rgb_image, depth_image, depth_scale=1000.0):
+        # Convert to Open3D format
+        rgbd_image = o3d.geometry.RGBDImage.create_from_color_and_depth(
+            o3d.geometry.Image(rgb_image),
+            o3d.geometry.Image(depth_image),
+            depth_scale=depth_scale,
+            depth_trunc=3.0,
+            convert_rgb_to_intensity=False
+        )
+
+        # Create point cloud
+        pcd = o3d.geometry.PointCloud.create_from_rgbd_image(
+            rgbd_image,
+            o3d.camera.PinholeCameraIntrinsic(
+                width=rgb_image.shape[1],
+                height=rgb_image.shape[0],
+                fx=self.intrinsics[&#x27;fx&#x27;],
+                fy=self.intrinsics[&#x27;fy&#x27;],
+                cx=self.intrinsics[&#x27;cx&#x27;],
+                cy=self.intrinsics[&#x27;cy&#x27;]
+            )
+        )
+
+        return pcd
+
+    def segment_objects(self, point_cloud, cluster_tolerance=0.02, min_cluster_size=100):
+        # Downsample point cloud
+        downsampled = point_cloud.voxel_down_sample(voxel_size=0.01)
+
+        # Segment plane (ground)
+        plane_model, inliers = downsampled.segment_plane(
+            distance_threshold=0.01,
+            ransac_n=3,
+            num_iterations=1000
+        )
+
+        # Remove ground plane
+        object_cloud = downsampled.select_by_index(inliers, invert=True)
+
+        # Extract clusters
+        labels = np.array(object_cloud.cluster_dbscan(
+            eps=cluster_tolerance,
+            min_points=min_cluster_size
+        ))
+
+        return object_cloud, labels
+</code></pre>
+<h2 id="object-detection-and-recognition">Object Detection and Recognition</h2>
+<h3 id="deep-learning-for-object-detection">Deep Learning for Object Detection</h3>
+<p>Modern humanoid robots use deep learning models for object detection and recognition:</p>
+<pre><code class="language-python">import torch
+import torchvision
+from torchvision import transforms
+import cv2
+
+class ObjectDetector:
+    def __init__(self, model_path=None):
+        # Load pre-trained model (e.g., YOLO or Faster R-CNN)
+        self.device = torch.device(&#x27;cuda&#x27; if torch.cuda.is_available() else &#x27;cpu&#x27;)
+
+        if model_path:
+            self.model = torch.load(model_path)
+        else:
+            # Use pre-trained COCO model
+            self.model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
+
+        self.model.to(self.device)
+        self.model.eval()
+
+        # COCO dataset class names
+        self.coco_names = [
+            &#x27;__background__&#x27;, &#x27;person&#x27;, &#x27;bicycle&#x27;, &#x27;car&#x27;, &#x27;motorcycle&#x27;, &#x27;airplane&#x27;, &#x27;bus&#x27;,
+            &#x27;train&#x27;, &#x27;truck&#x27;, &#x27;boat&#x27;, &#x27;traffic light&#x27;, &#x27;fire hydrant&#x27;, &#x27;stop sign&#x27;,
+            &#x27;parking meter&#x27;, &#x27;bench&#x27;, &#x27;bird&#x27;, &#x27;cat&#x27;, &#x27;dog&#x27;, &#x27;horse&#x27;, &#x27;sheep&#x27;, &#x27;cow&#x27;,
+            &#x27;elephant&#x27;, &#x27;bear&#x27;, &#x27;zebra&#x27;, &#x27;giraffe&#x27;, &#x27;backpack&#x27;, &#x27;umbrella&#x27;, &#x27;handbag&#x27;,
+            &#x27;tie&#x27;, &#x27;suitcase&#x27;, &#x27;frisbee&#x27;, &#x27;skis&#x27;, &#x27;snowboard&#x27;, &#x27;sports ball&#x27;, &#x27;kite&#x27;,
+            &#x27;baseball bat&#x27;, &#x27;baseball glove&#x27;, &#x27;skateboard&#x27;, &#x27;surfboard&#x27;, &#x27;tennis racket&#x27;,
+            &#x27;bottle&#x27;, &#x27;wine glass&#x27;, &#x27;cup&#x27;, &#x27;fork&#x27;, &#x27;knife&#x27;, &#x27;spoon&#x27;, &#x27;bowl&#x27;, &#x27;banana&#x27;,
+            &#x27;apple&#x27;, &#x27;sandwich&#x27;, &#x27;orange&#x27;, &#x27;broccoli&#x27;, &#x27;carrot&#x27;, &#x27;hot dog&#x27;, &#x27;pizza&#x27;,
+            &#x27;donut&#x27;, &#x27;cake&#x27;, &#x27;chair&#x27;, &#x27;couch&#x27;, &#x27;potted plant&#x27;, &#x27;bed&#x27;, &#x27;dining table&#x27;,
+            &#x27;toilet&#x27;, &#x27;tv&#x27;, &#x27;laptop&#x27;, &#x27;mouse&#x27;, &#x27;remote&#x27;, &#x27;keyboard&#x27;, &#x27;cell phone&#x27;,
+            &#x27;microwave&#x27;, &#x27;oven&#x27;, &#x27;toaster&#x27;, &#x27;sink&#x27;, &#x27;refrigerator&#x27;, &#x27;book&#x27;, &#x27;clock&#x27;,
+            &#x27;vase&#x27;, &#x27;scissors&#x27;, &#x27;teddy bear&#x27;, &#x27;hair drier&#x27;, &#x27;toothbrush&#x27;
+        ]
+
+        # Image transforms
+        self.transform = transforms.Compose([
+            transforms.ToTensor(),
+        ])
+
+    def detect_objects(self, image, confidence_threshold=0.5):
+        # Preprocess image
+        image_tensor = self.transform(image).unsqueeze(0).to(self.device)
+
+        # Run inference
+        with torch.no_grad():
+            predictions = self.model(image_tensor)
+
+        # Process predictions
+        boxes = predictions[0][&#x27;boxes&#x27;].cpu().numpy()
+        labels = predictions[0][&#x27;labels&#x27;].cpu().numpy()
+        scores = predictions[0][&#x27;scores&#x27;].cpu().numpy()
+
+        # Filter by confidence
+        valid_indices = scores &gt;= confidence_threshold
+        filtered_boxes = boxes[valid_indices]
+        filtered_labels = labels[valid_indices]
+        filtered_scores = scores[valid_indices]
+
+        # Convert to result format
+        results = []
+        for box, label, score in zip(filtered_boxes, filtered_labels, filtered_scores):
+            results.append({
+                &#x27;bbox&#x27;: box,
+                &#x27;label&#x27;: self.coco_names[label],
+                &#x27;confidence&#x27;: score
+            })
+
+        return results
+</code></pre>
+<h2 id="visual-slam-for-humanoid-robots">Visual SLAM for Humanoid Robots</h2>
+<p>Visual SLAM (Simultaneous Localization and Mapping) is crucial for humanoid robots to navigate unknown environments:</p>
+<pre><code class="language-python">import cv2
+import numpy as np
+
+class VisualSLAM:
+    def __init__(self):
+        # Feature detector and descriptor
+        self.detector = cv2.SIFT_create()
+        self.matcher = cv2.BFMatcher()
+
+        # Camera parameters
+        self.fx, self.fy = 525.0, 525.0  # Focal lengths
+        self.cx, self.cy = 319.5, 239.5  # Principal points
+
+        # Pose tracking
+        self.current_pose = np.eye(4)
+        self.keyframes = []
+        self.map_points = []
+
+    def process_frame(self, image, timestamp):
+        # Detect features
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        keypoints, descriptors = self.detector.detectAndCompute(gray, None)
+
+        if len(self.keyframes) == 0:
+            # First frame - initialize
+            self.keyframes.append({
+                &#x27;image&#x27;: image,
+                &#x27;keypoints&#x27;: keypoints,
+                &#x27;descriptors&#x27;: descriptors,
+                &#x27;pose&#x27;: self.current_pose.copy(),
+                &#x27;timestamp&#x27;: timestamp
+            })
+            return self.current_pose
+
+        # Match with previous frame
+        prev_frame = self.keyframes[-1]
+        matches = self.matcher.knnMatch(
+            prev_frame[&#x27;descriptors&#x27;],
+            descriptors,
+            k=2
+        )
+
+        # Apply Lowe&#x27;s ratio test
+        good_matches = []
+        for match_pair in matches:
+            if len(match_pair) == 2:
+                m, n = match_pair
+                if m.distance &lt; 0.7 * n.distance:
+                    good_matches.append(m)
+
+        if len(good_matches) &gt;= 10:
+            # Extract matched points
+            prev_pts = np.float32([prev_frame[&#x27;keypoints&#x27;][m.queryIdx].pt for m in good_matches]).reshape(-1, 1, 2)
+            curr_pts = np.float32([keypoints[m.trainIdx].pt for m in good_matches]).reshape(-1, 1, 2)
+
+            # Compute essential matrix and pose
+            E, mask = cv2.findEssentialMat(
+                curr_pts, prev_pts,
+                focal=self.fx, pp=(self.cx, self.cy),
+                method=cv2.RANSAC, threshold=1.0
+            )
+
+            if E is not None:
+                # Recover pose
+                _, R, t, _ = cv2.recoverPose(E, curr_pts, prev_pts,
+                                           focal=self.fx, pp=(self.cx, self.cy))
+
+                # Update current pose
+                T = np.eye(4)
+                T[:3, :3] = R
+                T[:3, 3] = t.flatten()
+                self.current_pose = self.current_pose @ np.linalg.inv(T)
+
+        # Store current frame as keyframe if enough motion detected
+        if self.should_add_keyframe():
+            self.keyframes.append({
+                &#x27;image&#x27;: image,
+                &#x27;keypoints&#x27;: keypoints,
+                &#x27;descriptors&#x27;: descriptors,
+                &#x27;pose&#x27;: self.current_pose.copy(),
+                &#x27;timestamp&#x27;: timestamp
+            })
+
+        return self.current_pose
+
+    def should_add_keyframe(self):
+        # Simple heuristic: add keyframe if enough frames have passed
+        # or if there are enough new map points
+        return len(self.keyframes) == 0 or len(self.keyframes) % 10 == 0
+</code></pre>
+<h2 id="face-detection-and-recognition">Face Detection and Recognition</h2>
+<p>Humanoid robots often need to detect and recognize human faces for social interaction:</p>
+<pre><code class="language-python">import cv2
+import face_recognition
+import numpy as np
+
+class FaceRecognitionSystem:
+    def __init__(self):
+        # Load known faces
+        self.known_face_encodings = []
+        self.known_face_names = []
+
+    def add_known_face(self, image_path, name):
+        # Load image and encode face
+        image = face_recognition.load_image_file(image_path)
+        face_encodings = face_recognition.face_encodings(image)
+
+        if len(face_encodings) &gt; 0:
+            self.known_face_encodings.append(face_encodings[0])
+            self.known_face_names.append(name)
+
+    def recognize_faces(self, image):
+        # Find all face locations and encodings in the image
+        face_locations = face_recognition.face_locations(image)
+        face_encodings = face_recognition.face_encodings(image, face_locations)
+
+        results = []
+        for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
+            # Compare face with known faces
+            matches = face_recognition.compare_faces(
+                self.known_face_encodings,
+                face_encoding
+            )
+            name = &quot;Unknown&quot;
+
+            # Calculate face distances
+            face_distances = face_recognition.face_distance(
+                self.known_face_encodings,
+                face_encoding
+            )
+
+            if len(face_distances) &gt; 0:
+                best_match_index = np.argmin(face_distances)
+                if matches[best_match_index]:
+                    name = self.known_face_names[best_match_index]
+
+            results.append({
+                &#x27;name&#x27;: name,
+                &#x27;bbox&#x27;: (left, top, right, bottom),
+                &#x27;confidence&#x27;: 1 - min(face_distances) if len(face_distances) &gt; 0 else 0
+            })
+
+        return results
+</code></pre>
+<h2 id="integration-with-ros-2">Integration with ROS 2</h2>
+<h3 id="image-processing-node">Image Processing Node</h3>
+<pre><code class="language-python">import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import Image
+from cv_bridge import CvBridge
+from std_msgs.msg import String
+import cv2
+
+class VisionNode(Node):
+    def __init__(self):
+        super().__init__(&#x27;vision_node&#x27;)
+
+        # Create subscribers and publishers
+        self.image_sub = self.create_subscription(
+            Image,
+            &#x27;/camera/rgb/image_raw&#x27;,
+            self.image_callback,
+            10
+        )
+
+        self.detection_pub = self.create_publisher(
+            String,
+            &#x27;/vision/detections&#x27;,
+            10
+        )
+
+        # Initialize computer vision components
+        self.cv_bridge = CvBridge()
+        self.object_detector = ObjectDetector()
+
+        self.get_logger().info(&#x27;Vision node initialized&#x27;)
+
+    def image_callback(self, msg):
+        try:
+            # Convert ROS image to OpenCV format
+            cv_image = self.cv_bridge.imgmsg_to_cv2(msg, desired_encoding=&#x27;bgr8&#x27;)
+
+            # Run object detection
+            detections = self.object_detector.detect_objects(cv_image)
+
+            # Publish results
+            result_msg = String()
+            result_msg.data = str(detections)
+            self.detection_pub.publish(result_msg)
+
+        except Exception as e:
+            self.get_logger().error(f&#x27;Error processing image: {e}&#x27;)
+</code></pre>
+<h2 id="challenges-in-humanoid-robot-vision">Challenges in Humanoid Robot Vision</h2>
+<h3 id="real-time-processing">Real-time Processing</h3>
+<p>Humanoid robots require real-time visual processing while maintaining balance and other tasks:</p>
+<ul>
+<li>Efficient algorithms optimized for embedded systems</li>
+<li>Multi-threading to separate vision processing from control</li>
+<li>Prioritization of critical visual tasks</li>
+</ul>
+<h3 id="varying-lighting-conditions">Varying Lighting Conditions</h3>
+<p>Humanoid robots operate in diverse lighting conditions:</p>
+<ul>
+<li>Adaptive exposure control</li>
+<li>Image enhancement algorithms</li>
+<li>Robust feature detection across lighting variations</li>
+</ul>
+<h3 id="motion-artifacts">Motion Artifacts</h3>
+<p>Moving robots introduce motion blur and vibration:</p>
+<ul>
+<li>Image stabilization techniques</li>
+<li>Motion compensation algorithms</li>
+<li>Temporal filtering to reduce noise</li>
+</ul>
+<h2 id="practice-tasks">Practice Tasks</h2>
+<ol>
+<li>Implement a simple object detection system using a pre-trained model</li>
+<li>Create a visual SLAM system for a humanoid robot simulation</li>
+<li>Develop face recognition capabilities for human-robot interaction</li>
+<li>Integrate vision processing with the robot&#x27;s navigation system</li>
+<li>Test vision algorithms under different lighting and motion conditions</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<p>Computer vision enables humanoid robots to perceive and understand their environment. By combining traditional computer vision techniques with deep learning and specialized algorithms for humanoid platforms, robots can perform complex visual tasks essential for autonomous operation.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/Ayesha788/my_book/tree/main/docs/chapter6-computer-vision.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/my_book/docs/chapter5-path-planning"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Chapter 5: Path Planning and Navigation for Humanoid Robots</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my_book/docs/chapter7-manipulation"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Chapter 7: Manipulation and Grasping for Humanoid Robots</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduction-to-computer-vision-in-robotics" class="table-of-contents__link toc-highlight">Introduction to Computer Vision in Robotics</a></li><li><a href="#vision-systems-for-humanoid-robots" class="table-of-contents__link toc-highlight">Vision Systems for Humanoid Robots</a><ul><li><a href="#stereo-vision-setup" class="table-of-contents__link toc-highlight">Stereo Vision Setup</a></li><li><a href="#rgb-d-integration" class="table-of-contents__link toc-highlight">RGB-D Integration</a></li></ul></li><li><a href="#object-detection-and-recognition" class="table-of-contents__link toc-highlight">Object Detection and Recognition</a><ul><li><a href="#deep-learning-for-object-detection" class="table-of-contents__link toc-highlight">Deep Learning for Object Detection</a></li></ul></li><li><a href="#visual-slam-for-humanoid-robots" class="table-of-contents__link toc-highlight">Visual SLAM for Humanoid Robots</a></li><li><a href="#face-detection-and-recognition" class="table-of-contents__link toc-highlight">Face Detection and Recognition</a></li><li><a href="#integration-with-ros-2" class="table-of-contents__link toc-highlight">Integration with ROS 2</a><ul><li><a href="#image-processing-node" class="table-of-contents__link toc-highlight">Image Processing Node</a></li></ul></li><li><a href="#challenges-in-humanoid-robot-vision" class="table-of-contents__link toc-highlight">Challenges in Humanoid Robot Vision</a><ul><li><a href="#real-time-processing" class="table-of-contents__link toc-highlight">Real-time Processing</a></li><li><a href="#varying-lighting-conditions" class="table-of-contents__link toc-highlight">Varying Lighting Conditions</a></li><li><a href="#motion-artifacts" class="table-of-contents__link toc-highlight">Motion Artifacts</a></li></ul></li><li><a href="#practice-tasks" class="table-of-contents__link toc-highlight">Practice Tasks</a></li><li><a href="#summary" class="table-of-contents__link toc-highlight">Summary</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Chapters</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter1-ros2">ROS 2 Fundamentals</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter2-digital-twin">Digital Twin</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter3-isaac">AI-Robot Brain</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter4-vla">Vision-Language-Action</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/ros2" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://answers.ros.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">ROS Answers<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://developer.nvidia.com/" target="_blank" rel="noopener noreferrer" class="footer__link-item">NVIDIA Developer<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Physical AI & Humanoid Robotics Hackathon Project. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

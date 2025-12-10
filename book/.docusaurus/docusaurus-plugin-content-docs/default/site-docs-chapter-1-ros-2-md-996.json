@@ -1,0 +1,24 @@
+{
+  "id": "chapter1-ros2",
+  "title": "Chapter 1: ROS 2 Fundamentals - The Robotic Nervous System",
+  "description": "Introduction to ROS 2",
+  "source": "@site/docs/chapter1-ros2.md",
+  "sourceDirName": ".",
+  "slug": "/chapter1-ros2",
+  "permalink": "/my_book/docs/chapter1-ros2",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayesha788/my_book/tree/main/docs/chapter1-ros2.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Environment Setup",
+    "permalink": "/my_book/docs/environment-setup"
+  },
+  "next": {
+    "title": "Chapter 2: Digital Twin - Simulating Humanoid Robots",
+    "permalink": "/my_book/docs/chapter2-digital-twin"
+  }
+}

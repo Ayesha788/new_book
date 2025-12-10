@@ -1,55 +1,59 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- Sync Impact Report: -->
+<!-- Version change: 0.0.0 → 1.0.0 -->
+<!-- List of modified principles: -->
+<!-- - [PRINCIPLE_1_NAME] → Accuracy -->
+<!-- - [PRINCIPLE_2_NAME] → Clarity -->
+<!-- - [PRINCIPLE_3_NAME] → Reproducibility -->
+<!-- - [PRINCIPLE_4_NAME] → Practical Focus -->
+<!-- - [PRINCIPLE_5_NAME] → Structure and Format -->
+<!-- - [PRINCIPLE_6_NAME] → Originality and Verification -->
+<!-- Added sections: Tools, Key Standards -->
+<!-- Removed sections: None -->
+<!-- Templates requiring updates: -->
+<!-- - .specify/templates/plan-template.md: ⚠ pending -->
+<!-- - .specify/templates/spec-template.md: ⚠ pending -->
+<!-- - .specify/templates/tasks-template.md: ⚠ pending -->
+<!-- - .specify/templates/commands/*.md: ⚠ pending -->
+<!-- Follow-up TODOs: None -->
+```
+# AI/Spec-Driven Book Creation using Docusaurus, deployed on GitHub Pages Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Accuracy
+Accuracy in all technical explanations (Docusaurus, GitHub Pages, CLI steps, deployment). All instructions must be verified through official documentation or reliable sources.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Clarity
+Beginner-friendly clarity for students with basic web development knowledge. Writing style: simple English, easy for beginners.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Reproducibility
+Every step must be repeatable with commands clearly shown. Code examples must be tested and runnable.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Practical Focus
+Real project workflow, no unnecessary theory.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Structure and Format
+Structure must follow a proper book format (chapters, sections, code blocks). Output format: Markdown files structured for Docusaurus. Book length: 8–12 chapters. Each chapter must include: explanation + example + practice task.
 
-### [PRINCIPLE_6_NAME]
+### VI. Originality and Verification
+No plagiarism — all content must be original. Screenshots described; alt-text included. Project must build successfully.
 
+## Tools
 
-[PRINCIPLE__DESCRIPTION]
+Spec-Kit Plus, Claude Code.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Key Standards
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- All instructions must be verified through official documentation or reliable sources.
+- Writing style: simple English, easy for beginners.
+- Structure must follow a proper book format (chapters, sections, code blocks).
+- Code examples must be tested and runnable.
+- Screenshots described; alt-text included.
+- No plagiarism — all content must be original.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This Constitution supersedes all other practices. Amendments require documentation, approval, and a migration plan. All PRs/reviews must verify compliance.
+Compliance reviews will be conducted bi-annually.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-04 | **Last Amended**: 2025-12-04

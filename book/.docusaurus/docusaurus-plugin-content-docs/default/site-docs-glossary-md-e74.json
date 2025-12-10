@@ -1,0 +1,24 @@
+{
+  "id": "glossary",
+  "title": "Glossary of Terms",
+  "description": "A",
+  "source": "@site/docs/glossary.md",
+  "sourceDirName": ".",
+  "slug": "/glossary",
+  "permalink": "/my_book/docs/glossary",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayesha788/my_book/tree/main/docs/glossary.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Practice Tasks: Simulation Concepts",
+    "permalink": "/my_book/docs/practice-tasks-simulation"
+  },
+  "next": {
+    "title": "Capstone Project: Integrated Physical AI & Humanoid Robotics System",
+    "permalink": "/my_book/docs/capstone"
+  }
+}

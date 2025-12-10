@@ -1,0 +1,24 @@
+{
+  "id": "chapter6-computer-vision",
+  "title": "Chapter 6: Computer Vision for Humanoid Robotics",
+  "description": "Introduction to Computer Vision in Robotics",
+  "source": "@site/docs/chapter6-computer-vision.md",
+  "sourceDirName": ".",
+  "slug": "/chapter6-computer-vision",
+  "permalink": "/my_book/docs/chapter6-computer-vision",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayesha788/my_book/tree/main/docs/chapter6-computer-vision.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 5: Path Planning and Navigation for Humanoid Robots",
+    "permalink": "/my_book/docs/chapter5-path-planning"
+  },
+  "next": {
+    "title": "Chapter 7: Manipulation and Grasping for Humanoid Robots",
+    "permalink": "/my_book/docs/chapter7-manipulation"
+  }
+}

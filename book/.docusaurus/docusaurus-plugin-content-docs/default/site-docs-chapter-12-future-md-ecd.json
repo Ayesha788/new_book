@@ -1,0 +1,24 @@
+{
+  "id": "chapter12-future",
+  "title": "Chapter 12: Future Trends and Applications in Humanoid Robotics",
+  "description": "Introduction to Future Trends",
+  "source": "@site/docs/chapter12-future.md",
+  "sourceDirName": ".",
+  "slug": "/chapter12-future",
+  "permalink": "/my_book/docs/chapter12-future",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayesha788/my_book/tree/main/docs/chapter12-future.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 11: Safety and Ethics in Humanoid Robotics",
+    "permalink": "/my_book/docs/chapter11-safety"
+  },
+  "next": {
+    "title": "Practice Tasks: ROS 2 Fundamentals",
+    "permalink": "/my_book/docs/practice-tasks-ros2"
+  }
+}

@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-chapter5-path-planning" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Chapter 5: Path Planning and Navigation for Humanoid Robots | Physical AI &amp; Humanoid Robotics Hackathon Book</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://ayesha788.github.io/my_book/docs/chapter5-path-planning"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Chapter 5: Path Planning and Navigation for Humanoid Robots | Physical AI &amp; Humanoid Robotics Hackathon Book"><meta data-rh="true" name="description" content="Introduction to Path Planning"><meta data-rh="true" property="og:description" content="Introduction to Path Planning"><link data-rh="true" rel="icon" href="/my_book/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://ayesha788.github.io/my_book/docs/chapter5-path-planning"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/chapter5-path-planning" hreflang="en"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/chapter5-path-planning" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Chapter 5: Path Planning and Navigation for Humanoid Robots","item":"https://ayesha788.github.io/my_book/docs/chapter5-path-planning"}]}</script><link rel="stylesheet" href="/my_book/assets/css/styles.26d1bab7.css">
+<script src="/my_book/assets/js/runtime~main.cc4ca827.js" defer="defer"></script>
+<script src="/my_book/assets/js/main.3daa9b1f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/my_book/"><div class="navbar__logo"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Robotics Book</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/my_book/docs/intro">Book Chapters</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/intro"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/environment-setup"><span title="Environment Setup" class="linkLabel_WmDU">Environment Setup</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter1-ros2"><span title="ROS 2 Fundamentals" class="categoryLinkLabel_W154">ROS 2 Fundamentals</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter2-digital-twin"><span title="Digital Twin &amp; Simulation" class="categoryLinkLabel_W154">Digital Twin &amp; Simulation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter3-isaac"><span title="AI-Robot Brain" class="categoryLinkLabel_W154">AI-Robot Brain</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter4-vla"><span title="Vision-Language-Action" class="categoryLinkLabel_W154">Vision-Language-Action</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/my_book/docs/chapter5-path-planning"><span title="Path Planning &amp; Navigation" class="categoryLinkLabel_W154">Path Planning &amp; Navigation</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/my_book/docs/chapter5-path-planning"><span title="Chapter 5: Path Planning and Navigation for Humanoid Robots" class="linkLabel_WmDU">Chapter 5: Path Planning and Navigation for Humanoid Robots</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter6-computer-vision"><span title="Computer Vision" class="categoryLinkLabel_W154">Computer Vision</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter7-manipulation"><span title="Manipulation &amp; Grasping" class="categoryLinkLabel_W154">Manipulation &amp; Grasping</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter8-multirobot"><span title="Multi-Robot Coordination" class="categoryLinkLabel_W154">Multi-Robot Coordination</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter9-learning"><span title="Learning &amp; Adaptation" class="categoryLinkLabel_W154">Learning &amp; Adaptation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter10-hri"><span title="Human-Robot Interaction" class="categoryLinkLabel_W154">Human-Robot Interaction</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter11-safety"><span title="Safety &amp; Ethics" class="categoryLinkLabel_W154">Safety &amp; Ethics</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter12-future"><span title="Future Trends &amp; Applications" class="categoryLinkLabel_W154">Future Trends &amp; Applications</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/practice-tasks-ros2"><span title="Practice Tasks" class="categoryLinkLabel_W154">Practice Tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/glossary"><span title="Reference" class="categoryLinkLabel_W154">Reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/my_book/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Path Planning &amp; Navigation</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Chapter 5: Path Planning and Navigation for Humanoid Robots</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1 id="chapter-5-path-planning-and-navigation-for-humanoid-robots">Chapter 5: Path Planning and Navigation for Humanoid Robots</h1></header>
+<h2 id="introduction-to-path-planning">Introduction to Path Planning</h2>
+<p>Path planning is a critical component of humanoid robotics, enabling robots to navigate complex environments while avoiding obstacles and reaching desired goals. Unlike wheeled robots, humanoid robots face unique challenges due to their bipedal locomotion, balance constraints, and complex kinematics.</p>
+<h2 id="types-of-path-planning">Types of Path Planning</h2>
+<h3 id="global-path-planning">Global Path Planning</h3>
+<p>Global path planning involves finding an optimal path from a start position to a goal position based on a known map of the environment. For humanoid robots, this must account for:</p>
+<ul>
+<li><strong>Footstep planning</strong>: Ensuring stable placement of feet along the path</li>
+<li><strong>Center of Mass (CoM) trajectory</strong>: Maintaining balance throughout the path</li>
+<li><strong>Kinematic constraints</strong>: Joint limits and workspace boundaries</li>
+<li><strong>Stability requirements</strong>: Maintaining static or dynamic balance</li>
+</ul>
+<h3 id="local-path-planning">Local Path Planning</h3>
+<p>Local path planning handles real-time obstacle avoidance and path adjustments based on sensor data. For humanoid robots, this includes:</p>
+<ul>
+<li><strong>Dynamic obstacle avoidance</strong>: Moving objects in the environment</li>
+<li><strong>Reactive stepping</strong>: Adjusting foot placement in real-time</li>
+<li><strong>Balance recovery</strong>: Adjusting posture to maintain stability</li>
+</ul>
+<h2 id="footstep-planning-algorithms">Footstep Planning Algorithms</h2>
+<h3 id="a-algorithm-for-footstep-planning">A* Algorithm for Footstep Planning</h3>
+<p>The A* algorithm can be adapted for humanoid footstep planning by considering the robot&#x27;s bipedal nature:</p>
+<pre><code class="language-python">import numpy as np
+from heapq import heappop, heappush
+
+class FootstepPlanner:
+    def __init__(self, map_resolution=0.1):
+        self.resolution = map_resolution
+        # Additional humanoid-specific parameters
+        self.step_length = 0.3  # Maximum step length
+        self.step_width = 0.2   # Lateral step capability
+        self.max_step_height = 0.1  # Maximum step-over height
+
+    def plan_footsteps(self, start_pose, goal_pose, occupancy_grid):
+        &quot;&quot;&quot;
+        Plan a sequence of footsteps from start to goal
+        &quot;&quot;&quot;
+        # Convert to grid coordinates
+        start_cell = self.pose_to_grid(start_pose)
+        goal_cell = self.pose_to_grid(goal_pose)
+
+        # Priority queue for A* algorithm
+        open_set = [(0, start_cell, [])]  # (f_score, cell, path)
+        closed_set = set()
+
+        while open_set:
+            current_f, current_cell, current_path = heappop(open_set)
+
+            if current_cell == goal_cell:
+                return current_path + [current_cell]
+
+            if current_cell in closed_set:
+                continue
+
+            closed_set.add(current_cell)
+
+            # Generate possible next footsteps
+            for next_step in self.get_valid_footsteps(current_cell, occupancy_grid):
+                if next_step not in closed_set:
+                    new_path = current_path + [current_cell]
+                    g_score = len(new_path)  # Simple path cost
+                    h_score = self.heuristic(next_step, goal_cell)
+                    f_score = g_score + h_score
+
+                    heappush(open_set, (f_score, next_step, new_path))
+
+        return None  # No path found
+
+    def get_valid_footsteps(self, current_cell, occupancy_grid):
+        &quot;&quot;&quot;
+        Generate valid next footsteps based on humanoid constraints
+        &quot;&quot;&quot;
+        footsteps = []
+        # Consider possible step directions and distances
+        for dx in [-1, 0, 1]:
+            for dy in [-1, 0, 1]:
+                if dx == 0 and dy == 0:
+                    continue  # Skip current position
+
+                next_cell = (current_cell[0] + dx, current_cell[1] + dy)
+
+                # Check if the next position is valid
+                if self.is_valid_footstep(next_cell, occupancy_grid):
+                    footsteps.append(next_cell)
+
+        return footsteps
+
+    def is_valid_footstep(self, cell, occupancy_grid):
+        &quot;&quot;&quot;
+        Check if a footstep is valid (not in collision)
+        &quot;&quot;&quot;
+        if (cell[0] &lt; 0 or cell[0] &gt;= occupancy_grid.shape[0] or
+            cell[1] &lt; 0 or cell[1] &gt;= occupancy_grid.shape[1]):
+            return False  # Out of bounds
+
+        return occupancy_grid[cell] == 0  # Free space
+</code></pre>
+<h2 id="navigation-stack-for-humanoid-robots">Navigation Stack for Humanoid Robots</h2>
+<h3 id="overview">Overview</h3>
+<p>The navigation stack for humanoid robots extends the traditional ROS navigation stack with humanoid-specific components:</p>
+<ol>
+<li><strong>Costmap Generation</strong>: Creating costmaps that account for humanoid-specific constraints</li>
+<li><strong>Footstep Planner</strong>: Planning stable footsteps</li>
+<li><strong>Trajectory Controller</strong>: Generating dynamically stable trajectories</li>
+<li><strong>Local Planner</strong>: Adjusting path based on sensor feedback</li>
+<li><strong>Recovery Behaviors</strong>: Handling navigation failures while maintaining balance</li>
+</ol>
+<h3 id="costmap-configuration-for-humanoid-robots">Costmap Configuration for Humanoid Robots</h3>
+<pre><code class="language-yaml"># costmap_common_params.yaml
+map_type: costmap
+
+# Robot footprint - considering the humanoid&#x27;s base
+footprint: [[-0.3, -0.2], [-0.3, 0.2], [0.3, 0.2], [0.3, -0.2]]
+footprint_padding: 0.05
+
+# Obstacle range should account for sensor placement on humanoid
+obstacle_range: 3.0
+raytrace_range: 4.0
+
+# Humanoid-specific inflation
+inflation_radius: 0.5
+cost_scaling_factor: 5.0
+
+# Sensors used for costmap
+observation_sources: laser_scan_sensor point_cloud_sensor
+
+laser_scan_sensor:
+  sensor_frame: base_scan
+  topic: /scan
+  observation_range: 3.0
+  raytrace_range: 4.0
+  max_obstacle_height: 2.0
+  min_obstacle_height: 0.0
+  obstacle_range: 3.0
+</code></pre>
+<h2 id="dynamic-balance-and-walking-patterns">Dynamic Balance and Walking Patterns</h2>
+<h3 id="zmp-zero-moment-point-planning">ZMP (Zero Moment Point) Planning</h3>
+<p>For stable bipedal locomotion, humanoid robots must maintain their ZMP within the support polygon defined by their feet:</p>
+<pre><code class="language-python">class ZMPController:
+    def __init__(self):
+        self.com_height = 0.8  # Center of mass height
+        self.gravity = 9.81
+        self.omega = np.sqrt(self.gravity / self.com_height)
+
+    def compute_zmp_trajectory(self, footsteps, step_time, double_support_ratio=0.2):
+        &quot;&quot;&quot;
+        Compute ZMP trajectory based on footsteps
+        &quot;&quot;&quot;
+        zmp_trajectory = []
+
+        for i, (foot_pos, foot_yaw) in enumerate(footsteps):
+            # Calculate ZMP for single support phase
+            single_support_time = step_time * (1 - double_support_ratio)
+
+            # ZMP moves from previous foot position to current foot position
+            if i &gt; 0:
+                prev_foot_pos = footsteps[i-1][0]
+                for t in np.arange(0, single_support_time, 0.01):
+                    # Interpolate ZMP position
+                    alpha = t / single_support_time
+                    zmp_x = (1 - alpha) * prev_foot_pos[0] + alpha * foot_pos[0]
+                    zmp_y = (1 - alpha) * prev_foot_pos[1] + alpha * foot_pos[1]
+                    zmp_trajectory.append([zmp_x, zmp_y])
+
+        return zmp_trajectory
+</code></pre>
+<h2 id="practical-implementation">Practical Implementation</h2>
+<h3 id="setting-up-navigation-for-a-humanoid-robot">Setting up Navigation for a Humanoid Robot</h3>
+<ol>
+<li><strong>Create a navigation configuration package</strong>:</li>
+</ol>
+<pre><code class="language-bash">mkdir -p ~/ros2_ws/src/humanoid_navigation/config
+mkdir -p ~/ros2_ws/src/humanoid_navigation/launch
+mkdir -p ~/ros2_ws/src/humanoid_navigation/maps
+</code></pre>
+<ol start="2">
+<li><strong>Create a launch file for navigation</strong>:</li>
+</ol>
+<pre><code class="language-python"># launch/navigation.launch.py
+import os
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node
+from ament_index_python.packages import get_package_share_directory
+
+def generate_launch_description():
+    # Config file paths
+    config_dir = os.path.join(
+        get_package_share_directory(&#x27;humanoid_navigation&#x27;),
+        &#x27;config&#x27;
+    )
+
+    return LaunchDescription([
+        # AMCL for localization
+        Node(
+            package=&#x27;nav2_amcl&#x27;,
+            executable=&#x27;amcl&#x27;,
+            name=&#x27;amcl&#x27;,
+            parameters=[os.path.join(config_dir, &#x27;amcl.yaml&#x27;)]
+        ),
+
+        # Map server
+        Node(
+            package=&#x27;nav2_map_server&#x27;,
+            executable=&#x27;map_server&#x27;,
+            name=&#x27;map_server&#x27;,
+            parameters=[os.path.join(config_dir, &#x27;map_server.yaml&#x27;)]
+        ),
+
+        # Planner server
+        Node(
+            package=&#x27;nav2_bt_navigator&#x27;,
+            executable=&#x27;bt_navigator&#x27;,
+            name=&#x27;bt_navigator&#x27;,
+            parameters=[os.path.join(config_dir, &#x27;bt_navigator.yaml&#x27;)]
+        ),
+
+        # Controller server
+        Node(
+            package=&#x27;nav2_controller&#x27;,
+            executable=&#x27;controller_server&#x27;,
+            name=&#x27;controller_server&#x27;,
+            parameters=[os.path.join(config_dir, &#x27;controller.yaml&#x27;)]
+        )
+    ])
+</code></pre>
+<h2 id="challenges-in-humanoid-navigation">Challenges in Humanoid Navigation</h2>
+<h3 id="balance-maintenance">Balance Maintenance</h3>
+<p>The primary challenge in humanoid navigation is maintaining balance while executing navigation commands. This requires:</p>
+<ul>
+<li>Real-time balance feedback and adjustment</li>
+<li>Coordination between walking pattern generation and navigation planning</li>
+<li>Robust recovery behaviors when balance is compromised</li>
+</ul>
+<h3 id="terrain-adaptation">Terrain Adaptation</h3>
+<p>Humanoid robots must adapt to various terrains:</p>
+<ul>
+<li>Stairs and steps</li>
+<li>Uneven surfaces</li>
+<li>Sloped terrain</li>
+<li>Narrow passages</li>
+</ul>
+<h2 id="practice-tasks">Practice Tasks</h2>
+<ol>
+<li>Implement a simple footstep planner that can navigate around static obstacles</li>
+<li>Create a ZMP-based walking pattern generator</li>
+<li>Integrate the footstep planner with a basic navigation stack</li>
+<li>Test navigation performance on different terrain types in simulation</li>
+<li>Implement recovery behaviors for when the robot loses balance during navigation</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<p>Path planning and navigation for humanoid robots requires specialized algorithms that account for the robot&#x27;s bipedal nature and balance constraints. By combining traditional path planning techniques with humanoid-specific considerations, we can enable robots to navigate complex environments safely and efficiently.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/Ayesha788/my_book/tree/main/docs/chapter5-path-planning.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/my_book/docs/chapter4-vla"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Chapter 4: Vision-Language-Action (VLA) - Converting Voice Commands to Robot Actions</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my_book/docs/chapter6-computer-vision"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Chapter 6: Computer Vision for Humanoid Robotics</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduction-to-path-planning" class="table-of-contents__link toc-highlight">Introduction to Path Planning</a></li><li><a href="#types-of-path-planning" class="table-of-contents__link toc-highlight">Types of Path Planning</a><ul><li><a href="#global-path-planning" class="table-of-contents__link toc-highlight">Global Path Planning</a></li><li><a href="#local-path-planning" class="table-of-contents__link toc-highlight">Local Path Planning</a></li></ul></li><li><a href="#footstep-planning-algorithms" class="table-of-contents__link toc-highlight">Footstep Planning Algorithms</a><ul><li><a href="#a-algorithm-for-footstep-planning" class="table-of-contents__link toc-highlight">A* Algorithm for Footstep Planning</a></li></ul></li><li><a href="#navigation-stack-for-humanoid-robots" class="table-of-contents__link toc-highlight">Navigation Stack for Humanoid Robots</a><ul><li><a href="#overview" class="table-of-contents__link toc-highlight">Overview</a></li><li><a href="#costmap-configuration-for-humanoid-robots" class="table-of-contents__link toc-highlight">Costmap Configuration for Humanoid Robots</a></li></ul></li><li><a href="#dynamic-balance-and-walking-patterns" class="table-of-contents__link toc-highlight">Dynamic Balance and Walking Patterns</a><ul><li><a href="#zmp-zero-moment-point-planning" class="table-of-contents__link toc-highlight">ZMP (Zero Moment Point) Planning</a></li></ul></li><li><a href="#practical-implementation" class="table-of-contents__link toc-highlight">Practical Implementation</a><ul><li><a href="#setting-up-navigation-for-a-humanoid-robot" class="table-of-contents__link toc-highlight">Setting up Navigation for a Humanoid Robot</a></li></ul></li><li><a href="#challenges-in-humanoid-navigation" class="table-of-contents__link toc-highlight">Challenges in Humanoid Navigation</a><ul><li><a href="#balance-maintenance" class="table-of-contents__link toc-highlight">Balance Maintenance</a></li><li><a href="#terrain-adaptation" class="table-of-contents__link toc-highlight">Terrain Adaptation</a></li></ul></li><li><a href="#practice-tasks" class="table-of-contents__link toc-highlight">Practice Tasks</a></li><li><a href="#summary" class="table-of-contents__link toc-highlight">Summary</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Chapters</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter1-ros2">ROS 2 Fundamentals</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter2-digital-twin">Digital Twin</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter3-isaac">AI-Robot Brain</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter4-vla">Vision-Language-Action</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/ros2" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://answers.ros.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">ROS Answers<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://developer.nvidia.com/" target="_blank" rel="noopener noreferrer" class="footer__link-item">NVIDIA Developer<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Physical AI & Humanoid Robotics Hackathon Project. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

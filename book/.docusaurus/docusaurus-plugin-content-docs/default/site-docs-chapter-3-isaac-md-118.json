@@ -1,0 +1,24 @@
+{
+  "id": "chapter3-isaac",
+  "title": "Chapter 3: AI-Robot Brain - NVIDIA Isaac Integration",
+  "description": "Introduction to AI-Robot Brain Systems",
+  "source": "@site/docs/chapter3-isaac.md",
+  "sourceDirName": ".",
+  "slug": "/chapter3-isaac",
+  "permalink": "/my_book/docs/chapter3-isaac",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayesha788/my_book/tree/main/docs/chapter3-isaac.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 2: Digital Twin - Simulating Humanoid Robots",
+    "permalink": "/my_book/docs/chapter2-digital-twin"
+  },
+  "next": {
+    "title": "Chapter 4: Vision-Language-Action (VLA) - Converting Voice Commands to Robot Actions",
+    "permalink": "/my_book/docs/chapter4-vla"
+  }
+}

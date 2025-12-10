@@ -1,0 +1,37 @@
+{
+  "mcp": {
+    "servers": [
+      {
+        "name": "context7",
+        "transport": "http",
+        "endpoint": "https://mcp.context7.com/mcp",
+        "headers": {
+          "Authorization": "Bearer ${CONTEXT7_KEY}"
+        }
+      },
+      {
+        "name": "github",
+        "transport": "stdio",
+        "command": "gh",
+        "args": ["mcp", "stdio"],
+        "env": {
+          "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+        }
+      }
+    ],
+    "inputs": [
+      {
+        "type": "promptString",
+        "id": "CONTEXT7_KEY",
+        "description": "Context7 API Key",
+        "password": true
+      },
+      {
+        "type": "promptString",
+        "id": "GITHUB_TOKEN",
+        "description": "GitHub Personal Access Token",
+        "password": true
+      }
+    ]
+  }
+}

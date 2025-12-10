@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-chapter9-learning" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Chapter 9: Learning and Adaptation for Humanoid Robots | Physical AI &amp; Humanoid Robotics Hackathon Book</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://ayesha788.github.io/my_book/docs/chapter9-learning"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Chapter 9: Learning and Adaptation for Humanoid Robots | Physical AI &amp; Humanoid Robotics Hackathon Book"><meta data-rh="true" name="description" content="Introduction to Robot Learning"><meta data-rh="true" property="og:description" content="Introduction to Robot Learning"><link data-rh="true" rel="icon" href="/my_book/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://ayesha788.github.io/my_book/docs/chapter9-learning"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/chapter9-learning" hreflang="en"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/chapter9-learning" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Chapter 9: Learning and Adaptation for Humanoid Robots","item":"https://ayesha788.github.io/my_book/docs/chapter9-learning"}]}</script><link rel="stylesheet" href="/my_book/assets/css/styles.26d1bab7.css">
+<script src="/my_book/assets/js/runtime~main.cc4ca827.js" defer="defer"></script>
+<script src="/my_book/assets/js/main.3daa9b1f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/my_book/"><div class="navbar__logo"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Robotics Book</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/my_book/docs/intro">Book Chapters</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/intro"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/environment-setup"><span title="Environment Setup" class="linkLabel_WmDU">Environment Setup</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter1-ros2"><span title="ROS 2 Fundamentals" class="categoryLinkLabel_W154">ROS 2 Fundamentals</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter2-digital-twin"><span title="Digital Twin &amp; Simulation" class="categoryLinkLabel_W154">Digital Twin &amp; Simulation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter3-isaac"><span title="AI-Robot Brain" class="categoryLinkLabel_W154">AI-Robot Brain</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter4-vla"><span title="Vision-Language-Action" class="categoryLinkLabel_W154">Vision-Language-Action</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter5-path-planning"><span title="Path Planning &amp; Navigation" class="categoryLinkLabel_W154">Path Planning &amp; Navigation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter6-computer-vision"><span title="Computer Vision" class="categoryLinkLabel_W154">Computer Vision</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter7-manipulation"><span title="Manipulation &amp; Grasping" class="categoryLinkLabel_W154">Manipulation &amp; Grasping</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter8-multirobot"><span title="Multi-Robot Coordination" class="categoryLinkLabel_W154">Multi-Robot Coordination</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/my_book/docs/chapter9-learning"><span title="Learning &amp; Adaptation" class="categoryLinkLabel_W154">Learning &amp; Adaptation</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/my_book/docs/chapter9-learning"><span title="Chapter 9: Learning and Adaptation for Humanoid Robots" class="linkLabel_WmDU">Chapter 9: Learning and Adaptation for Humanoid Robots</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter10-hri"><span title="Human-Robot Interaction" class="categoryLinkLabel_W154">Human-Robot Interaction</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter11-safety"><span title="Safety &amp; Ethics" class="categoryLinkLabel_W154">Safety &amp; Ethics</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter12-future"><span title="Future Trends &amp; Applications" class="categoryLinkLabel_W154">Future Trends &amp; Applications</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/practice-tasks-ros2"><span title="Practice Tasks" class="categoryLinkLabel_W154">Practice Tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/glossary"><span title="Reference" class="categoryLinkLabel_W154">Reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/my_book/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Learning &amp; Adaptation</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Chapter 9: Learning and Adaptation for Humanoid Robots</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1 id="chapter-9-learning-and-adaptation-for-humanoid-robots">Chapter 9: Learning and Adaptation for Humanoid Robots</h1></header>
+<h2 id="introduction-to-robot-learning">Introduction to Robot Learning</h2>
+<p>Learning and adaptation are crucial for humanoid robots to operate effectively in dynamic environments. Unlike traditional robots programmed for specific tasks, humanoid robots must continuously adapt to new situations, learn from experience, and improve their performance over time.</p>
+<h2 id="machine-learning-in-robotics">Machine Learning in Robotics</h2>
+<h3 id="supervised-learning-for-robot-perception">Supervised Learning for Robot Perception</h3>
+<p>Supervised learning techniques are commonly used for perception tasks in humanoid robots:</p>
+<pre><code class="language-python">import torch
+import torch.nn as nn
+import torch.optim as optim
+import numpy as np
+from torch.utils.data import Dataset, DataLoader
+
+class RobotPerceptionNet(nn.Module):
+    def __init__(self, input_channels=3, num_classes=10):
+        super(RobotPerceptionNet, self).__init__()
+
+        # Convolutional layers for feature extraction
+        self.features = nn.Sequential(
+            nn.Conv2d(input_channels, 32, kernel_size=3, padding=1),
+            nn.ReLU(inplace=True),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.Conv2d(32, 64, kernel_size=3, padding=1),
+            nn.ReLU(inplace=True),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.Conv2d(64, 128, kernel_size=3, padding=1),
+            nn.ReLU(inplace=True),
+            nn.AdaptiveAvgPool2d((4, 4))
+        )
+
+        # Classification head
+        self.classifier = nn.Sequential(
+            nn.Dropout(),
+            nn.Linear(128 * 4 * 4, 512),
+            nn.ReLU(inplace=True),
+            nn.Dropout(),
+            nn.Linear(512, num_classes)
+        )
+
+    def forward(self, x):
+        x = self.features(x)
+        x = x.view(x.size(0), -1)
+        x = self.classifier(x)
+        return x
+
+class RobotPerceptionLearner:
+    def __init__(self, num_classes=10):
+        self.device = torch.device(&#x27;cuda&#x27; if torch.cuda.is_available() else &#x27;cpu&#x27;)
+        self.model = RobotPerceptionNet(num_classes=num_classes).to(self.device)
+        self.criterion = nn.CrossEntropyLoss()
+        self.optimizer = optim.Adam(self.model.parameters(), lr=0.001)
+        self.scheduler = optim.lr_scheduler.StepLR(self.optimizer, step_size=7, gamma=0.1)
+
+    def train(self, train_loader, epochs=10):
+        &quot;&quot;&quot;Train the perception network&quot;&quot;&quot;
+        self.model.train()
+
+        for epoch in range(epochs):
+            running_loss = 0.0
+            correct = 0
+            total = 0
+
+            for batch_idx, (data, target) in enumerate(train_loader):
+                data, target = data.to(self.device), target.to(self.device)
+
+                self.optimizer.zero_grad()
+                output = self.model(data)
+                loss = self.criterion(output, target)
+                loss.backward()
+                self.optimizer.step()
+
+                running_loss += loss.item()
+                _, predicted = output.max(1)
+                total += target.size(0)
+                correct += predicted.eq(target).sum().item()
+
+                if batch_idx % 100 == 0:
+                    print(f&#x27;Epoch: {epoch}, Batch: {batch_idx}, Loss: {loss.item():.3f}&#x27;)
+
+            accuracy = 100. * correct / total
+            print(f&#x27;Epoch {epoch} completed. Accuracy: {accuracy:.2f}%&#x27;)
+
+            self.scheduler.step()
+
+    def predict(self, image_tensor):
+        &quot;&quot;&quot;Make prediction on a single image&quot;&quot;&quot;
+        self.model.eval()
+        with torch.no_grad():
+            image_tensor = image_tensor.to(self.device)
+            output = self.model(image_tensor.unsqueeze(0))
+            probabilities = torch.softmax(output, dim=1)
+            predicted_class = torch.argmax(probabilities, dim=1)
+            confidence = torch.max(probabilities, dim=1)[0]
+
+        return predicted_class.item(), confidence.item()
+</code></pre>
+<h3 id="reinforcement-learning-for-robot-control">Reinforcement Learning for Robot Control</h3>
+<p>Reinforcement learning is particularly powerful for humanoid robot control, allowing robots to learn complex behaviors through trial and error:</p>
+<pre><code class="language-python">import gym
+import numpy as np
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import torch.nn.functional as F
+from collections import deque
+import random
+
+class ActorCritic(nn.Module):
+    def __init__(self, state_dim, action_dim, hidden_dim=256):
+        super(ActorCritic, self).__init__()
+
+        # Shared feature extractor
+        self.shared = nn.Sequential(
+            nn.Linear(state_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.ReLU()
+        )
+
+        # Actor (policy network)
+        self.actor = nn.Sequential(
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, action_dim),
+            nn.Tanh()  # Actions between -1 and 1
+        )
+
+        # Critic (value network)
+        self.critic = nn.Sequential(
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, 1)
+        )
+
+    def forward(self, state):
+        features = self.shared(state)
+        action = self.actor(features)
+        value = self.critic(features)
+        return action, value
+
+class PPOAgent:
+    def __init__(self, state_dim, action_dim, lr=3e-4, gamma=0.99, eps_clip=0.2):
+        self.device = torch.device(&#x27;cuda&#x27; if torch.cuda.is_available() else &#x27;cpu&#x27;)
+
+        self.actor_critic = ActorCritic(state_dim, action_dim).to(self.device)
+        self.optimizer = optim.Adam(self.actor_critic.parameters(), lr=lr)
+
+        self.gamma = gamma
+        self.eps_clip = eps_clip
+        self.buffer = []
+
+    def select_action(self, state):
+        &quot;&quot;&quot;Select action using current policy&quot;&quot;&quot;
+        state = torch.FloatTensor(state).to(self.device).unsqueeze(0)
+
+        with torch.no_grad():
+            action_mean, _ = self.actor_critic(state)
+
+        # Add noise for exploration
+        noise = torch.randn_like(action_mean) * 0.1
+        action = torch.clamp(action_mean + noise, -1.0, 1.0)
+
+        return action.cpu().numpy()[0]
+
+    def compute_returns(self, rewards, dones):
+        &quot;&quot;&quot;Compute discounted returns&quot;&quot;&quot;
+        returns = []
+        R = 0
+
+        for i in reversed(range(len(rewards))):
+            if dones[i]:
+                R = 0
+            R = rewards[i] + self.gamma * R
+            returns.insert(0, R)
+
+        return returns
+
+    def update(self, states, actions, rewards, dones):
+        &quot;&quot;&quot;Update policy using PPO&quot;&quot;&quot;
+        states = torch.FloatTensor(states).to(self.device)
+        actions = torch.FloatTensor(actions).to(self.device)
+        returns = self.compute_returns(rewards, dones)
+        returns = torch.FloatTensor(returns).to(self.device).unsqueeze(1)
+
+        # Current policy
+        curr_actions, curr_values = self.actor_critic(states)
+
+        # Compute advantages
+        advantages = returns - curr_values
+
+        # Compute loss
+        ratio = torch.exp(curr_actions - actions)  # Simplified for continuous actions
+        surr1 = ratio * advantages
+        surr2 = torch.clamp(ratio, 1 - self.eps_clip, 1 + self.eps_clip) * advantages
+        actor_loss = -torch.min(surr1, surr2).mean()
+
+        critic_loss = F.mse_loss(curr_values, returns)
+
+        loss = actor_loss + 0.5 * critic_loss
+
+        # Update network
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
+</code></pre>
+<h2 id="imitation-learning-for-humanoid-robots">Imitation Learning for Humanoid Robots</h2>
+<p>Imitation learning allows humanoid robots to learn from human demonstrations:</p>
+<pre><code class="language-python">class ImitationLearner:
+    def __init__(self, state_dim, action_dim):
+        self.device = torch.device(&#x27;cuda&#x27; if torch.cuda.is_available() else &#x27;cpu&#x27;)
+
+        # Behavior cloning network
+        self.network = nn.Sequential(
+            nn.Linear(state_dim, 256),
+            nn.ReLU(),
+            nn.Linear(256, 256),
+            nn.ReLU(),
+            nn.Linear(256, action_dim),
+            nn.Tanh()
+        ).to(self.device)
+
+        self.optimizer = optim.Adam(self.network.parameters(), lr=0.001)
+        self.criterion = nn.MSELoss()
+
+        # Storage for demonstration data
+        self.demonstration_states = []
+        self.demonstration_actions = []
+
+    def add_demonstration(self, states, actions):
+        &quot;&quot;&quot;Add demonstration data&quot;&quot;&quot;
+        self.demonstration_states.extend(states)
+        self.demonstration_actions.extend(actions)
+
+    def behavior_cloning_train(self, epochs=100):
+        &quot;&quot;&quot;Train using behavior cloning&quot;&quot;&quot;
+        if len(self.demonstration_states) == 0:
+            print(&quot;No demonstration data available&quot;)
+            return
+
+        states = torch.FloatTensor(self.demonstration_states).to(self.device)
+        actions = torch.FloatTensor(self.demonstration_actions).to(self.device)
+
+        self.network.train()
+
+        for epoch in range(epochs):
+            self.optimizer.zero_grad()
+
+            predicted_actions = self.network(states)
+            loss = self.criterion(predicted_actions, actions)
+
+            loss.backward()
+            self.optimizer.step()
+
+            if epoch % 20 == 0:
+                print(f&#x27;Epoch {epoch}, Loss: {loss.item():.4f}&#x27;)
+
+    def predict_action(self, state):
+        &quot;&quot;&quot;Predict action for given state&quot;&quot;&quot;
+        self.network.eval()
+        with torch.no_grad():
+            state_tensor = torch.FloatTensor(state).to(self.device).unsqueeze(0)
+            action = self.network(state_tensor)
+        return action.cpu().numpy()[0]
+
+class DAgger(ImitationLearner):
+    &quot;&quot;&quot;Dataset Aggregation algorithm for imitation learning&quot;&quot;&quot;
+
+    def __init__(self, state_dim, action_dim, env):
+        super().__init__(state_dim, action_dim)
+        self.env = env
+        self.expert_policy = None  # Function that takes state and returns action
+
+    def set_expert_policy(self, expert_policy):
+        &quot;&quot;&quot;Set the expert policy for data collection&quot;&quot;&quot;
+        self.expert_policy = expert_policy
+
+    def dagger_train(self, iterations=10, episodes_per_iter=10):
+        &quot;&quot;&quot;Train using DAgger algorithm&quot;&quot;&quot;
+        for iteration in range(iterations):
+            print(f&#x27;DAgger iteration {iteration + 1}/{iterations}&#x27;)
+
+            # Collect data using current policy
+            states, actions = self.collect_data(episodes_per_iter)
+
+            # Add expert actions for these states
+            expert_actions = [self.expert_policy(s) for s in states]
+
+            # Add to demonstration dataset
+            self.demonstration_states.extend(states)
+            self.demonstration_actions.extend(expert_actions)
+
+            # Retrain behavior cloning model
+            self.behavior_cloning_train(epochs=50)
+
+    def collect_data(self, num_episodes):
+        &quot;&quot;&quot;Collect data using current policy&quot;&quot;&quot;
+        all_states = []
+        all_actions = []
+
+        for _ in range(num_episodes):
+            state = self.env.reset()
+            done = False
+
+            while not done:
+                # Get action from current policy
+                action = self.predict_action(state)
+
+                all_states.append(state.copy())
+                all_actions.append(action.copy())
+
+                state, reward, done, _ = self.env.step(action)
+
+        return all_states, all_actions
+</code></pre>
+<h2 id="learning-from-human-feedback">Learning from Human Feedback</h2>
+<p>Humanoid robots can learn from explicit human feedback to improve their behavior:</p>
+<pre><code class="language-python">class HumanFeedbackLearner:
+    def __init__(self, state_dim, action_dim):
+        self.state_dim = state_dim
+        self.action_dim = action_dim
+        self.device = torch.device(&#x27;cuda&#x27; if torch.cuda.is_available() else &#x27;cpu&#x27;)
+
+        # Policy network
+        self.policy = nn.Sequential(
+            nn.Linear(state_dim, 256),
+            nn.ReLU(),
+            nn.Linear(256, 256),
+            nn.ReLU(),
+            nn.Linear(256, action_dim),
+            nn.Tanh()
+        ).to(self.device)
+
+        # Preference model for learning from comparisons
+        self.preference_model = nn.Sequential(
+            nn.Linear(state_dim * 2 + action_dim * 2, 256),
+            nn.ReLU(),
+            nn.Linear(256, 128),
+            nn.ReLU(),
+            nn.Linear(128, 1),
+            nn.Sigmoid()  # Probability that first trajectory is better
+        ).to(self.device)
+
+        self.optimizer_policy = optim.Adam(self.policy.parameters(), lr=0.001)
+        self.optimizer_pref = optim.Adam(self.preference_model.parameters(), lr=0.001)
+
+        self.feedback_buffer = []
+
+    def add_preference_feedback(self, traj1_states, traj1_actions, traj2_states, traj2_actions, preferred_traj=1):
+        &quot;&quot;&quot;Add preference feedback where preferred_traj is 1 or 2&quot;&quot;&quot;
+        if preferred_traj == 1:
+            # traj1 is preferred over traj2
+            self.feedback_buffer.append((traj1_states, traj1_actions, traj2_states, traj2_actions, 1.0))
+        else:
+            # traj2 is preferred over traj1
+            self.feedback_buffer.append((traj2_states, traj2_actions, traj1_states, traj1_actions, 1.0))
+
+    def train_preference_model(self, epochs=50):
+        &quot;&quot;&quot;Train the preference model&quot;&quot;&quot;
+        if len(self.feedback_buffer) == 0:
+            return
+
+        for epoch in range(epochs):
+            total_loss = 0
+
+            for (s1, a1, s2, a2, label) in self.feedback_buffer:
+                # Convert to tensors
+                s1_tensor = torch.FloatTensor(s1).mean(dim=0)  # Use average state
+                a1_tensor = torch.FloatTensor(a1).mean(dim=0)  # Use average action
+                s2_tensor = torch.FloatTensor(s2).mean(dim=0)
+                a2_tensor = torch.FloatTensor(a2).mean(dim=0)
+
+                # Concatenate state-action pairs
+                input_pair = torch.cat([s1_tensor, a1_tensor, s2_tensor, a2_tensor])
+
+                self.optimizer_pref.zero_grad()
+
+                pred_prob = self.preference_model(input_pair.unsqueeze(0))
+                true_label = torch.FloatTensor([label]).to(self.device)
+
+                loss = F.binary_cross_entropy(pred_prob, true_label)
+
+                loss.backward()
+                self.optimizer_pref.step()
+
+                total_loss += loss.item()
+
+    def get_reward_from_preference(self, state, action):
+        &quot;&quot;&quot;Get reward signal from learned preference model&quot;&quot;&quot;
+        # This is a simplified version - in practice, you&#x27;d need to evaluate
+        # the trajectory quality using the preference model
+        with torch.no_grad():
+            # Placeholder implementation
+            return 0.0  # Would use preference model to assign reward
+</code></pre>
+<h2 id="adaptive-control-systems">Adaptive Control Systems</h2>
+<p>Humanoid robots need adaptive control systems that can adjust to changing conditions:</p>
+<pre><code class="language-python">class AdaptiveController:
+    def __init__(self, num_joints):
+        self.num_joints = num_joints
+
+        # Initial controller parameters
+        self.kp = np.array([100.0] * num_joints)  # Proportional gains
+        self.ki = np.array([10.0] * num_joints)   # Integral gains
+        self.kd = np.array([10.0] * num_joints)   # Derivative gains
+
+        # Adaptive parameters
+        self.error_history = deque(maxlen=100)
+        self.control_effort_history = deque(maxlen=100)
+
+        # Parameter bounds
+        self.kp_min = np.array([10.0] * num_joints)
+        self.kp_max = np.array([500.0] * num_joints)
+        self.ki_min = np.array([1.0] * num_joints)
+        self.ki_max = np.array([100.0] * num_joints)
+        self.kd_min = np.array([1.0] * num_joints)
+        self.kd_max = np.array([100.0] * num_joints)
+
+    def update_gains(self, current_error, dt):
+        &quot;&quot;&quot;Adaptively update controller gains based on performance&quot;&quot;&quot;
+        self.error_history.append(np.abs(current_error))
+
+        if len(self.error_history) &gt;= 10:
+            # Calculate error statistics
+            recent_error = np.mean(list(self.error_history)[-10:])
+
+            # Adjust gains based on error magnitude
+            for i in range(self.num_joints):
+                if recent_error[i] &gt; 0.1:  # High error - increase gains
+                    self.kp[i] = min(self.kp[i] * 1.05, self.kp_max[i])
+                    self.ki[i] = min(self.ki[i] * 1.02, self.ki_max[i])
+                elif recent_error[i] &lt; 0.01:  # Low error - decrease gains to reduce oscillation
+                    self.kp[i] = max(self.kp[i] * 0.95, self.kp_min[i])
+                    self.ki[i] = max(self.ki[i] * 0.98, self.ki_min[i])
+
+    def compute_control(self, desired_pos, current_pos, desired_vel, current_vel, dt):
+        &quot;&quot;&quot;Compute adaptive PID control&quot;&quot;&quot;
+        # Calculate errors
+        pos_error = desired_pos - current_pos
+        vel_error = desired_vel - current_vel
+
+        # Update adaptive gains
+        self.update_gains(pos_error, dt)
+
+        # PID control with adaptive gains
+        proportional = self.kp * pos_error
+        integral = self.ki * np.array(self.error_history).sum(axis=0) * dt if len(self.error_history) &gt; 0 else np.zeros_like(pos_error)
+        derivative = self.kd * vel_error
+
+        control_output = proportional + integral + derivative
+
+        return control_output
+
+class ModelLearningSystem:
+    &quot;&quot;&quot;System for learning and adapting robot dynamics models&quot;&quot;&quot;
+
+    def __init__(self, state_dim, action_dim):
+        self.state_dim = state_dim
+        self.action_dim = action_dim
+        self.device = torch.device(&#x27;cuda&#x27; if torch.cuda.is_available() else &#x27;cpu&#x27;)
+
+        # Dynamics model: predicts next state given current state and action
+        self.dynamics_model = nn.Sequential(
+            nn.Linear(state_dim + action_dim, 256),
+            nn.ReLU(),
+            nn.Linear(256, 256),
+            nn.ReLU(),
+            nn.Linear(256, state_dim)
+        ).to(self.device)
+
+        self.optimizer = optim.Adam(self.dynamics_model.parameters(), lr=0.001)
+        self.criterion = nn.MSELoss()
+
+        self.experience_buffer = deque(maxlen=10000)
+
+    def add_experience(self, state, action, next_state):
+        &quot;&quot;&quot;Add experience to buffer&quot;&quot;&quot;
+        self.experience_buffer.append((state, action, next_state))
+
+    def train_dynamics_model(self, batch_size=32, epochs=10):
+        &quot;&quot;&quot;Train the dynamics model&quot;&quot;&quot;
+        if len(self.experience_buffer) &lt; batch_size:
+            return
+
+        for epoch in range(epochs):
+            batch = random.sample(list(self.experience_buffer), batch_size)
+
+            states = torch.FloatTensor([exp[0] for exp in batch]).to(self.device)
+            actions = torch.FloatTensor([exp[1] for exp in batch]).to(self.device)
+            next_states = torch.FloatTensor([exp[2] for exp in batch]).to(self.device)
+
+            # Concatenate state and action
+            state_action = torch.cat([states, actions], dim=1)
+
+            self.optimizer.zero_grad()
+
+            predicted_next_states = self.dynamics_model(state_action)
+            loss = self.criterion(predicted_next_states, next_states)
+
+            loss.backward()
+            self.optimizer.step()
+
+    def predict_next_state(self, state, action):
+        &quot;&quot;&quot;Predict next state given current state and action&quot;&quot;&quot;
+        with torch.no_grad():
+            state_tensor = torch.FloatTensor(state).to(self.device).unsqueeze(0)
+            action_tensor = torch.FloatTensor(action).to(self.device).unsqueeze(0)
+
+            state_action = torch.cat([state_tensor, action_tensor], dim=1)
+            predicted_state = self.dynamics_model(state_action)
+
+        return predicted_state.cpu().numpy()[0]
+</code></pre>
+<h2 id="online-learning-and-adaptation">Online Learning and Adaptation</h2>
+<p>Humanoid robots need to learn and adapt in real-time during operation:</p>
+<pre><code class="language-python">class OnlineLearner:
+    def __init__(self, num_features=100):
+        self.num_features = num_features
+        self.learning_rate = 0.01
+
+        # Online learning parameters
+        self.weights = np.random.normal(0, 0.1, num_features)
+        self.feature_buffer = deque(maxlen=1000)
+        self.reward_buffer = deque(maxlen=1000)
+
+        # For incremental updates
+        self.feature_mean = np.zeros(num_features)
+        self.feature_var = np.ones(num_features)
+        self.sample_count = 0
+
+    def extract_features(self, state, action):
+        &quot;&quot;&quot;Extract features from state-action pair&quot;&quot;&quot;
+        # Simple feature extraction - in practice, this would be more sophisticated
+        features = np.concatenate([
+            state.flatten(),
+            action.flatten(),
+            np.sin(state.flatten()),
+            np.cos(action.flatten())
+        ])
+
+        # Ensure we have the right number of features
+        if len(features) &gt; self.num_features:
+            features = features[:self.num_features]
+        elif len(features) &lt; self.num_features:
+            features = np.pad(features, (0, self.num_features - len(features)))
+
+        return features
+
+    def update(self, state, action, reward):
+        &quot;&quot;&quot;Update the learner with new experience&quot;&quot;&quot;
+        features = self.extract_features(state, action)
+
+        # Normalize features incrementally
+        if self.sample_count == 0:
+            self.feature_mean = features.copy()
+            self.feature_var = np.ones_like(features) * 0.1
+        else:
+            # Incremental mean and variance update
+            self.feature_mean = (self.feature_mean * self.sample_count + features) / (self.sample_count + 1)
+            self.feature_var = (self.feature_var * self.sample_count + (features - self.feature_mean)**2) / (self.sample_count + 1)
+
+        self.sample_count += 1
+
+        # Normalize features
+        normalized_features = (features - self.feature_mean) / (np.sqrt(self.feature_var) + 1e-8)
+
+        # Store for learning
+        self.feature_buffer.append(normalized_features)
+        self.reward_buffer.append(reward)
+
+        # Update weights using stochastic gradient descent
+        if len(self.feature_buffer) &gt; 1:
+            # Use the most recent experience
+            recent_features = self.feature_buffer[-1]
+            recent_reward = self.reward_buffer[-1]
+
+            # Compute prediction error
+            prediction = np.dot(self.weights, recent_features)
+            error = recent_reward - prediction
+
+            # Update weights
+            self.weights += self.learning_rate * error * recent_features
+
+    def predict_value(self, state, action):
+        &quot;&quot;&quot;Predict the value of a state-action pair&quot;&quot;&quot;
+        features = self.extract_features(state, action)
+        normalized_features = (features - self.feature_mean) / (np.sqrt(self.feature_var) + 1e-8)
+        return np.dot(self.weights, normalized_features)
+</code></pre>
+<h2 id="integration-with-ros-2">Integration with ROS 2</h2>
+<h3 id="learning-node-implementation">Learning Node Implementation</h3>
+<pre><code class="language-python">import rclpy
+from rclpy.node import Node
+from std_msgs.msg import Float32MultiArray
+from sensor_msgs.msg import JointState
+from geometry_msgs.msg import PoseStamped
+from std_msgs.msg import Float32
+
+class LearningNode(Node):
+    def __init__(self):
+        super().__init__(&#x27;learning_node&#x27;)
+
+        # Publishers
+        self.performance_pub = self.create_publisher(Float32, &#x27;learning_performance&#x27;, 10)
+        self.adaptation_pub = self.create_publisher(Float32MultiArray, &#x27;adaptation_params&#x27;, 10)
+
+        # Subscribers
+        self.joint_sub = self.create_subscription(
+            JointState, &#x27;joint_states&#x27;, self.joint_callback, 10
+        )
+        self.task_sub = self.create_subscription(
+            Float32MultiArray, &#x27;task_performance&#x27;, self.task_callback, 10
+        )
+
+        # Initialize learning components
+        self.imitation_learner = ImitationLearner(state_dim=12, action_dim=6)  # Example dimensions
+        self.adaptive_controller = AdaptiveController(num_joints=6)
+        self.online_learner = OnlineLearner(num_features=50)
+
+        # Timer for learning updates
+        self.learning_timer = self.create_timer(1.0, self.learning_step)
+
+        # Internal state
+        self.current_joint_states = None
+        self.task_performance = 0.0
+
+        self.get_logger().info(&#x27;Learning node initialized&#x27;)
+
+    def joint_callback(self, msg: JointState):
+        &quot;&quot;&quot;Update with current joint states&quot;&quot;&quot;
+        self.current_joint_states = np.array(msg.position)
+
+    def task_callback(self, msg: Float32MultiArray):
+        &quot;&quot;&quot;Update with task performance feedback&quot;&quot;&quot;
+        if len(msg.data) &gt; 0:
+            self.task_performance = msg.data[0]
+
+    def learning_step(self):
+        &quot;&quot;&quot;Main learning step&quot;&quot;&quot;
+        if self.current_joint_states is not None:
+            # Example: update online learner with current performance
+            dummy_action = np.zeros(6)  # Placeholder action
+            self.online_learner.update(
+                self.current_joint_states,
+                dummy_action,
+                self.task_performance
+            )
+
+            # Publish performance
+            perf_msg = Float32()
+            perf_msg.data = self.task_performance
+            self.performance_pub.publish(perf_msg)
+</code></pre>
+<h2 id="challenges-in-robot-learning">Challenges in Robot Learning</h2>
+<h3 id="sample-efficiency">Sample Efficiency</h3>
+<p>Robot learning faces significant sample efficiency challenges:</p>
+<ul>
+<li>Physical robots are expensive to operate</li>
+<li>Each learning trial takes time and energy</li>
+<li>Safety constraints limit exploration</li>
+</ul>
+<h3 id="transfer-learning">Transfer Learning</h3>
+<p>Transferring learned behaviors across different robots or environments:</p>
+<ul>
+<li>Domain adaptation techniques</li>
+<li>Sim-to-real transfer</li>
+<li>Multi-task learning</li>
+</ul>
+<h3 id="safety-and-robustness">Safety and Robustness</h3>
+<p>Ensuring learned behaviors are safe and robust:</p>
+<ul>
+<li>Safe exploration strategies</li>
+<li>Robustness to environmental changes</li>
+<li>Failure detection and recovery</li>
+</ul>
+<h2 id="practice-tasks">Practice Tasks</h2>
+<ol>
+<li>Implement a simple imitation learning algorithm for a humanoid robot task</li>
+<li>Create a reinforcement learning environment for humanoid robot control</li>
+<li>Develop an adaptive controller that adjusts to changing loads</li>
+<li>Design a human feedback system for robot learning</li>
+<li>Test learning algorithms in simulation with humanoid robots</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<p>Learning and adaptation are essential capabilities for humanoid robots to operate effectively in dynamic environments. By implementing various learning techniques - from supervised learning for perception to reinforcement learning for control, and from imitation learning to human feedback integration - humanoid robots can continuously improve their performance and adapt to new situations.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/Ayesha788/my_book/tree/main/docs/chapter9-learning.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/my_book/docs/chapter8-multirobot"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Chapter 8: Multi-Robot Coordination for Humanoid Systems</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my_book/docs/chapter10-hri"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Chapter 10: Human-Robot Interaction for Humanoid Systems</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduction-to-robot-learning" class="table-of-contents__link toc-highlight">Introduction to Robot Learning</a></li><li><a href="#machine-learning-in-robotics" class="table-of-contents__link toc-highlight">Machine Learning in Robotics</a><ul><li><a href="#supervised-learning-for-robot-perception" class="table-of-contents__link toc-highlight">Supervised Learning for Robot Perception</a></li><li><a href="#reinforcement-learning-for-robot-control" class="table-of-contents__link toc-highlight">Reinforcement Learning for Robot Control</a></li></ul></li><li><a href="#imitation-learning-for-humanoid-robots" class="table-of-contents__link toc-highlight">Imitation Learning for Humanoid Robots</a></li><li><a href="#learning-from-human-feedback" class="table-of-contents__link toc-highlight">Learning from Human Feedback</a></li><li><a href="#adaptive-control-systems" class="table-of-contents__link toc-highlight">Adaptive Control Systems</a></li><li><a href="#online-learning-and-adaptation" class="table-of-contents__link toc-highlight">Online Learning and Adaptation</a></li><li><a href="#integration-with-ros-2" class="table-of-contents__link toc-highlight">Integration with ROS 2</a><ul><li><a href="#learning-node-implementation" class="table-of-contents__link toc-highlight">Learning Node Implementation</a></li></ul></li><li><a href="#challenges-in-robot-learning" class="table-of-contents__link toc-highlight">Challenges in Robot Learning</a><ul><li><a href="#sample-efficiency" class="table-of-contents__link toc-highlight">Sample Efficiency</a></li><li><a href="#transfer-learning" class="table-of-contents__link toc-highlight">Transfer Learning</a></li><li><a href="#safety-and-robustness" class="table-of-contents__link toc-highlight">Safety and Robustness</a></li></ul></li><li><a href="#practice-tasks" class="table-of-contents__link toc-highlight">Practice Tasks</a></li><li><a href="#summary" class="table-of-contents__link toc-highlight">Summary</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Chapters</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter1-ros2">ROS 2 Fundamentals</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter2-digital-twin">Digital Twin</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter3-isaac">AI-Robot Brain</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter4-vla">Vision-Language-Action</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/ros2" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://answers.ros.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">ROS Answers<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://developer.nvidia.com/" target="_blank" rel="noopener noreferrer" class="footer__link-item">NVIDIA Developer<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Physical AI & Humanoid Robotics Hackathon Project. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

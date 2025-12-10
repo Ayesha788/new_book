@@ -1,0 +1,24 @@
+{
+  "id": "chapter7-manipulation",
+  "title": "Chapter 7: Manipulation and Grasping for Humanoid Robots",
+  "description": "Introduction to Manipulation in Humanoid Robots",
+  "source": "@site/docs/chapter7-manipulation.md",
+  "sourceDirName": ".",
+  "slug": "/chapter7-manipulation",
+  "permalink": "/my_book/docs/chapter7-manipulation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayesha788/my_book/tree/main/docs/chapter7-manipulation.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 6: Computer Vision for Humanoid Robotics",
+    "permalink": "/my_book/docs/chapter6-computer-vision"
+  },
+  "next": {
+    "title": "Chapter 8: Multi-Robot Coordination for Humanoid Systems",
+    "permalink": "/my_book/docs/chapter8-multirobot"
+  }
+}

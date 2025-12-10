@@ -1,0 +1,94 @@
+{
+  "/my_book/docs-540": {
+    "__comp": "5e95c892",
+    "__context": {
+      "plugin": "aba21aa0"
+    }
+  },
+  "/my_book/docs-882": {
+    "__comp": "a7bd4aaa",
+    "__props": "5f503d4f"
+  },
+  "/my_book/docs-170": {
+    "__comp": "a94703ab"
+  },
+  "/my_book/docs/capstone-442": {
+    "__comp": "17896441",
+    "content": "5e207448"
+  },
+  "/my_book/docs/chapter1-ros2-2d6": {
+    "__comp": "17896441",
+    "content": "996a8e38"
+  },
+  "/my_book/docs/chapter10-hri-7ec": {
+    "__comp": "17896441",
+    "content": "1dd7e67c"
+  },
+  "/my_book/docs/chapter11-safety-040": {
+    "__comp": "17896441",
+    "content": "832f99ab"
+  },
+  "/my_book/docs/chapter12-future-0df": {
+    "__comp": "17896441",
+    "content": "ecdc80f2"
+  },
+  "/my_book/docs/chapter2-digital-twin-17d": {
+    "__comp": "17896441",
+    "content": "704c8b2e"
+  },
+  "/my_book/docs/chapter3-isaac-610": {
+    "__comp": "17896441",
+    "content": "1180fbf0"
+  },
+  "/my_book/docs/chapter4-vla-50b": {
+    "__comp": "17896441",
+    "content": "82a1a13a"
+  },
+  "/my_book/docs/chapter5-path-planning-8f7": {
+    "__comp": "17896441",
+    "content": "6be79c3a"
+  },
+  "/my_book/docs/chapter6-computer-vision-986": {
+    "__comp": "17896441",
+    "content": "16bb2975"
+  },
+  "/my_book/docs/chapter7-manipulation-ca4": {
+    "__comp": "17896441",
+    "content": "3e4452df"
+  },
+  "/my_book/docs/chapter8-multirobot-bd3": {
+    "__comp": "17896441",
+    "content": "40606403"
+  },
+  "/my_book/docs/chapter9-learning-cc2": {
+    "__comp": "17896441",
+    "content": "6f7aabac"
+  },
+  "/my_book/docs/environment-setup-303": {
+    "__comp": "17896441",
+    "content": "e54508f7"
+  },
+  "/my_book/docs/glossary-972": {
+    "__comp": "17896441",
+    "content": "e747ec83"
+  },
+  "/my_book/docs/intro-4ea": {
+    "__comp": "17896441",
+    "content": "0e384e19"
+  },
+  "/my_book/docs/practice-tasks-ros2-5fe": {
+    "__comp": "17896441",
+    "content": "369e67cf"
+  },
+  "/my_book/docs/practice-tasks-simulation-814": {
+    "__comp": "17896441",
+    "content": "fb81da15"
+  },
+  "/my_book/-0ae": {
+    "__comp": "c4f5d8e4",
+    "__context": {
+      "plugin": "a7456010"
+    },
+    "config": "5e9f5e1a"
+  }
+}

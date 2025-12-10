@@ -1,0 +1,24 @@
+{
+  "id": "practice-tasks-ros2",
+  "title": "Practice Tasks: ROS 2 Fundamentals",
+  "description": "Complete these hands-on exercises to reinforce your understanding of ROS 2 fundamentals.",
+  "source": "@site/docs/practice-tasks-ros2.md",
+  "sourceDirName": ".",
+  "slug": "/practice-tasks-ros2",
+  "permalink": "/my_book/docs/practice-tasks-ros2",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayesha788/my_book/tree/main/docs/practice-tasks-ros2.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 12: Future Trends and Applications in Humanoid Robotics",
+    "permalink": "/my_book/docs/chapter12-future"
+  },
+  "next": {
+    "title": "Practice Tasks: Simulation Concepts",
+    "permalink": "/my_book/docs/practice-tasks-simulation"
+  }
+}

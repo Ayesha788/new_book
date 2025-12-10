@@ -1,0 +1,24 @@
+{
+  "id": "chapter2-digital-twin",
+  "title": "Chapter 2: Digital Twin - Simulating Humanoid Robots",
+  "description": "Introduction to Digital Twin Technology",
+  "source": "@site/docs/chapter2-digital-twin.md",
+  "sourceDirName": ".",
+  "slug": "/chapter2-digital-twin",
+  "permalink": "/my_book/docs/chapter2-digital-twin",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayesha788/my_book/tree/main/docs/chapter2-digital-twin.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 1: ROS 2 Fundamentals - The Robotic Nervous System",
+    "permalink": "/my_book/docs/chapter1-ros2"
+  },
+  "next": {
+    "title": "Chapter 3: AI-Robot Brain - NVIDIA Isaac Integration",
+    "permalink": "/my_book/docs/chapter3-isaac"
+  }
+}

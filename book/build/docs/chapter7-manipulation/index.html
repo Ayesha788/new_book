@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-chapter7-manipulation" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Chapter 7: Manipulation and Grasping for Humanoid Robots | Physical AI &amp; Humanoid Robotics Hackathon Book</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://ayesha788.github.io/my_book/docs/chapter7-manipulation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Chapter 7: Manipulation and Grasping for Humanoid Robots | Physical AI &amp; Humanoid Robotics Hackathon Book"><meta data-rh="true" name="description" content="Introduction to Manipulation in Humanoid Robots"><meta data-rh="true" property="og:description" content="Introduction to Manipulation in Humanoid Robots"><link data-rh="true" rel="icon" href="/my_book/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://ayesha788.github.io/my_book/docs/chapter7-manipulation"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/chapter7-manipulation" hreflang="en"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/chapter7-manipulation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Chapter 7: Manipulation and Grasping for Humanoid Robots","item":"https://ayesha788.github.io/my_book/docs/chapter7-manipulation"}]}</script><link rel="stylesheet" href="/my_book/assets/css/styles.26d1bab7.css">
+<script src="/my_book/assets/js/runtime~main.cc4ca827.js" defer="defer"></script>
+<script src="/my_book/assets/js/main.3daa9b1f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/my_book/"><div class="navbar__logo"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Robotics Book</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/my_book/docs/intro">Book Chapters</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/intro"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/environment-setup"><span title="Environment Setup" class="linkLabel_WmDU">Environment Setup</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter1-ros2"><span title="ROS 2 Fundamentals" class="categoryLinkLabel_W154">ROS 2 Fundamentals</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter2-digital-twin"><span title="Digital Twin &amp; Simulation" class="categoryLinkLabel_W154">Digital Twin &amp; Simulation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter3-isaac"><span title="AI-Robot Brain" class="categoryLinkLabel_W154">AI-Robot Brain</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter4-vla"><span title="Vision-Language-Action" class="categoryLinkLabel_W154">Vision-Language-Action</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter5-path-planning"><span title="Path Planning &amp; Navigation" class="categoryLinkLabel_W154">Path Planning &amp; Navigation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter6-computer-vision"><span title="Computer Vision" class="categoryLinkLabel_W154">Computer Vision</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/my_book/docs/chapter7-manipulation"><span title="Manipulation &amp; Grasping" class="categoryLinkLabel_W154">Manipulation &amp; Grasping</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/my_book/docs/chapter7-manipulation"><span title="Chapter 7: Manipulation and Grasping for Humanoid Robots" class="linkLabel_WmDU">Chapter 7: Manipulation and Grasping for Humanoid Robots</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter8-multirobot"><span title="Multi-Robot Coordination" class="categoryLinkLabel_W154">Multi-Robot Coordination</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter9-learning"><span title="Learning &amp; Adaptation" class="categoryLinkLabel_W154">Learning &amp; Adaptation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter10-hri"><span title="Human-Robot Interaction" class="categoryLinkLabel_W154">Human-Robot Interaction</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter11-safety"><span title="Safety &amp; Ethics" class="categoryLinkLabel_W154">Safety &amp; Ethics</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter12-future"><span title="Future Trends &amp; Applications" class="categoryLinkLabel_W154">Future Trends &amp; Applications</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/practice-tasks-ros2"><span title="Practice Tasks" class="categoryLinkLabel_W154">Practice Tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/glossary"><span title="Reference" class="categoryLinkLabel_W154">Reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/my_book/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Manipulation &amp; Grasping</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Chapter 7: Manipulation and Grasping for Humanoid Robots</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1 id="chapter-7-manipulation-and-grasping-for-humanoid-robots">Chapter 7: Manipulation and Grasping for Humanoid Robots</h1></header>
+<h2 id="introduction-to-manipulation-in-humanoid-robots">Introduction to Manipulation in Humanoid Robots</h2>
+<p>Manipulation is a fundamental capability for humanoid robots, enabling them to interact with objects in their environment. Unlike specialized manipulators, humanoid robots must coordinate manipulation tasks with balance and locomotion, making it a complex multi-constraint problem.</p>
+<h2 id="kinematics-for-humanoid-arms">Kinematics for Humanoid Arms</h2>
+<h3 id="forward-and-inverse-kinematics">Forward and Inverse Kinematics</h3>
+<p>Humanoid robots typically have 7-DOF arms similar to human arms, requiring sophisticated kinematic solutions:</p>
+<pre><code class="language-python">import numpy as np
+from scipy.spatial.transform import Rotation as R
+
+class HumanoidArmKinematics:
+    def __init__(self, joint_limits=None):
+        # DH parameters for a typical humanoid arm
+        # [a, alpha, d, theta_offset]
+        self.dh_params = [
+            [0, np.pi/2, 0, 0],           # Shoulder joint 1
+            [0, -np.pi/2, 0, np.pi/2],    # Shoulder joint 2
+            [0, np.pi/2, 0, 0],           # Shoulder joint 3
+            [0, -np.pi/2, 0.3, 0],        # Elbow joint
+            [0, np.pi/2, 0, 0],           # Wrist joint 1
+            [0, -np.pi/2, 0.25, 0],       # Wrist joint 2
+            [0, 0, 0.05, 0]               # Wrist joint 3
+        ]
+
+        self.joint_limits = joint_limits or [
+            [-2.0, 2.0],    # Shoulder 1
+            [-2.0, 1.5],    # Shoulder 2
+            [-2.0, 2.0],    # Shoulder 3
+            [-3.0, 0.5],    # Elbow
+            [-2.0, 2.0],    # Wrist 1
+            [-1.0, 1.0],    # Wrist 2
+            [-2.0, 2.0]     # Wrist 3
+        ]
+
+    def dh_transform(self, a, alpha, d, theta):
+        &quot;&quot;&quot;Compute DH transformation matrix&quot;&quot;&quot;
+        return np.array([
+            [np.cos(theta), -np.sin(theta)*np.cos(alpha), np.sin(theta)*np.sin(alpha), a*np.cos(theta)],
+            [np.sin(theta), np.cos(theta)*np.cos(alpha), -np.cos(theta)*np.sin(alpha), a*np.sin(theta)],
+            [0, np.sin(alpha), np.cos(alpha), d],
+            [0, 0, 0, 1]
+        ])
+
+    def forward_kinematics(self, joint_angles):
+        &quot;&quot;&quot;Compute end-effector pose from joint angles&quot;&quot;&quot;
+        T = np.eye(4)
+
+        for i, (a, alpha, d, theta_offset) in enumerate(self.dh_params):
+            theta = joint_angles[i] + theta_offset
+            T_link = self.dh_transform(a, alpha, d, theta)
+            T = T @ T_link
+
+        return T
+
+    def inverse_kinematics(self, target_pose, current_joints, max_iterations=100, tolerance=1e-4):
+        &quot;&quot;&quot;Solve inverse kinematics using Jacobian transpose method&quot;&quot;&quot;
+        joints = current_joints.copy()
+
+        for iteration in range(max_iterations):
+            # Compute current end-effector pose
+            current_pose = self.forward_kinematics(joints)
+
+            # Compute error
+            pos_error = target_pose[:3, 3] - current_pose[:3, 3]
+            rot_error = R.from_matrix(
+                current_pose[:3, :3].T @ target_pose[:3, :3]
+            ).as_rotvec()
+
+            error = np.concatenate([pos_error, rot_error])
+
+            if np.linalg.norm(error) &lt; tolerance:
+                break
+
+            # Compute Jacobian
+            J = self.compute_jacobian(joints)
+
+            # Update joints using Jacobian transpose
+            joint_delta = 0.1 * J.T @ error
+            joints += joint_delta
+
+            # Apply joint limits
+            for i in range(len(joints)):
+                joints[i] = np.clip(joints[i], self.joint_limits[i][0], self.joint_limits[i][1])
+
+        return joints
+
+    def compute_jacobian(self, joint_angles):
+        &quot;&quot;&quot;Compute geometric Jacobian&quot;&quot;&quot;
+        J = np.zeros((6, len(joint_angles)))
+
+        current_transform = np.eye(4)
+        end_effector_pose = self.forward_kinematics(joint_angles)
+
+        for i, (a, alpha, d, theta_offset) in enumerate(self.dh_params):
+            theta = joint_angles[i] + theta_offset
+            T_link = self.dh_transform(a, alpha, d, theta)
+            current_transform = current_transform @ T_link
+
+            # Z-axis of current joint
+            z_axis = current_transform[:3, 2]
+            # Position from current joint to end effector
+            r = end_effector_pose[:3, 3] - current_transform[:3, 3]
+
+            # Linear velocity component
+            J[:3, i] = np.cross(z_axis, r)
+            # Angular velocity component
+            J[3:, i] = z_axis
+
+        return J
+</code></pre>
+<h2 id="grasp-planning-and-execution">Grasp Planning and Execution</h2>
+<h3 id="grasp-pose-generation">Grasp Pose Generation</h3>
+<pre><code class="language-python">import open3d as o3d
+import numpy as np
+
+class GraspPlanner:
+    def __init__(self):
+        self.approach_distance = 0.1  # Distance to approach object
+        self.grasp_width_range = [0.02, 0.15]  # Min/max grasp width
+
+    def generate_grasp_poses(self, object_mesh, approach_directions=None):
+        &quot;&quot;&quot;Generate potential grasp poses for an object&quot;&quot;&quot;
+        if approach_directions is None:
+            # Default approach directions (front, side, top)
+            approach_directions = [
+                [1, 0, 0],   # Front approach
+                [-1, 0, 0],  # Back approach
+                [0, 1, 0],   # Side approach
+                [0, -1, 0],  # Opposite side
+                [0, 0, 1]    # Top approach
+            ]
+
+        grasp_poses = []
+
+        # Sample points on the object surface
+        surface_points = self.sample_surface_points(object_mesh)
+
+        for point in surface_points:
+            for approach_dir in approach_directions:
+                # Generate grasp pose
+                grasp_pose = self.create_grasp_pose(point, approach_dir)
+
+                # Check if grasp is feasible
+                if self.is_grasp_feasible(grasp_pose, object_mesh):
+                    grasp_poses.append(grasp_pose)
+
+        return grasp_poses
+
+    def sample_surface_points(self, mesh, num_points=100):
+        &quot;&quot;&quot;Sample points on the mesh surface&quot;&quot;&quot;
+        pcd = mesh.sample_points_uniformly(number_of_points=num_points)
+        return np.asarray(pcd.points)
+
+    def create_grasp_pose(self, contact_point, approach_direction):
+        &quot;&quot;&quot;Create a grasp pose from contact point and approach direction&quot;&quot;&quot;
+        # Normalize approach direction
+        approach = np.array(approach_direction) / np.linalg.norm(approach_direction)
+
+        # Create orthogonal axes for the grasp frame
+        # For now, assume a simple orientation
+        z_axis = -approach  # Grasp direction (opposite to approach)
+
+        # Create an arbitrary orthogonal x-axis
+        if abs(z_axis[2]) &lt; 0.9:
+            x_axis = np.cross(z_axis, [0, 0, 1])
+        else:
+            x_axis = np.cross(z_axis, [1, 0, 0])
+        x_axis = x_axis / np.linalg.norm(x_axis)
+
+        y_axis = np.cross(z_axis, x_axis)
+
+        # Create rotation matrix
+        R_grasp = np.column_stack([x_axis, y_axis, z_axis])
+
+        # Position is the contact point moved back by approach distance
+        position = contact_point - approach * self.approach_distance
+
+        # Create transformation matrix
+        T = np.eye(4)
+        T[:3, :3] = R_grasp
+        T[:3, 3] = position
+
+        return T
+
+    def is_grasp_feasible(self, grasp_pose, object_mesh):
+        &quot;&quot;&quot;Check if a grasp pose is geometrically feasible&quot;&quot;&quot;
+        # Check grasp width constraints
+        # Check collision with environment
+        # Check accessibility of the robot
+        return True  # Simplified for example
+</code></pre>
+<h2 id="multi-fingered-hand-control">Multi-Fingered Hand Control</h2>
+<h3 id="grasp-force-optimization">Grasp Force Optimization</h3>
+<pre><code class="language-python">class MultiFingeredHandController:
+    def __init__(self, num_fingers=5):
+        self.num_fingers = num_fingers
+        self.finger_positions = np.zeros(num_fingers)  # Joint positions
+        self.finger_forces = np.zeros(num_fingers)     # Applied forces
+
+    def compute_grasp_forces(self, object_weight, object_com, contact_points):
+        &quot;&quot;&quot;
+        Compute optimal finger forces to grasp an object
+        &quot;&quot;&quot;
+        # Object properties
+        gravity_force = np.array([0, 0, -object_weight * 9.81])
+
+        # Set up force equilibrium equations
+        # Sum of forces = 0
+        # Sum of torques = 0
+
+        # For each contact point, we have friction constraints
+        # Force must be within friction cone
+
+        # Simplified: distribute weight equally among contact points
+        num_contacts = len(contact_points)
+        if num_contacts &gt; 0:
+            force_per_contact = object_weight * 9.81 / num_contacts
+            return np.full(num_contacts, force_per_contact)
+        else:
+            return np.array([])
+
+    def grasp_object(self, grasp_pose, object_properties):
+        &quot;&quot;&quot;Execute a grasp with optimal forces&quot;&quot;&quot;
+        # Move to pre-grasp position
+        pre_grasp_pose = grasp_pose.copy()
+        pre_grasp_pose[2, 3] += 0.05  # Move 5cm above grasp point
+
+        # Execute pre-grasp motion
+        self.move_to_pose(pre_grasp_pose)
+
+        # Move to grasp position
+        self.move_to_pose(grasp_pose)
+
+        # Compute and apply grasp forces
+        grasp_forces = self.compute_grasp_forces(
+            object_properties[&#x27;weight&#x27;],
+            object_properties[&#x27;center_of_mass&#x27;],
+            object_properties[&#x27;contact_points&#x27;]
+        )
+
+        self.apply_forces(grasp_forces)
+
+        # Lift object
+        lift_pose = grasp_pose.copy()
+        lift_pose[2, 3] += 0.1  # Lift 10cm
+        self.move_to_pose(lift_pose)
+
+    def move_to_pose(self, pose):
+        &quot;&quot;&quot;Move hand to specified pose&quot;&quot;&quot;
+        # Implementation depends on robot hardware
+        pass
+
+    def apply_forces(self, forces):
+        &quot;&quot;&quot;Apply specified forces to fingers&quot;&quot;&quot;
+        # Implementation depends on hand design
+        pass
+</code></pre>
+<h2 id="grasp-stability-and-learning">Grasp Stability and Learning</h2>
+<h3 id="grasp-quality-metrics">Grasp Quality Metrics</h3>
+<pre><code class="language-python">class GraspQualityEvaluator:
+    def __init__(self):
+        pass
+
+    def evaluate_grasp_quality(self, grasp_pose, object_mesh, contact_points, friction_coeff=0.8):
+        &quot;&quot;&quot;
+        Evaluate the quality of a grasp based on multiple metrics
+        &quot;&quot;&quot;
+        quality_metrics = {}
+
+        # 1. Force closure (ability to resist arbitrary wrenches)
+        quality_metrics[&#x27;force_closure&#x27;] = self.check_force_closure(contact_points, friction_coeff)
+
+        # 2. Grasp isotropy (uniform resistance in all directions)
+        quality_metrics[&#x27;isotropy&#x27;] = self.compute_isotropy_index(contact_points)
+
+        # 3. Volume of the grasp wrench space
+        quality_metrics[&#x27;wrench_space_volume&#x27;] = self.compute_wrench_space_volume(
+            contact_points, friction_coeff
+        )
+
+        # 4. Resistance to object weight
+        quality_metrics[&#x27;weight_resistance&#x27;] = self.compute_weight_resistance(
+            grasp_pose, contact_points
+        )
+
+        # Overall quality score (weighted combination)
+        weights = {
+            &#x27;force_closure&#x27;: 0.3,
+            &#x27;isotropy&#x27;: 0.2,
+            &#x27;wrench_space_volume&#x27;: 0.3,
+            &#x27;weight_resistance&#x27;: 0.2
+        }
+
+        overall_quality = sum(
+            weights[key] * value for key, value in quality_metrics.items()
+        )
+
+        quality_metrics[&#x27;overall&#x27;] = overall_quality
+
+        return quality_metrics
+
+    def check_force_closure(self, contact_points, friction_coeff):
+        &quot;&quot;&quot;
+        Check if the grasp provides force closure
+        &quot;&quot;&quot;
+        # For 3D grasping, we need at least 7 contact points for force closure
+        # Or specific arrangements of fewer points
+        if len(contact_points) &gt;= 7:
+            return 1.0  # High probability of force closure
+        elif len(contact_points) &gt;= 3:
+            # Check specific geometric arrangements
+            return 0.7
+        else:
+            return 0.3  # Low probability of force closure
+
+    def compute_isotropy_index(self, contact_points):
+        &quot;&quot;&quot;
+        Compute how uniformly the grasp resists forces in different directions
+        &quot;&quot;&quot;
+        # Calculate the grasp matrix and its condition number
+        # Lower condition number indicates better isotropy
+        if len(contact_points) &lt; 3:
+            return 0.0
+
+        # Simplified isotropy calculation
+        # In practice, this would involve the grasp matrix
+        return 0.6  # Placeholder value
+
+    def compute_wrench_space_volume(self, contact_points, friction_coeff):
+        &quot;&quot;&quot;
+        Compute the volume of the wrench space that can be resisted
+        &quot;&quot;&quot;
+        # This is a complex calculation involving the grasp matrix
+        # and friction cones
+        return 0.8  # Placeholder value
+
+    def compute_weight_resistance(self, grasp_pose, contact_points):
+        &quot;&quot;&quot;
+        Compute how well the grasp resists the object&#x27;s weight
+        &quot;&quot;&quot;
+        # Calculate if the grasp can resist gravitational forces
+        # based on contact positions and friction
+        return 0.9  # Placeholder value
+</code></pre>
+<h2 id="integration-with-robot-control">Integration with Robot Control</h2>
+<h3 id="ros-2-manipulation-interface">ROS 2 Manipulation Interface</h3>
+<pre><code class="language-python">import rclpy
+from rclpy.node import Node
+from geometry_msgs.msg import PoseStamped
+from sensor_msgs.msg import JointState
+from std_msgs.msg import String
+from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
+
+class ManipulationController(Node):
+    def __init__(self):
+        super().__init__(&#x27;manipulation_controller&#x27;)
+
+        # Publishers and subscribers
+        self.joint_cmd_pub = self.create_publisher(
+            JointTrajectory,
+            &#x27;/arm_controller/joint_trajectory&#x27;,
+            10
+        )
+
+        self.joint_state_sub = self.create_subscription(
+            JointState,
+            &#x27;/joint_states&#x27;,
+            self.joint_state_callback,
+            10
+        )
+
+        self.grasp_cmd_sub = self.create_subscription(
+            PoseStamped,
+            &#x27;/grasp_target&#x27;,
+            self.grasp_callback,
+            10
+        )
+
+        # Internal state
+        self.current_joints = None
+        self.arm_kinematics = HumanoidArmKinematics()
+        self.grasp_planner = GraspPlanner()
+
+        self.get_logger().info(&#x27;Manipulation controller initialized&#x27;)
+
+    def joint_state_callback(self, msg):
+        &quot;&quot;&quot;Update current joint positions&quot;&quot;&quot;
+        self.current_joints = np.array(msg.position[-7:])  # Last 7 joints for arm
+
+    def grasp_callback(self, msg):
+        &quot;&quot;&quot;Handle grasp command&quot;&quot;&quot;
+        if self.current_joints is None:
+            self.get_logger().warn(&#x27;No joint state available&#x27;)
+            return
+
+        # Convert target pose to transformation matrix
+        target_pose = self.pose_to_matrix(msg.pose)
+
+        # Solve inverse kinematics
+        joint_goals = self.arm_kinematics.inverse_kinematics(
+            target_pose,
+            self.current_joints
+        )
+
+        # Publish joint trajectory
+        self.execute_trajectory(joint_goals)
+
+    def pose_to_matrix(self, pose):
+        &quot;&quot;&quot;Convert ROS Pose to 4x4 transformation matrix&quot;&quot;&quot;
+        matrix = np.eye(4)
+
+        # Position
+        matrix[0, 3] = pose.position.x
+        matrix[1, 3] = pose.position.y
+        matrix[2, 3] = pose.position.z
+
+        # Orientation (convert quaternion to rotation matrix)
+        import tf_transformations as tf
+        q = [pose.orientation.x, pose.orientation.y,
+             pose.orientation.z, pose.orientation.w]
+        matrix[:3, :3] = tf.quaternion_matrix(q)[:3, :3]
+
+        return matrix
+
+    def execute_trajectory(self, joint_goals):
+        &quot;&quot;&quot;Execute joint trajectory to reach target&quot;&quot;&quot;
+        trajectory = JointTrajectory()
+        trajectory.joint_names = [
+            &#x27;shoulder_pitch&#x27;, &#x27;shoulder_roll&#x27;, &#x27;shoulder_yaw&#x27;,
+            &#x27;elbow_pitch&#x27;, &#x27;wrist_pitch&#x27;, &#x27;wrist_yaw&#x27;, &#x27;wrist_roll&#x27;
+        ]
+
+        point = JointTrajectoryPoint()
+        point.positions = joint_goals.tolist()
+        point.time_from_start.sec = 2  # 2 seconds to reach goal
+        point.time_from_start.nanosec = 0
+
+        trajectory.points = [point]
+
+        self.joint_cmd_pub.publish(trajectory)
+</code></pre>
+<h2 id="grasp-learning-and-adaptation">Grasp Learning and Adaptation</h2>
+<h3 id="reinforcement-learning-for-grasp-improvement">Reinforcement Learning for Grasp Improvement</h3>
+<pre><code class="language-python">import torch
+import torch.nn as nn
+import numpy as np
+
+class GraspPolicyNetwork(nn.Module):
+    def __init__(self, state_dim=20, action_dim=7):
+        super(GraspPolicyNetwork, self).__init__()
+
+        self.network = nn.Sequential(
+            nn.Linear(state_dim, 256),
+            nn.ReLU(),
+            nn.Linear(256, 256),
+            nn.ReLU(),
+            nn.Linear(256, 128),
+            nn.ReLU(),
+            nn.Linear(128, action_dim),
+            nn.Tanh()  # Output actions between -1 and 1
+        )
+
+    def forward(self, state):
+        return self.network(state)
+
+class GraspLearner:
+    def __init__(self):
+        self.policy_network = GraspPolicyNetwork()
+        self.optimizer = torch.optim.Adam(self.policy_network.parameters(), lr=0.001)
+        self.replay_buffer = []
+
+    def get_grasp_action(self, state):
+        &quot;&quot;&quot;Get grasp action from current policy&quot;&quot;&quot;
+        state_tensor = torch.FloatTensor(state).unsqueeze(0)
+        action = self.policy_network(state_tensor)
+        return action.squeeze(0).detach().numpy()
+
+    def update_policy(self, states, actions, rewards, next_states):
+        &quot;&quot;&quot;Update policy using collected experiences&quot;&quot;&quot;
+        states = torch.FloatTensor(states)
+        actions = torch.FloatTensor(actions)
+        rewards = torch.FloatTensor(rewards).unsqueeze(1)
+
+        # Compute predicted Q values
+        predicted_actions = self.policy_network(states)
+
+        # Compute loss (negative reward for bad grasps, positive for good)
+        loss = -torch.mean(rewards * torch.sum((actions - predicted_actions)**2, dim=1))
+
+        # Update network
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
+
+        return loss.item()
+</code></pre>
+<h2 id="challenges-in-humanoid-manipulation">Challenges in Humanoid Manipulation</h2>
+<h3 id="balance-grasp-coordination">Balance-Grasp Coordination</h3>
+<p>Humanoid robots must coordinate manipulation with balance:</p>
+<ul>
+<li>Whole-body control that considers both manipulation and balance</li>
+<li>Dynamic weight shifting during manipulation tasks</li>
+<li>Recovery strategies when manipulation affects balance</li>
+</ul>
+<h3 id="real-time-grasp-planning">Real-time Grasp Planning</h3>
+<p>Challenges in real-time grasp planning:</p>
+<ul>
+<li>Fast collision checking</li>
+<li>Efficient grasp quality evaluation</li>
+<li>Handling dynamic environments</li>
+</ul>
+<h3 id="multi-modal-sensing">Multi-modal Sensing</h3>
+<p>Integrating different sensory modalities:</p>
+<ul>
+<li>Vision-based grasp planning</li>
+<li>Tactile feedback during grasp execution</li>
+<li>Force control for safe interaction</li>
+</ul>
+<h2 id="practice-tasks">Practice Tasks</h2>
+<ol>
+<li>Implement inverse kinematics for a humanoid arm using multiple methods</li>
+<li>Create a grasp planner that works with point cloud data</li>
+<li>Develop a grasp quality evaluator for different object shapes</li>
+<li>Integrate manipulation with balance control in simulation</li>
+<li>Test grasping algorithms on various object types and sizes</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<p>Manipulation and grasping are essential capabilities for humanoid robots to interact with their environment. By combining kinematic solutions, grasp planning algorithms, and learning techniques, humanoid robots can perform complex manipulation tasks while maintaining balance and safety.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/Ayesha788/my_book/tree/main/docs/chapter7-manipulation.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/my_book/docs/chapter6-computer-vision"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Chapter 6: Computer Vision for Humanoid Robotics</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my_book/docs/chapter8-multirobot"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Chapter 8: Multi-Robot Coordination for Humanoid Systems</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduction-to-manipulation-in-humanoid-robots" class="table-of-contents__link toc-highlight">Introduction to Manipulation in Humanoid Robots</a></li><li><a href="#kinematics-for-humanoid-arms" class="table-of-contents__link toc-highlight">Kinematics for Humanoid Arms</a><ul><li><a href="#forward-and-inverse-kinematics" class="table-of-contents__link toc-highlight">Forward and Inverse Kinematics</a></li></ul></li><li><a href="#grasp-planning-and-execution" class="table-of-contents__link toc-highlight">Grasp Planning and Execution</a><ul><li><a href="#grasp-pose-generation" class="table-of-contents__link toc-highlight">Grasp Pose Generation</a></li></ul></li><li><a href="#multi-fingered-hand-control" class="table-of-contents__link toc-highlight">Multi-Fingered Hand Control</a><ul><li><a href="#grasp-force-optimization" class="table-of-contents__link toc-highlight">Grasp Force Optimization</a></li></ul></li><li><a href="#grasp-stability-and-learning" class="table-of-contents__link toc-highlight">Grasp Stability and Learning</a><ul><li><a href="#grasp-quality-metrics" class="table-of-contents__link toc-highlight">Grasp Quality Metrics</a></li></ul></li><li><a href="#integration-with-robot-control" class="table-of-contents__link toc-highlight">Integration with Robot Control</a><ul><li><a href="#ros-2-manipulation-interface" class="table-of-contents__link toc-highlight">ROS 2 Manipulation Interface</a></li></ul></li><li><a href="#grasp-learning-and-adaptation" class="table-of-contents__link toc-highlight">Grasp Learning and Adaptation</a><ul><li><a href="#reinforcement-learning-for-grasp-improvement" class="table-of-contents__link toc-highlight">Reinforcement Learning for Grasp Improvement</a></li></ul></li><li><a href="#challenges-in-humanoid-manipulation" class="table-of-contents__link toc-highlight">Challenges in Humanoid Manipulation</a><ul><li><a href="#balance-grasp-coordination" class="table-of-contents__link toc-highlight">Balance-Grasp Coordination</a></li><li><a href="#real-time-grasp-planning" class="table-of-contents__link toc-highlight">Real-time Grasp Planning</a></li><li><a href="#multi-modal-sensing" class="table-of-contents__link toc-highlight">Multi-modal Sensing</a></li></ul></li><li><a href="#practice-tasks" class="table-of-contents__link toc-highlight">Practice Tasks</a></li><li><a href="#summary" class="table-of-contents__link toc-highlight">Summary</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Chapters</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter1-ros2">ROS 2 Fundamentals</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter2-digital-twin">Digital Twin</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter3-isaac">AI-Robot Brain</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter4-vla">Vision-Language-Action</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/ros2" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://answers.ros.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">ROS Answers<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://developer.nvidia.com/" target="_blank" rel="noopener noreferrer" class="footer__link-item">NVIDIA Developer<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Physical AI & Humanoid Robotics Hackathon Project. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

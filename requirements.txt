@@ -1,0 +1,31 @@
+# ROS 2 dependencies (these are typically installed via system package manager)
+# ros-humble-ros-base or ros-humble-desktop
+# ros-humble-gazebo-ros-pkgs
+# ros-humble-nvidia-isaac
+
+# Python dependencies for ROS 2 interaction
+rclpy>=3.0.0
+
+# For OpenAI Whisper integration
+openai-whisper>=20230306
+openai>=1.0.0
+
+# For robotics and AI
+numpy>=1.21.0
+scipy>=1.7.0
+matplotlib>=3.5.0
+torch>=1.13.0
+torchvision>=0.14.0
+tensorflow>=2.10.0
+
+# For computer vision
+opencv-python>=4.6.0
+Pillow>=9.0.0
+
+# For robotics simulation
+pybullet>=3.2.5
+
+# For general utilities
+requests>=2.28.0
+pyyaml>=6.0
+tqdm>=4.64.0

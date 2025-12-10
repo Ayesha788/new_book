@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-chapter3-isaac" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Chapter 3: AI-Robot Brain - NVIDIA Isaac Integration | Physical AI &amp; Humanoid Robotics Hackathon Book</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://ayesha788.github.io/my_book/docs/chapter3-isaac"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Chapter 3: AI-Robot Brain - NVIDIA Isaac Integration | Physical AI &amp; Humanoid Robotics Hackathon Book"><meta data-rh="true" name="description" content="Introduction to AI-Robot Brain Systems"><meta data-rh="true" property="og:description" content="Introduction to AI-Robot Brain Systems"><link data-rh="true" rel="icon" href="/my_book/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://ayesha788.github.io/my_book/docs/chapter3-isaac"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/chapter3-isaac" hreflang="en"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/chapter3-isaac" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Chapter 3: AI-Robot Brain - NVIDIA Isaac Integration","item":"https://ayesha788.github.io/my_book/docs/chapter3-isaac"}]}</script><link rel="stylesheet" href="/my_book/assets/css/styles.26d1bab7.css">
+<script src="/my_book/assets/js/runtime~main.cc4ca827.js" defer="defer"></script>
+<script src="/my_book/assets/js/main.3daa9b1f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/my_book/"><div class="navbar__logo"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Robotics Book</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/my_book/docs/intro">Book Chapters</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/intro"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/environment-setup"><span title="Environment Setup" class="linkLabel_WmDU">Environment Setup</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter1-ros2"><span title="ROS 2 Fundamentals" class="categoryLinkLabel_W154">ROS 2 Fundamentals</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter2-digital-twin"><span title="Digital Twin &amp; Simulation" class="categoryLinkLabel_W154">Digital Twin &amp; Simulation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/my_book/docs/chapter3-isaac"><span title="AI-Robot Brain" class="categoryLinkLabel_W154">AI-Robot Brain</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/my_book/docs/chapter3-isaac"><span title="Chapter 3: AI-Robot Brain - NVIDIA Isaac Integration" class="linkLabel_WmDU">Chapter 3: AI-Robot Brain - NVIDIA Isaac Integration</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter4-vla"><span title="Vision-Language-Action" class="categoryLinkLabel_W154">Vision-Language-Action</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter5-path-planning"><span title="Path Planning &amp; Navigation" class="categoryLinkLabel_W154">Path Planning &amp; Navigation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter6-computer-vision"><span title="Computer Vision" class="categoryLinkLabel_W154">Computer Vision</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter7-manipulation"><span title="Manipulation &amp; Grasping" class="categoryLinkLabel_W154">Manipulation &amp; Grasping</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter8-multirobot"><span title="Multi-Robot Coordination" class="categoryLinkLabel_W154">Multi-Robot Coordination</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter9-learning"><span title="Learning &amp; Adaptation" class="categoryLinkLabel_W154">Learning &amp; Adaptation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter10-hri"><span title="Human-Robot Interaction" class="categoryLinkLabel_W154">Human-Robot Interaction</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter11-safety"><span title="Safety &amp; Ethics" class="categoryLinkLabel_W154">Safety &amp; Ethics</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter12-future"><span title="Future Trends &amp; Applications" class="categoryLinkLabel_W154">Future Trends &amp; Applications</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/practice-tasks-ros2"><span title="Practice Tasks" class="categoryLinkLabel_W154">Practice Tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/glossary"><span title="Reference" class="categoryLinkLabel_W154">Reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/my_book/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">AI-Robot Brain</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Chapter 3: AI-Robot Brain - NVIDIA Isaac Integration</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1 id="chapter-3-ai-robot-brain---nvidia-isaac-integration">Chapter 3: AI-Robot Brain - NVIDIA Isaac Integration</h1></header>
+<h2 id="introduction-to-ai-robot-brain-systems">Introduction to AI-Robot Brain Systems</h2>
+<p>The AI-Robot Brain represents the cognitive layer of humanoid robotics, where artificial intelligence algorithms process sensory information and generate intelligent behaviors. NVIDIA Isaac provides a comprehensive platform for developing, simulating, and deploying AI-powered robotic applications with hardware acceleration.</p>
+<p>NVIDIA Isaac includes:</p>
+<ul>
+<li>Isaac Sim: High-fidelity simulation environment</li>
+<li>Isaac ROS: GPU-accelerated perception and navigation</li>
+<li>Isaac Apps: Reference applications for common robotics tasks</li>
+<li>Isaac Examples: Sample implementations and best practices</li>
+</ul>
+<h2 id="nvidia-isaac-sim-overview">NVIDIA Isaac Sim Overview</h2>
+<p>NVIDIA Isaac Sim is a robotics simulation application built on NVIDIA Omniverse. It provides:</p>
+<ul>
+<li>Physically accurate simulation with NVIDIA PhysX</li>
+<li>Photorealistic rendering with RTX technology</li>
+<li>Domain randomization for robust AI training</li>
+<li>Synthetic data generation capabilities</li>
+<li>Hardware-accelerated compute</li>
+</ul>
+<h3 id="key-features-of-isaac-sim">Key Features of Isaac Sim:</h3>
+<ul>
+<li>GPU-accelerated physics simulation</li>
+<li>High-fidelity sensor simulation</li>
+<li>Synthetic data generation</li>
+<li>Reinforcement learning environment</li>
+<li>Integration with popular ML frameworks</li>
+</ul>
+<h2 id="installing-nvidia-isaac-sim">Installing NVIDIA Isaac Sim</h2>
+<h3 id="system-requirements">System Requirements:</h3>
+<ul>
+<li>NVIDIA GPU with RTX or GTX 1080/2070+ (8GB+ VRAM recommended)</li>
+<li>CUDA 11.8 or later</li>
+<li>Ubuntu 20.04 or 22.04 (or Windows 10/11 with WSL2)</li>
+<li>16GB+ system RAM</li>
+<li>100GB+ free disk space</li>
+</ul>
+<h3 id="installation-steps">Installation Steps:</h3>
+<ol>
+<li>Install NVIDIA Omniverse Launcher</li>
+<li>Install Isaac Sim through the launcher</li>
+<li>Install Isaac ROS packages:<!-- -->
+<pre><code class="language-bash">sudo apt update
+sudo apt install ros-humble-isaac-ros-*
+</code></pre>
+</li>
+</ol>
+<h2 id="setting-up-isaac-sim-environment">Setting up Isaac Sim Environment</h2>
+<h3 id="basic-isaac-sim-launch">Basic Isaac Sim Launch</h3>
+<pre><code class="language-python">import omni
+from omni.isaac.kit import SimulationApp
+
+# Launch Isaac Sim
+config = {
+    &quot;headless&quot;: False,
+    &quot;render&quot;: &quot;core&quot;,
+    &quot;window_width&quot;: 1280,
+    &quot;window_height&quot;: 720,
+}
+
+simulation_app = SimulationApp(config)
+
+# Import required Isaac Sim modules
+from omni.isaac.core import World
+from omni.isaac.core.utils.stage import add_reference_to_stage
+from omni.isaac.core.utils.nucleus import get_assets_root_path
+
+# Create the world
+world = World(stage_units_in_meters=1.0)
+
+# Add a robot to the stage
+assets_root_path = get_assets_root_path()
+if assets_root_path is None:
+    carb.log_error(&quot;Could not find Isaac Sim assets path&quot;)
+else:
+    # Add a simple robot
+    add_reference_to_stage(
+        usd_path=assets_root_path + &quot;/Isaac/Robots/Franka/franka.usd&quot;,
+        prim_path=&quot;/World/Robot&quot;
+    )
+
+# Reset the world
+world.reset()
+
+# Run simulation
+for i in range(1000):
+    simulation_app.update()
+    if i % 100 == 0:
+        print(f&quot;Simulation step: {i}&quot;)
+
+simulation_app.close()
+</code></pre>
+<h2 id="synthetic-data-generation">Synthetic Data Generation</h2>
+<p>Isaac Sim excels at generating synthetic training data for AI models. This is crucial for humanoid robotics where real-world data collection can be expensive and time-consuming.</p>
+<h3 id="rgb-camera-data-generation">RGB Camera Data Generation</h3>
+<pre><code class="language-python">import numpy as np
+from omni.isaac.sensor import Camera
+from omni.isaac.core.utils.stage import add_reference_to_stage
+from omni.isaac.core import World
+
+# Create world and add camera
+world = World(stage_units_in_meters=1.0)
+
+# Add a camera to the robot or environment
+camera = Camera(
+    prim_path=&quot;/World/Camera&quot;,
+    position=np.array([1.0, 1.0, 1.0]),
+    look_at=np.array([0, 0, 0])
+)
+
+world.scene.add(camera)
+
+# Generate synthetic RGB data
+for i in range(100):
+    world.step(render=True)
+
+    # Get RGB image
+    rgb_data = camera.get_rgb()
+
+    # Save image with appropriate naming for dataset
+    image_path = f&quot;synthetic_data/rgb_image_{i:04d}.png&quot;
+    # Save the image data to file
+
+    # Additional sensor data can be collected simultaneously
+    depth_data = camera.get_depth()
+    seg_data = camera.get_semantic_segmentation()
+</code></pre>
+<h3 id="domain-randomization">Domain Randomization</h3>
+<p>Domain randomization helps create robust AI models by varying environmental conditions:</p>
+<pre><code class="language-python">import random
+from omni.isaac.core.utils.prims import get_prim_at_path
+from pxr import UsdLux, Gf
+
+def randomize_lighting():
+    &quot;&quot;&quot;Randomize lighting conditions in the environment&quot;&quot;&quot;
+    # Get the light prim
+    light_prim = get_prim_at_path(&quot;/World/Light&quot;)
+
+    # Randomize intensity and color
+    intensity = random.uniform(500, 1500)
+    color = Gf.Vec3f(random.random(), random.random(), random.random())
+
+    # Apply changes
+    light_prim.GetAttribute(&quot;intensity&quot;).Set(intensity)
+    light_prim.GetAttribute(&quot;color&quot;).Set(color)
+
+def randomize_materials():
+    &quot;&quot;&quot;Randomize material properties for domain randomization&quot;&quot;&quot;
+    # This would involve changing surface properties, textures, etc.
+    pass
+
+def randomize_physics():
+    &quot;&quot;&quot;Randomize physics parameters&quot;&quot;&quot;
+    # This could involve changing friction, restitution, etc.
+    pass
+</code></pre>
+<h2 id="vslam-visual-simultaneous-localization-and-mapping">VSLAM (Visual Simultaneous Localization and Mapping)</h2>
+<p>VSLAM is crucial for humanoid robots to navigate unknown environments. Isaac ROS provides GPU-accelerated VSLAM capabilities.</p>
+<h3 id="isaac-ros-vslam-components">Isaac ROS VSLAM Components</h3>
+<pre><code class="language-python">import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import Image, CameraInfo
+from nav_msgs.msg import Odometry
+from geometry_msgs.msg import PoseStamped
+import cv2
+from cv_bridge import CvBridge
+
+class VSLAMNode(Node):
+    def __init__(self):
+        super().__init__(&#x27;vslam_node&#x27;)
+
+        # Create subscribers for camera data
+        self.image_sub = self.create_subscription(
+            Image,
+            &#x27;/camera/rgb/image_raw&#x27;,
+            self.image_callback,
+            10
+        )
+
+        self.camera_info_sub = self.create_subscription(
+            CameraInfo,
+            &#x27;/camera/rgb/camera_info&#x27;,
+            self.camera_info_callback,
+            10
+        )
+
+        # Create publisher for pose estimates
+        self.pose_pub = self.create_publisher(
+            PoseStamped,
+            &#x27;/vslam/pose&#x27;,
+            10
+        )
+
+        self.bridge = CvBridge()
+        self.camera_matrix = None
+        self.distortion_coeffs = None
+
+        # Initialize VSLAM algorithm (placeholder)
+        self.vslam_initialized = False
+
+    def image_callback(self, msg):
+        &quot;&quot;&quot;Process incoming camera images for VSLAM&quot;&quot;&quot;
+        cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding=&#x27;bgr8&#x27;)
+
+        if self.vslam_initialized:
+            # Process image through VSLAM algorithm
+            pose = self.process_vslam(cv_image)
+
+            # Publish pose estimate
+            pose_msg = PoseStamped()
+            pose_msg.header.stamp = self.get_clock().now().to_msg()
+            pose_msg.header.frame_id = &#x27;map&#x27;
+            pose_msg.pose = pose
+
+            self.pose_pub.publish(pose_msg)
+
+    def camera_info_callback(self, msg):
+        &quot;&quot;&quot;Update camera parameters&quot;&quot;&quot;
+        self.camera_matrix = np.array(msg.k).reshape(3, 3)
+        self.distortion_coeffs = np.array(msg.d)
+
+        if not self.vslam_initialized:
+            self.initialize_vslam()
+            self.vslam_initialized = True
+
+    def initialize_vslam(self):
+        &quot;&quot;&quot;Initialize the VSLAM system&quot;&quot;&quot;
+        # This would connect to Isaac ROS VSLAM components
+        self.get_logger().info(&#x27;VSLAM system initialized&#x27;)
+
+    def process_vslam(self, image):
+        &quot;&quot;&quot;Process image through VSLAM algorithm&quot;&quot;&quot;
+        # Placeholder for actual VSLAM processing
+        # In practice, this would interface with Isaac ROS VSLAM nodes
+        pass
+
+def main(args=None):
+    rclpy.init(args=args)
+    vslam_node = VSLAMNode()
+
+    try:
+        rclpy.spin(vslam_node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        vslam_node.destroy_node()
+        rclpy.shutdown()
+
+if __name__ == &#x27;__main__&#x27;:
+    main()
+</code></pre>
+<h2 id="path-planning-for-humanoid-locomotion">Path Planning for Humanoid Locomotion</h2>
+<p>Humanoid robots require sophisticated path planning that accounts for their complex kinematics and balance requirements.</p>
+<h3 id="navigation-stack-integration">Navigation Stack Integration</h3>
+<pre><code class="language-python">import rclpy
+from rclpy.node import Node
+from geometry_msgs.msg import PoseStamped
+from nav2_msgs.action import NavigateToPose
+from rclpy.action import ActionClient
+
+class HumanoidNavigator(Node):
+    def __init__(self):
+        super().__init__(&#x27;humanoid_navigator&#x27;)
+
+        # Create action client for navigation
+        self.nav_to_pose_client = ActionClient(
+            self,
+            NavigateToPose,
+            &#x27;navigate_to_pose&#x27;
+        )
+
+        # Create publisher for goal poses
+        self.goal_pub = self.create_publisher(
+            PoseStamped,
+            &#x27;/goal_pose&#x27;,
+            10
+        )
+
+    def navigate_to_pose(self, x, y, z, ox, oy, oz, ow):
+        &quot;&quot;&quot;Send navigation goal to the robot&quot;&quot;&quot;
+        goal_msg = NavigateToPose.Goal()
+        goal_msg.pose.header.frame_id = &#x27;map&#x27;
+        goal_msg.pose.pose.position.x = x
+        goal_msg.pose.pose.position.y = y
+        goal_msg.pose.pose.position.z = z
+        goal_msg.pose.pose.orientation.x = ox
+        goal_msg.pose.pose.orientation.y = oy
+        goal_msg.pose.pose.orientation.z = oz
+        goal_msg.pose.pose.orientation.w = ow
+
+        # Wait for action server
+        self.nav_to_pose_client.wait_for_server()
+
+        # Send goal
+        send_goal_future = self.nav_to_pose_client.send_goal_async(
+            goal_msg,
+            feedback_callback=self.feedback_callback
+        )
+
+        send_goal_future.add_done_callback(self.goal_response_callback)
+
+    def goal_response_callback(self, future):
+        &quot;&quot;&quot;Handle goal response&quot;&quot;&quot;
+        goal_handle = future.result()
+        if not goal_handle.accepted:
+            self.get_logger().info(&#x27;Goal rejected&#x27;)
+            return
+
+        self.get_logger().info(&#x27;Goal accepted&#x27;)
+
+        # Get result
+        get_result_future = goal_handle.get_result_async()
+        get_result_future.add_done_callback(self.get_result_callback)
+
+    def feedback_callback(self, feedback_msg):
+        &quot;&quot;&quot;Handle navigation feedback&quot;&quot;&quot;
+        feedback = feedback_msg.feedback
+        self.get_logger().info(f&#x27;Current pose: {feedback.current_pose}&#x27;)
+
+    def get_result_callback(self, future):
+        &quot;&quot;&quot;Handle navigation result&quot;&quot;&quot;
+        result = future.result().result
+        status = future.result().status
+        self.get_logger().info(f&#x27;Navigation result: {result.result}&#x27;)
+</code></pre>
+<h2 id="reinforcement-learning-for-robot-control">Reinforcement Learning for Robot Control</h2>
+<p>Reinforcement learning is powerful for developing complex humanoid behaviors like walking, balancing, and manipulation.</p>
+<h3 id="isaac-gym-environment-for-humanoid-control">Isaac Gym Environment for Humanoid Control</h3>
+<pre><code class="language-python">import torch
+import numpy as np
+from isaacgym import gymapi, gymtorch
+from isaacgym.torch_utils import *
+from gym import spaces
+
+class HumanoidRLEnv:
+    def __init__(self, cfg):
+        self.gym = gymapi.acquire_gym()
+
+        # Configure simulation
+        self.sim_params = gymapi.SimParams()
+        self.sim_params.up_axis = gymapi.UP_AXIS_Z
+        self.sim_params.gravity = gymapi.Vec3(0.0, 0.0, -9.81)
+
+        # Create simulation
+        self.sim = self.gym.create_sim(
+            device_id=0,
+            graphics_device_id=0,
+            physics_engine=gymapi.SIM_PHYSX,
+            params=self.sim_params
+        )
+
+        # Create ground plane
+        plane_params = gymapi.PlaneParams()
+        plane_params.normal = gymapi.Vec3(0.0, 0.0, 1.0)
+        self.gym.add_ground(self.sim, plane_params)
+
+        # Create environment
+        self.create_env()
+
+        # Initialize RL parameters
+        self.num_obs = 48  # Example observation space
+        self.num_actions = 12  # Example action space (12 joints)
+
+        self.observation_space = spaces.Box(
+            low=-np.inf, high=np.inf, shape=(self.num_obs,), dtype=np.float32
+        )
+        self.action_space = spaces.Box(
+            low=-1.0, high=1.0, shape=(self.num_actions,), dtype=np.float32
+        )
+
+    def create_env(self):
+        &quot;&quot;&quot;Create the simulation environment with humanoid robot&quot;&quot;&quot;
+        # Load humanoid asset
+        asset_root = &quot;path/to/humanoid/asset&quot;
+        asset_file = &quot;humanoid.urdf&quot;  # or .usd
+
+        asset_options = gymapi.AssetOptions()
+        asset_options.fix_base_link = False
+        asset_options.flip_visual_attachments = True
+        asset_options.use_mesh_materials = True
+
+        humanoid_asset = self.gym.load_asset(
+            self.sim, asset_root, asset_file, asset_options
+        )
+
+        # Create environment
+        env_spacing = 3.0
+        env_lower = gymapi.Vec3(-env_spacing, -env_spacing, -env_spacing)
+        env_upper = gymapi.Vec3(env_spacing, env_spacing, env_spacing)
+
+        self.env = self.gym.create_env(
+            self.sim, env_lower, env_upper, 1
+        )
+
+        # Add humanoid to environment
+        pose = gymapi.Transform()
+        pose.p = gymapi.Vec3(0.0, 0.0, 1.0)
+        pose.r = gymapi.Quat(0.0, 0.0, 0.0, 1.0)
+
+        self.humanoid_handle = self.gym.create_actor(
+            self.env, humanoid_asset, pose, &quot;humanoid&quot;, 0, 0
+        )
+
+        # Initialize DOF properties
+        dof_props = self.gym.get_actor_dof_properties(self.env, self.humanoid_handle)
+        dof_props[&quot;driveMode&quot;].fill(gymapi.DOF_MODE_EFFORT)
+        dof_props[&quot;stiffness&quot;] = 800.0
+        dof_props[&quot;damping&quot;] = 50.0
+        self.gym.set_actor_dof_properties(self.env, self.humanoid_handle, dof_props)
+
+    def reset(self):
+        &quot;&quot;&quot;Reset the environment&quot;&quot;&quot;
+        # Reset humanoid position and velocity
+        pass
+
+    def step(self, action):
+        &quot;&quot;&quot;Execute one simulation step&quot;&quot;&quot;
+        # Apply action to humanoid
+        # Step simulation
+        # Calculate reward and observation
+        # Return (obs, reward, done, info)
+        pass
+</code></pre>
+<h2 id="sim-to-real-transfer-techniques">Sim-to-Real Transfer Techniques</h2>
+<p>Transferring learned behaviors from simulation to real robots requires careful consideration of domain differences.</p>
+<h3 id="domain-randomization-for-robust-transfer">Domain Randomization for Robust Transfer</h3>
+<pre><code class="language-python">class DomainRandomization:
+    def __init__(self):
+        self.param_ranges = {
+            &#x27;mass&#x27;: (0.8, 1.2),  # ±20% mass variation
+            &#x27;friction&#x27;: (0.5, 1.5),  # Friction range
+            &#x27;restitution&#x27;: (0.0, 0.2),  # Bounce coefficient
+            &#x27;gravity&#x27;: (0.9, 1.1),  # ±10% gravity variation
+        }
+
+    def randomize_robot_params(self, robot):
+        &quot;&quot;&quot;Randomize robot physical parameters&quot;&quot;&quot;
+        # Randomize mass
+        base_mass = robot.get_mass()
+        random_mass = base_mass * np.random.uniform(
+            self.param_ranges[&#x27;mass&#x27;][0],
+            self.param_ranges[&#x27;mass&#x27;][1]
+        )
+        robot.set_mass(random_mass)
+
+        # Randomize friction and other properties
+        # ...
+
+    def randomize_sensors(self, sensor):
+        &quot;&quot;&quot;Add noise to sensor readings&quot;&quot;&quot;
+        # Add realistic noise models to sensors
+        pass
+</code></pre>
+<h2 id="practice-tasks">Practice Tasks</h2>
+<ol>
+<li>Install NVIDIA Isaac Sim and run the basic humanoid example</li>
+<li>Create a synthetic dataset of RGB images with domain randomization</li>
+<li>Implement a simple VSLAM system that tracks robot pose in a known map</li>
+<li>Train a basic reinforcement learning agent to make a humanoid robot stand up</li>
+<li>Implement path planning for navigating around obstacles in simulation</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<p>In this chapter, you&#x27;ve explored the AI-Robot Brain components using NVIDIA Isaac:</p>
+<ul>
+<li>How to set up Isaac Sim for high-fidelity simulation</li>
+<li>Techniques for synthetic data generation with domain randomization</li>
+<li>VSLAM implementation for localization and mapping</li>
+<li>Path planning for humanoid locomotion</li>
+<li>Reinforcement learning for complex robot behaviors</li>
+<li>Sim-to-real transfer techniques</li>
+</ul>
+<p>These AI components form the intelligent core of your humanoid robot, enabling it to perceive, reason, and act in complex environments. The combination of simulation, synthetic data, and reinforcement learning provides a powerful framework for developing sophisticated robotic behaviors.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/Ayesha788/my_book/tree/main/docs/chapter3-isaac.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/my_book/docs/chapter2-digital-twin"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Chapter 2: Digital Twin - Simulating Humanoid Robots</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my_book/docs/chapter4-vla"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Chapter 4: Vision-Language-Action (VLA) - Converting Voice Commands to Robot Actions</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduction-to-ai-robot-brain-systems" class="table-of-contents__link toc-highlight">Introduction to AI-Robot Brain Systems</a></li><li><a href="#nvidia-isaac-sim-overview" class="table-of-contents__link toc-highlight">NVIDIA Isaac Sim Overview</a><ul><li><a href="#key-features-of-isaac-sim" class="table-of-contents__link toc-highlight">Key Features of Isaac Sim:</a></li></ul></li><li><a href="#installing-nvidia-isaac-sim" class="table-of-contents__link toc-highlight">Installing NVIDIA Isaac Sim</a><ul><li><a href="#system-requirements" class="table-of-contents__link toc-highlight">System Requirements:</a></li><li><a href="#installation-steps" class="table-of-contents__link toc-highlight">Installation Steps:</a></li></ul></li><li><a href="#setting-up-isaac-sim-environment" class="table-of-contents__link toc-highlight">Setting up Isaac Sim Environment</a><ul><li><a href="#basic-isaac-sim-launch" class="table-of-contents__link toc-highlight">Basic Isaac Sim Launch</a></li></ul></li><li><a href="#synthetic-data-generation" class="table-of-contents__link toc-highlight">Synthetic Data Generation</a><ul><li><a href="#rgb-camera-data-generation" class="table-of-contents__link toc-highlight">RGB Camera Data Generation</a></li><li><a href="#domain-randomization" class="table-of-contents__link toc-highlight">Domain Randomization</a></li></ul></li><li><a href="#vslam-visual-simultaneous-localization-and-mapping" class="table-of-contents__link toc-highlight">VSLAM (Visual Simultaneous Localization and Mapping)</a><ul><li><a href="#isaac-ros-vslam-components" class="table-of-contents__link toc-highlight">Isaac ROS VSLAM Components</a></li></ul></li><li><a href="#path-planning-for-humanoid-locomotion" class="table-of-contents__link toc-highlight">Path Planning for Humanoid Locomotion</a><ul><li><a href="#navigation-stack-integration" class="table-of-contents__link toc-highlight">Navigation Stack Integration</a></li></ul></li><li><a href="#reinforcement-learning-for-robot-control" class="table-of-contents__link toc-highlight">Reinforcement Learning for Robot Control</a><ul><li><a href="#isaac-gym-environment-for-humanoid-control" class="table-of-contents__link toc-highlight">Isaac Gym Environment for Humanoid Control</a></li></ul></li><li><a href="#sim-to-real-transfer-techniques" class="table-of-contents__link toc-highlight">Sim-to-Real Transfer Techniques</a><ul><li><a href="#domain-randomization-for-robust-transfer" class="table-of-contents__link toc-highlight">Domain Randomization for Robust Transfer</a></li></ul></li><li><a href="#practice-tasks" class="table-of-contents__link toc-highlight">Practice Tasks</a></li><li><a href="#summary" class="table-of-contents__link toc-highlight">Summary</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Chapters</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter1-ros2">ROS 2 Fundamentals</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter2-digital-twin">Digital Twin</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter3-isaac">AI-Robot Brain</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter4-vla">Vision-Language-Action</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/ros2" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://answers.ros.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">ROS Answers<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://developer.nvidia.com/" target="_blank" rel="noopener noreferrer" class="footer__link-item">NVIDIA Developer<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Physical AI & Humanoid Robotics Hackathon Project. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

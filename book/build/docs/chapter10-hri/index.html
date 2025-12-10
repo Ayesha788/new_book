@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-chapter10-hri" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Chapter 10: Human-Robot Interaction for Humanoid Systems | Physical AI &amp; Humanoid Robotics Hackathon Book</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://ayesha788.github.io/my_book/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://ayesha788.github.io/my_book/docs/chapter10-hri"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Chapter 10: Human-Robot Interaction for Humanoid Systems | Physical AI &amp; Humanoid Robotics Hackathon Book"><meta data-rh="true" name="description" content="Introduction to Human-Robot Interaction"><meta data-rh="true" property="og:description" content="Introduction to Human-Robot Interaction"><link data-rh="true" rel="icon" href="/my_book/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://ayesha788.github.io/my_book/docs/chapter10-hri"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/chapter10-hri" hreflang="en"><link data-rh="true" rel="alternate" href="https://ayesha788.github.io/my_book/docs/chapter10-hri" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Chapter 10: Human-Robot Interaction for Humanoid Systems","item":"https://ayesha788.github.io/my_book/docs/chapter10-hri"}]}</script><link rel="stylesheet" href="/my_book/assets/css/styles.26d1bab7.css">
+<script src="/my_book/assets/js/runtime~main.cc4ca827.js" defer="defer"></script>
+<script src="/my_book/assets/js/main.3daa9b1f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/my_book/"><div class="navbar__logo"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/my_book/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Robotics Book</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/my_book/docs/intro">Book Chapters</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/intro"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my_book/docs/environment-setup"><span title="Environment Setup" class="linkLabel_WmDU">Environment Setup</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter1-ros2"><span title="ROS 2 Fundamentals" class="categoryLinkLabel_W154">ROS 2 Fundamentals</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter2-digital-twin"><span title="Digital Twin &amp; Simulation" class="categoryLinkLabel_W154">Digital Twin &amp; Simulation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter3-isaac"><span title="AI-Robot Brain" class="categoryLinkLabel_W154">AI-Robot Brain</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter4-vla"><span title="Vision-Language-Action" class="categoryLinkLabel_W154">Vision-Language-Action</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter5-path-planning"><span title="Path Planning &amp; Navigation" class="categoryLinkLabel_W154">Path Planning &amp; Navigation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter6-computer-vision"><span title="Computer Vision" class="categoryLinkLabel_W154">Computer Vision</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter7-manipulation"><span title="Manipulation &amp; Grasping" class="categoryLinkLabel_W154">Manipulation &amp; Grasping</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter8-multirobot"><span title="Multi-Robot Coordination" class="categoryLinkLabel_W154">Multi-Robot Coordination</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter9-learning"><span title="Learning &amp; Adaptation" class="categoryLinkLabel_W154">Learning &amp; Adaptation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/my_book/docs/chapter10-hri"><span title="Human-Robot Interaction" class="categoryLinkLabel_W154">Human-Robot Interaction</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/my_book/docs/chapter10-hri"><span title="Chapter 10: Human-Robot Interaction for Humanoid Systems" class="linkLabel_WmDU">Chapter 10: Human-Robot Interaction for Humanoid Systems</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter11-safety"><span title="Safety &amp; Ethics" class="categoryLinkLabel_W154">Safety &amp; Ethics</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/chapter12-future"><span title="Future Trends &amp; Applications" class="categoryLinkLabel_W154">Future Trends &amp; Applications</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/practice-tasks-ros2"><span title="Practice Tasks" class="categoryLinkLabel_W154">Practice Tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my_book/docs/glossary"><span title="Reference" class="categoryLinkLabel_W154">Reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/my_book/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Human-Robot Interaction</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Chapter 10: Human-Robot Interaction for Humanoid Systems</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1 id="chapter-10-human-robot-interaction-for-humanoid-systems">Chapter 10: Human-Robot Interaction for Humanoid Systems</h1></header>
+<h2 id="introduction-to-human-robot-interaction">Introduction to Human-Robot Interaction</h2>
+<p>Human-Robot Interaction (HRI) is a critical aspect of humanoid robotics, focusing on how humans and robots can effectively communicate, collaborate, and work together. Unlike traditional industrial robots, humanoid robots are designed to operate in human-centered environments and interact naturally with people.</p>
+<h2 id="social-robotics-principles">Social Robotics Principles</h2>
+<h3 id="anthropomorphic-design-considerations">Anthropomorphic Design Considerations</h3>
+<p>Humanoid robots leverage human-like features to facilitate natural interaction:</p>
+<pre><code class="language-python">import numpy as np
+from enum import Enum
+from dataclasses import dataclass
+from typing import Dict, List, Optional
+
+class GazeBehavior(Enum):
+    ATTENTIVE = &quot;attentive&quot;
+    CORDIAL = &quot;cordial&quot;
+    FOCUSED = &quot;focused&quot;
+    AVOIDANT = &quot;avoidant&quot;
+
+class GestureType(Enum):
+    GREETING = &quot;greeting&quot;
+    POINTING = &quot;pointing&quot;
+    EMPHASIS = &quot;emphasis&quot;
+    REGULATORY = &quot;regulatory&quot;
+    ADAPTIVE = &quot;adaptive&quot;
+
+@dataclass
+class SocialState:
+    engagement_level: float  # 0.0 to 1.0
+    attention_direction: np.ndarray  # 3D vector
+    emotional_state: str  # happy, neutral, concerned, etc.
+    proximity_comfort: float  # Personal space comfort level
+
+class SocialBehaviorController:
+    def __init__(self, robot_id: str):
+        self.robot_id = robot_id
+        self.social_state = SocialState(
+            engagement_level=0.5,
+            attention_direction=np.array([0.0, 0.0, 1.0]),
+            emotional_state=&quot;neutral&quot;,
+            proximity_comfort=0.8
+        )
+        self.human_tracking = {}  # Track multiple humans
+        self.social_rules = self.define_social_rules()
+
+    def define_social_rules(self) -&gt; Dict:
+        &quot;&quot;&quot;Define social behavior rules based on context&quot;&quot;&quot;
+        return {
+            &quot;personal_space&quot;: 0.8,  # meters
+            &quot;social_space&quot;: 1.2,   # meters
+            &quot;public_space&quot;: 3.6,   # meters
+            &quot;gaze_duration_min&quot;: 0.5,  # seconds
+            &quot;gaze_duration_max&quot;: 3.0,  # seconds
+        }
+
+    def update_human_tracking(self, human_id: str, position: np.ndarray, is_looking_at_robot: bool):
+        &quot;&quot;&quot;Update tracking information for a human&quot;&quot;&quot;
+        self.human_tracking[human_id] = {
+            &#x27;position&#x27;: position,
+            &#x27;is_looking_at_robot&#x27;: is_looking_at_robot,
+            &#x27;last_seen&#x27;: self.get_current_time(),
+            &#x27;engagement_score&#x27;: self.calculate_engagement_score(position, is_looking_at_robot)
+        }
+
+    def calculate_engagement_score(self, position: np.ndarray, is_looking: bool) -&gt; float:
+        &quot;&quot;&quot;Calculate how engaged a human is with the robot&quot;&quot;&quot;
+        # Distance-based engagement (closer humans are more likely to engage)
+        distance = np.linalg.norm(position)
+        distance_factor = max(0, 1 - distance / 2.0)  # Higher engagement when closer
+
+        # Looking direction factor
+        looking_factor = 1.0 if is_looking else 0.3
+
+        return distance_factor * looking_factor
+
+    def select_appropriate_behavior(self, context: Dict) -&gt; Dict:
+        &quot;&quot;&quot;Select appropriate social behavior based on context&quot;&quot;&quot;
+        behaviors = {}
+
+        # Gaze behavior selection
+        if context.get(&#x27;human_count&#x27;, 0) == 1:
+            behaviors[&#x27;gaze&#x27;] = self.select_gaze_behavior(context)
+        else:
+            behaviors[&#x27;gaze&#x27;] = self.select_group_gaze_behavior(context)
+
+        # Gesture selection
+        behaviors[&#x27;gesture&#x27;] = self.select_gesture(context)
+
+        # Proximity management
+        behaviors[&#x27;proximity&#x27;] = self.manage_proximity(context)
+
+        return behaviors
+
+    def select_gaze_behavior(self, context: Dict) -&gt; GazeBehavior:
+        &quot;&quot;&quot;Select appropriate gaze behavior&quot;&quot;&quot;
+        human_id = context.get(&#x27;target_human&#x27;, &#x27;&#x27;)
+        if human_id in self.human_tracking:
+            engagement = self.human_tracking[human_id][&#x27;engagement_score&#x27;]
+            if engagement &gt; 0.7:
+                return GazeBehavior.ATTENTIVE
+            elif engagement &gt; 0.4:
+                return GazeBehavior.CORDIAL
+            else:
+                return GazeBehavior.AVOIDANT
+        return GazeBehavior.AVOIDANT
+
+    def select_gesture(self, context: Dict) -&gt; GestureType:
+        &quot;&quot;&quot;Select appropriate gesture based on interaction context&quot;&quot;&quot;
+        interaction_type = context.get(&#x27;interaction_type&#x27;, &#x27;unknown&#x27;)
+        if interaction_type == &#x27;greeting&#x27;:
+            return GestureType.GREETING
+        elif interaction_type == &#x27;instruction&#x27;:
+            return GestureType.POINTING
+        elif interaction_type == &#x27;emphasis&#x27;:
+            return GestureType.EMPHASIS
+        else:
+            return GestureType.CORDIAL
+</code></pre>
+<h2 id="natural-language-processing-for-hri">Natural Language Processing for HRI</h2>
+<h3 id="speech-recognition-and-understanding">Speech Recognition and Understanding</h3>
+<pre><code class="language-python">import speech_recognition as sr
+import nltk
+from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification
+import numpy as np
+
+class NaturalLanguageProcessor:
+    def __init__(self):
+        # Initialize speech recognition
+        self.recognizer = sr.Recognizer()
+        self.microphone = sr.Microphone()
+
+        # Initialize NLP models
+        self.tokenizer = AutoTokenizer.from_pretrained(&quot;bert-base-uncased&quot;)
+        self.intent_model = AutoModelForSequenceClassification.from_pretrained(
+            &quot;microsoft/DialoGPT-medium&quot;
+        )
+
+        # Intent classification pipeline
+        self.intent_classifier = pipeline(
+            &quot;text-classification&quot;,
+            model=&quot;microsoft/DialoGPT-medium&quot;
+        )
+
+        # Predefined commands and intents
+        self.intent_patterns = {
+            &#x27;greeting&#x27;: [&#x27;hello&#x27;, &#x27;hi&#x27;, &#x27;hey&#x27;, &#x27;good morning&#x27;, &#x27;good evening&#x27;],
+            &#x27;navigation&#x27;: [&#x27;go to&#x27;, &#x27;move to&#x27;, &#x27;navigate to&#x27;, &#x27;walk to&#x27;, &#x27;go&#x27;],
+            &#x27;manipulation&#x27;: [&#x27;pick up&#x27;, &#x27;grasp&#x27;, &#x27;take&#x27;, &#x27;get&#x27;, &#x27;bring me&#x27;],
+            &#x27;information&#x27;: [&#x27;what&#x27;, &#x27;how&#x27;, &#x27;when&#x27;, &#x27;where&#x27;, &#x27;who&#x27;, &#x27;tell me&#x27;],
+            &#x27;social&#x27;: [&#x27;how are you&#x27;, &#x27;what are you doing&#x27;, &#x27;nice to meet you&#x27;],
+            &#x27;farewell&#x27;: [&#x27;goodbye&#x27;, &#x27;bye&#x27;, &#x27;see you&#x27;, &#x27;thank you&#x27;, &#x27;thanks&#x27;]
+        }
+
+    def recognize_speech(self, audio_file: str = None) -&gt; str:
+        &quot;&quot;&quot;Recognize speech from audio input&quot;&quot;&quot;
+        try:
+            if audio_file:
+                with sr.AudioFile(audio_file) as source:
+                    audio = self.recognizer.record(source)
+            else:
+                with self.microphone as source:
+                    self.recognizer.adjust_for_ambient_noise(source)
+                    print(&quot;Listening...&quot;)
+                    audio = self.recognizer.listen(source)
+
+            # Use Google Speech Recognition (or other engines)
+            text = self.recognizer.recognize_google(audio)
+            return text.lower()
+
+        except sr.UnknownValueError:
+            return &quot;&quot;
+        except sr.RequestError:
+            return &quot;&quot;
+
+    def classify_intent(self, text: str) -&gt; Dict:
+        &quot;&quot;&quot;Classify the intent of the given text&quot;&quot;&quot;
+        # Simple keyword-based classification first
+        for intent, patterns in self.intent_patterns.items():
+            if any(pattern in text for pattern in patterns):
+                return {
+                    &#x27;intent&#x27;: intent,
+                    &#x27;confidence&#x27;: 0.8,  # Placeholder confidence
+                    &#x27;entities&#x27;: self.extract_entities(text)
+                }
+
+        # If no keyword match, use more sophisticated NLP
+        result = self.intent_classifier(text)
+        return {
+            &#x27;intent&#x27;: result[&#x27;label&#x27;],
+            &#x27;confidence&#x27;: result[&#x27;score&#x27;],
+            &#x27;entities&#x27;: self.extract_entities(text)
+        }
+
+    def extract_entities(self, text: str) -&gt; List[Dict]:
+        &quot;&quot;&quot;Extract named entities from text&quot;&quot;&quot;
+        entities = []
+
+        # Simple entity extraction (in practice, use spaCy or similar)
+        words = text.split()
+        for i, word in enumerate(words):
+            if word in [&#x27;kitchen&#x27;, &#x27;living room&#x27;, &#x27;bedroom&#x27;, &#x27;table&#x27;, &#x27;chair&#x27;, &#x27;cup&#x27;, &#x27;book&#x27;]:
+                entities.append({
+                    &#x27;text&#x27;: word,
+                    &#x27;type&#x27;: &#x27;LOCATION&#x27; if word in [&#x27;kitchen&#x27;, &#x27;living room&#x27;, &#x27;bedroom&#x27;] else &#x27;OBJECT&#x27;,
+                    &#x27;position&#x27;: i
+                })
+
+        return entities
+
+    def generate_response(self, user_input: str, context: Dict = None) -&gt; str:
+        &quot;&quot;&quot;Generate appropriate response to user input&quot;&quot;&quot;
+        intent_info = self.classify_intent(user_input)
+
+        if intent_info[&#x27;intent&#x27;] == &#x27;greeting&#x27;:
+            return self.generate_greeting_response()
+        elif intent_info[&#x27;intent&#x27;] == &#x27;navigation&#x27;:
+            return self.generate_navigation_response(intent_info[&#x27;entities&#x27;])
+        elif intent_info[&#x27;intent&#x27;] == &#x27;manipulation&#x27;:
+            return self.generate_manipulation_response(intent_info[&#x27;entities&#x27;])
+        elif intent_info[&#x27;intent&#x27;] == &#x27;information&#x27;:
+            return self.generate_information_response(user_input)
+        elif intent_info[&#x27;intent&#x27;] == &#x27;social&#x27;:
+            return self.generate_social_response()
+        elif intent_info[&#x27;intent&#x27;] == &#x27;farewell&#x27;:
+            return self.generate_farewell_response()
+        else:
+            return self.generate_default_response()
+
+    def generate_greeting_response(self) -&gt; str:
+        &quot;&quot;&quot;Generate greeting response&quot;&quot;&quot;
+        responses = [
+            &quot;Hello! It&#x27;s nice to meet you.&quot;,
+            &quot;Hi there! How can I help you today?&quot;,
+            &quot;Good to see you! What would you like to do?&quot;
+        ]
+        import random
+        return random.choice(responses)
+
+    def generate_navigation_response(self, entities: List[Dict]) -&gt; str:
+        &quot;&quot;&quot;Generate navigation response&quot;&quot;&quot;
+        if entities:
+            location = entities[0][&#x27;text&#x27;]
+            return f&quot;I can help you navigate to the {location}. Please follow me.&quot;
+        return &quot;I can help you navigate. Where would you like to go?&quot;
+
+    def generate_manipulation_response(self, entities: List[Dict]) -&gt; str:
+        &quot;&quot;&quot;Generate manipulation response&quot;&quot;&quot;
+        if entities:
+            obj = entities[0][&#x27;text&#x27;]
+            return f&quot;I can help you with the {obj}. I&#x27;ll retrieve it for you.&quot;
+        return &quot;I can help you with that. What would you like me to do?&quot;
+
+    def generate_default_response(self) -&gt; str:
+        &quot;&quot;&quot;Generate default response when intent is unclear&quot;&quot;&quot;
+        return &quot;I&#x27;m not sure I understand. Could you please rephrase that?&quot;
+</code></pre>
+<h2 id="gesture-recognition-and-generation">Gesture Recognition and Generation</h2>
+<h3 id="human-gesture-recognition">Human Gesture Recognition</h3>
+<pre><code class="language-python">import cv2
+import mediapipe as mp
+import numpy as np
+from enum import Enum
+
+class Gesture(Enum):
+    WAVING = &quot;waving&quot;
+    POINTING = &quot;pointing&quot;
+    THUMBS_UP = &quot;thumbs_up&quot;
+    THUMBS_DOWN = &quot;thumbs_down&quot;
+    STOP = &quot;stop&quot;
+    COME_HERE = &quot;come_here&quot;
+
+class GestureRecognizer:
+    def __init__(self):
+        # Initialize MediaPipe for pose and hand tracking
+        self.mp_pose = mp.solutions.pose
+        self.mp_hands = mp.solutions.hands
+        self.mp_drawing = mp.solutions.drawing_utils
+
+        self.pose = self.mp_pose.Pose(
+            static_image_mode=False,
+            model_complexity=1,
+            enable_segmentation=False,
+            min_detection_confidence=0.5
+        )
+
+        self.hands = self.mp_hands.Hands(
+            static_image_mode=False,
+            max_num_hands=2,
+            min_detection_confidence=0.5
+        )
+
+    def recognize_gestures(self, image):
+        &quot;&quot;&quot;Recognize gestures from image&quot;&quot;&quot;
+        rgb_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+        # Process pose
+        pose_results = self.pose.process(rgb_image)
+        # Process hands
+        hand_results = self.hands.process(rgb_image)
+
+        recognized_gestures = []
+
+        if hand_results.multi_hand_landmarks:
+            for hand_landmarks in hand_results.multi_hand_landmarks:
+                gesture = self.analyze_hand_gesture(hand_landmarks, image.shape)
+                if gesture:
+                    recognized_gestures.append(gesture)
+
+        if pose_results.pose_landmarks:
+            pose_gesture = self.analyze_body_gesture(pose_results.pose_landmarks)
+            if pose_gesture:
+                recognized_gestures.append(pose_gesture)
+
+        return recognized_gestures
+
+    def analyze_hand_gesture(self, hand_landmarks, image_shape):
+        &quot;&quot;&quot;Analyze hand landmarks to recognize specific gestures&quot;&quot;&quot;
+        # Get landmark coordinates
+        landmarks = []
+        for landmark in hand_landmarks.landmark:
+            x = int(landmark.x * image_shape[1])
+            y = int(landmark.y * image_shape[0])
+            landmarks.append((x, y))
+
+        # Calculate distances between key points
+        thumb_tip = landmarks[4]
+        index_tip = landmarks[8]
+        middle_tip = landmarks[12]
+        ring_tip = landmarks[16]
+        pinky_tip = landmarks[20]
+
+        # Waving: moving hand side to side
+        # This would require tracking movement over time
+
+        # Thumbs up: thumb up, other fingers down
+        if (thumb_tip[1] &lt; index_tip[1] and  # Thumb higher than index
+            thumb_tip[1] &lt; middle_tip[1] and  # Thumb higher than middle
+            thumb_tip[1] &lt; ring_tip[1] and    # Thumb higher than ring
+            thumb_tip[1] &lt; pinky_tip[1]):     # Thumb higher than pinky
+            return Gesture.THUMBS_UP
+
+        # Stop: palm facing forward, fingers extended
+        # Come here: index finger pointing toward robot
+
+        # Pointing: index finger extended, other fingers curled
+        if (index_tip[1] &lt; middle_tip[1] and  # Index higher than middle
+            index_tip[1] &lt; ring_tip[1] and    # Index higher than ring
+            index_tip[1] &lt; pinky_tip[1]):     # Index higher than pinky
+            return Gesture.POINTING
+
+        return None
+
+    def analyze_body_gesture(self, pose_landmarks):
+        &quot;&quot;&quot;Analyze body pose to recognize gestures&quot;&quot;&quot;
+        # Extract key pose landmarks
+        landmarks = pose_landmarks.landmark
+
+        # Access specific landmarks by index
+        left_shoulder = landmarks[self.mp_pose.PoseLandmark.LEFT_SHOULDER]
+        right_shoulder = landmarks[self.mp_pose.PoseLandmark.RIGHT_SHOULDER]
+        left_arm = landmarks[self.mp_pose.PoseLandmark.LEFT_WRIST]
+        right_arm = landmarks[self.mp_pose.PoseLandmark.RIGHT_WRIST]
+
+        # Analyze based on relative positions
+        # For example, waving could be detected by arm movement over time
+
+        return None  # Placeholder
+</code></pre>
+<h3 id="robot-gesture-generation">Robot Gesture Generation</h3>
+<pre><code class="language-python">import numpy as np
+import math
+
+class GestureGenerator:
+    def __init__(self, robot_joints):
+        self.robot_joints = robot_joints  # Joint configuration for the humanoid
+        self.gesture_sequences = self.define_gestures()
+
+    def define_gestures(self):
+        &quot;&quot;&quot;Define gesture sequences for different gestures&quot;&quot;&quot;
+        return {
+            &#x27;waving&#x27;: self.create_waving_gesture(),
+            &#x27;pointing&#x27;: self.create_pointing_gesture(),
+            &#x27;greeting&#x27;: self.create_greeting_gesture(),
+            &#x27;acknowledging&#x27;: self.create_acknowledging_gesture()
+        }
+
+    def create_waving_gesture(self):
+        &quot;&quot;&quot;Create a waving gesture sequence&quot;&quot;&quot;
+        sequence = []
+        base_pos = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]  # Base joint positions
+
+        # Wave motion: move arm up and down
+        for t in np.linspace(0, 2*np.pi, 20):  # 20 time steps
+            # Elbow and wrist joints move in wave pattern
+            elbow_pos = 0.5 * math.sin(t)
+            wrist_pos = 0.3 * math.sin(2*t)
+
+            joint_pos = base_pos.copy()
+            joint_pos[1] = elbow_pos  # Elbow joint
+            joint_pos[2] = wrist_pos  # Wrist joint
+
+            sequence.append({
+                &#x27;joints&#x27;: joint_pos,
+                &#x27;duration&#x27;: 0.1  # 100ms per step
+            })
+
+        return sequence
+
+    def create_pointing_gesture(self):
+        &quot;&quot;&quot;Create a pointing gesture&quot;&quot;&quot;
+        sequence = []
+        base_pos = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+        # Move arm to pointing position
+        for i in range(10):
+            progress = i / 9.0  # 0 to 1
+            joint_pos = base_pos.copy()
+            joint_pos[0] = 0.8 * progress  # Shoulder
+            joint_pos[1] = 0.6 * progress  # Elbow
+            joint_pos[2] = 0.4 * progress  # Wrist
+
+            sequence.append({
+                &#x27;joints&#x27;: joint_pos,
+                &#x27;duration&#x27;: 0.05
+            })
+
+        # Hold position briefly
+        for i in range(5):
+            sequence.append({
+                &#x27;joints&#x27;: sequence[-1][&#x27;joints&#x27;],
+                &#x27;duration&#x27;: 0.1
+            })
+
+        # Return to neutral
+        for i in range(10):
+            progress = 1 - (i / 9.0)  # 1 to 0
+            joint_pos = base_pos.copy()
+            joint_pos[0] = 0.8 * progress
+            joint_pos[1] = 0.6 * progress
+            joint_pos[2] = 0.4 * progress
+
+            sequence.append({
+                &#x27;joints&#x27;: joint_pos,
+                &#x27;duration&#x27;: 0.05
+            })
+
+        return sequence
+
+    def execute_gesture(self, gesture_name: str):
+        &quot;&quot;&quot;Execute a predefined gesture&quot;&quot;&quot;
+        if gesture_name in self.gesture_sequences:
+            sequence = self.gesture_sequences[gesture_name]
+            return self.execute_sequence(sequence)
+        else:
+            print(f&quot;Gesture &#x27;{gesture_name}&#x27; not defined&quot;)
+            return False
+
+    def execute_sequence(self, sequence):
+        &quot;&quot;&quot;Execute a sequence of joint positions&quot;&quot;&quot;
+        for step in sequence:
+            # In a real robot, this would send commands to joint controllers
+            target_joints = step[&#x27;joints&#x27;]
+            duration = step[&#x27;duration&#x27;]
+
+            # Simulate execution
+            print(f&quot;Moving to joints: {target_joints} for {duration}s&quot;)
+
+            # In ROS 2, you would publish joint trajectory messages here
+            # self.joint_trajectory_publisher.publish(trajectory_msg)
+
+        return True
+</code></pre>
+<h2 id="emotional-interaction-and-expression">Emotional Interaction and Expression</h2>
+<h3 id="emotional-state-management">Emotional State Management</h3>
+<pre><code class="language-python">import numpy as np
+from enum import Enum
+from typing import Dict, List
+
+class EmotionalState(Enum):
+    HAPPY = &quot;happy&quot;
+    SAD = &quot;sad&quot;
+    ANGRY = &quot;angry&quot;
+    SURPRISED = &quot;surprised&quot;
+    NEUTRAL = &quot;neutral&quot;
+    CONFUSED = &quot;confused&quot;
+    CONCERNED = &quot;concerned&quot;
+
+class EmotionalStateEstimator:
+    def __init__(self):
+        self.current_emotion = EmotionalState.NEUTRAL
+        self.emotion_history = []
+        self.confidence_threshold = 0.6
+
+    def estimate_emotion_from_audio(self, audio_features: Dict) -&gt; EmotionalState:
+        &quot;&quot;&quot;Estimate emotion from audio features (tone, pitch, speed)&quot;&quot;&quot;
+        # Simplified emotion estimation
+        pitch = audio_features.get(&#x27;pitch&#x27;, 0.5)
+        speed = audio_features.get(&#x27;speed&#x27;, 1.0)
+        volume = audio_features.get(&#x27;volume&#x27;, 0.5)
+
+        if speed &gt; 1.5 and pitch &gt; 0.7:  # Fast and high pitch
+            return EmotionalState.SURPRISED
+        elif speed &lt; 0.7 and pitch &lt; 0.3:  # Slow and low pitch
+            return EmotionalState.SAD
+        elif volume &gt; 0.8 and pitch &gt; 0.6:  # Loud and high pitch
+            return EmotionalState.ANGRY
+        else:
+            return EmotionalState.NEUTRAL
+
+    def estimate_emotion_from_vision(self, facial_features: Dict) -&gt; EmotionalState:
+        &quot;&quot;&quot;Estimate emotion from facial expression&quot;&quot;&quot;
+        # Based on facial landmark analysis
+        eyebrow_raised = facial_features.get(&#x27;eyebrow_raised&#x27;, False)
+        mouth_open = facial_features.get(&#x27;mouth_open&#x27;, False)
+        eyes_wide = facial_features.get(&#x27;eyes_wide&#x27;, False)
+
+        if eyebrow_raised and eyes_wide:
+            return EmotionalState.SURPRISED
+        elif mouth_open and eyes_wide:
+            return EmotionalState.SURPRISED
+        elif not mouth_open and not eyes_wide and not eyebrow_raised:
+            return EmotionalState.NEUTRAL
+        else:
+            return EmotionalState.CONFUSED
+
+    def estimate_emotion_from_context(self, context: Dict) -&gt; EmotionalState:
+        &quot;&quot;&quot;Estimate emotion based on interaction context&quot;&quot;&quot;
+        recent_events = context.get(&#x27;recent_events&#x27;, [])
+        user_tone = context.get(&#x27;user_tone&#x27;, &#x27;neutral&#x27;)
+
+        if &#x27;error&#x27; in recent_events:
+            return EmotionalState.CONCERNED
+        elif user_tone == &#x27;frustrated&#x27;:
+            return EmotionalState.CONCERNED
+        elif user_tone == &#x27;happy&#x27;:
+            return EmotionalState.HAPPY
+        else:
+            return EmotionalState.NEUTRAL
+
+class EmotionalExpressionController:
+    def __init__(self):
+        self.face_expression_map = {
+            EmotionalState.HAPPY: {&#x27;mouth&#x27;: &#x27;smile&#x27;, &#x27;eyebrows&#x27;: &#x27;neutral&#x27;, &#x27;eyes&#x27;: &#x27;normal&#x27;},
+            EmotionalState.SAD: {&#x27;mouth&#x27;: &#x27;frown&#x27;, &#x27;eyebrows&#x27;: &#x27;dropped&#x27;, &#x27;eyes&#x27;: &#x27;droopy&#x27;},
+            EmotionalState.ANGRY: {&#x27;mouth&#x27;: &#x27;tight&#x27;, &#x27;eyebrows&#x27;: &#x27;furrowed&#x27;, &#x27;eyes&#x27;: &#x27;narrow&#x27;},
+            EmotionalState.SURPRISED: {&#x27;mouth&#x27;: &#x27;open&#x27;, &#x27;eyebrows&#x27;: &#x27;raised&#x27;, &#x27;eyes&#x27;: &#x27;wide&#x27;},
+            EmotionalState.NEUTRAL: {&#x27;mouth&#x27;: &#x27;neutral&#x27;, &#x27;eyebrows&#x27;: &#x27;neutral&#x27;, &#x27;eyes&#x27;: &#x27;normal&#x27;},
+            EmotionalState.CONFUSED: {&#x27;mouth&#x27;: &#x27;slightly_open&#x27;, &#x27;eyebrows&#x27;: &#x27;one_raised&#x27;, &#x27;eyes&#x27;: &#x27;looking_around&#x27;},
+            EmotionalState.CONCERNED: {&#x27;mouth&#x27;: &#x27;tight&#x27;, &#x27;eyebrows&#x27;: &#x27;furrowed&#x27;, &#x27;eyes&#x27;: &#x27;wide&#x27;},
+        }
+
+    def generate_emotional_response(self, perceived_emotion: EmotionalState, context: Dict) -&gt; Dict:
+        &quot;&quot;&quot;Generate appropriate emotional response&quot;&quot;&quot;
+        response = {
+            &#x27;face_expression&#x27;: self.face_expression_map[perceived_emotion],
+            &#x27;vocal_tone&#x27;: self.get_vocal_tone_for_emotion(perceived_emotion),
+            &#x27;body_posture&#x27;: self.get_posture_for_emotion(perceived_emotion),
+            &#x27;response_text&#x27;: self.get_response_text_for_emotion(perceived_emotion, context)
+        }
+        return response
+
+    def get_vocal_tone_for_emotion(self, emotion: EmotionalState) -&gt; Dict:
+        &quot;&quot;&quot;Get vocal tone parameters for an emotion&quot;&quot;&quot;
+        tone_map = {
+            EmotionalState.HAPPY: {&#x27;pitch&#x27;: 1.2, &#x27;speed&#x27;: 1.1, &#x27;volume&#x27;: 1.0},
+            EmotionalState.SAD: {&#x27;pitch&#x27;: 0.8, &#x27;speed&#x27;: 0.7, &#x27;volume&#x27;: 0.8},
+            EmotionalState.ANGRY: {&#x27;pitch&#x27;: 1.1, &#x27;speed&#x27;: 1.5, &#x27;volume&#x27;: 1.3},
+            EmotionalState.SURPRISED: {&#x27;pitch&#x27;: 1.4, &#x27;speed&#x27;: 1.2, &#x27;volume&#x27;: 1.1},
+            EmotionalState.NEUTRAL: {&#x27;pitch&#x27;: 1.0, &#x27;speed&#x27;: 1.0, &#x27;volume&#x27;: 1.0},
+            EmotionalState.CONFUSED: {&#x27;pitch&#x27;: 0.9, &#x27;speed&#x27;: 0.9, &#x27;volume&#x27;: 0.9},
+            EmotionalState.CONCERNED: {&#x27;pitch&#x27;: 0.95, &#x27;speed&#x27;: 0.8, &#x27;volume&#x27;: 0.9}
+        }
+        return tone_map.get(emotion, tone_map[EmotionalState.NEUTRAL])
+
+    def get_posture_for_emotion(self, emotion: EmotionalState) -&gt; str:
+        &quot;&quot;&quot;Get body posture for an emotion&quot;&quot;&quot;
+        posture_map = {
+            EmotionalState.HAPPY: &#x27;upright_and_open&#x27;,
+            EmotionalState.SAD: &#x27;slightly_hunched&#x27;,
+            EmotionalState.ANGRY: &#x27;stiff_and_direct&#x27;,
+            EmotionalState.SURPRISED: &#x27;leaning_forward&#x27;,
+            EmotionalState.NEUTRAL: &#x27;normal_standing&#x27;,
+            EmotionalState.CONFUSED: &#x27;slight_head_tilt&#x27;,
+            EmotionalState.CONCERNED: &#x27;leaning_slightly_forward&#x27;
+        }
+        return posture_map.get(emotion, &#x27;normal_standing&#x27;)
+
+    def get_response_text_for_emotion(self, emotion: EmotionalState, context: Dict) -&gt; str:
+        &quot;&quot;&quot;Get appropriate response text for an emotion&quot;&quot;&quot;
+        response_templates = {
+            EmotionalState.HAPPY: &quot;I&#x27;m glad you&#x27;re happy! How can I help?&quot;,
+            EmotionalState.SAD: &quot;I&#x27;m sorry you&#x27;re feeling down. Is there anything I can do?&quot;,
+            EmotionalState.ANGRY: &quot;I understand you&#x27;re upset. Let me help resolve this.&quot;,
+            EmotionalState.SURPRISED: &quot;Oh! Did I surprise you? I didn&#x27;t mean to.&quot;,
+            EmotionalState.NEUTRAL: &quot;Hello! How can I assist you today?&quot;,
+            EmotionalState.CONFUSED: &quot;I see you look confused. Let me clarify.&quot;,
+            EmotionalState.CONCERNED: &quot;I notice you seem concerned. How can I help?&quot;
+        }
+        return response_templates.get(emotion, &quot;Hello! How can I help?&quot;)
+</code></pre>
+<h2 id="multi-modal-interaction-framework">Multi-Modal Interaction Framework</h2>
+<h3 id="integration-of-multiple-interaction-modalities">Integration of Multiple Interaction Modalities</h3>
+<pre><code class="language-python">import threading
+import time
+from queue import Queue
+
+class MultiModalInteractionFramework:
+    def __init__(self):
+        # Initialize all interaction modules
+        self.nlp_processor = NaturalLanguageProcessor()
+        self.gesture_recognizer = GestureRecognizer()
+        self.emotion_estimator = EmotionalStateEstimator()
+        self.social_controller = SocialBehaviorController(&quot;robot1&quot;)
+        self.gesture_generator = GestureGenerator(robot_joints=[])
+
+        # Queues for different modalities
+        self.speech_queue = Queue()
+        self.vision_queue = Queue()
+        self.tactile_queue = Queue()
+
+        # Interaction state
+        self.current_interaction = None
+        self.interaction_history = []
+
+        # Start processing threads
+        self.speech_thread = threading.Thread(target=self.process_speech_input)
+        self.vision_thread = threading.Thread(target=self.process_vision_input)
+        self.main_thread = threading.Thread(target=self.main_interaction_loop)
+
+    def process_speech_input(self):
+        &quot;&quot;&quot;Continuously process speech input&quot;&quot;&quot;
+        while True:
+            try:
+                # In a real system, this would continuously listen
+                speech_text = self.nlp_processor.recognize_speech()
+                if speech_text:
+                    intent_info = self.nlp_processor.classify_intent(speech_text)
+                    self.speech_queue.put({
+                        &#x27;type&#x27;: &#x27;speech&#x27;,
+                        &#x27;text&#x27;: speech_text,
+                        &#x27;intent&#x27;: intent_info
+                    })
+                time.sleep(0.1)  # Small delay to prevent busy waiting
+            except Exception as e:
+                print(f&quot;Speech processing error: {e}&quot;)
+
+    def process_vision_input(self):
+        &quot;&quot;&quot;Continuously process vision input&quot;&quot;&quot;
+        cap = cv2.VideoCapture(0)  # Camera input
+        while True:
+            ret, frame = cap.read()
+            if ret:
+                gestures = self.gesture_recognizer.recognize_gestures(frame)
+                if gestures:
+                    self.vision_queue.put({
+                        &#x27;type&#x27;: &#x27;gesture&#x27;,
+                        &#x27;gestures&#x27;: gestures,
+                        &#x27;timestamp&#x27;: time.time()
+                    })
+            time.sleep(0.1)
+
+    def main_interaction_loop(self):
+        &quot;&quot;&quot;Main loop for coordinating multi-modal interaction&quot;&quot;&quot;
+        while True:
+            # Process all available inputs
+            self.process_queued_inputs()
+
+            # Generate appropriate response
+            response = self.generate_response()
+
+            # Execute response
+            self.execute_response(response)
+
+            time.sleep(0.05)  # Main loop rate
+
+    def process_queued_inputs(self):
+        &quot;&quot;&quot;Process all queued interaction inputs&quot;&quot;&quot;
+        # Process speech inputs
+        while not self.speech_queue.empty():
+            speech_data = self.speech_queue.get()
+            self.handle_speech_input(speech_data)
+
+        # Process vision inputs
+        while not self.vision_queue.empty():
+            vision_data = self.vision_queue.get()
+            self.handle_vision_input(vision_data)
+
+    def handle_speech_input(self, speech_data):
+        &quot;&quot;&quot;Handle speech input and update interaction state&quot;&quot;&quot;
+        text = speech_data[&#x27;text&#x27;]
+        intent = speech_data[&#x27;intent&#x27;]
+
+        # Update social state based on interaction
+        if intent[&#x27;intent&#x27;] == &#x27;greeting&#x27;:
+            self.social_controller.social_state.engagement_level = 0.8
+            self.social_controller.social_state.emotional_state = &quot;happy&quot;
+        elif intent[&#x27;intent&#x27;] == &#x27;farewell&#x27;:
+            self.social_controller.social_state.engagement_level = 0.2
+
+        # Store in interaction history
+        self.interaction_history.append({
+            &#x27;type&#x27;: &#x27;speech&#x27;,
+            &#x27;content&#x27;: text,
+            &#x27;intent&#x27;: intent,
+            &#x27;timestamp&#x27;: time.time()
+        })
+
+    def handle_vision_input(self, vision_data):
+        &quot;&quot;&quot;Handle vision input and update interaction state&quot;&quot;&quot;
+        gestures = vision_data[&#x27;gestures&#x27;]
+
+        for gesture in gestures:
+            if gesture == Gesture.WAVING:
+                # Increase engagement level
+                self.social_controller.social_state.engagement_level = min(
+                    1.0, self.social_controller.social_state.engagement_level + 0.3
+                )
+                # Generate waving response
+                self.gesture_generator.execute_gesture(&#x27;waving&#x27;)
+
+        # Store in interaction history
+        self.interaction_history.append({
+            &#x27;type&#x27;: &#x27;gesture&#x27;,
+            &#x27;content&#x27;: [g.value for g in gestures],
+            &#x27;timestamp&#x27;: time.time()
+        })
+
+    def generate_response(self):
+        &quot;&quot;&quot;Generate multimodal response based on current state&quot;&quot;&quot;
+        # Analyze current context
+        context = {
+            &#x27;social_state&#x27;: self.social_controller.social_state,
+            &#x27;recent_interactions&#x27;: self.interaction_history[-5:],  # Last 5 interactions
+            &#x27;engagement_level&#x27;: self.social_controller.social_state.engagement_level
+        }
+
+        # Select appropriate behaviors
+        behaviors = self.social_controller.select_appropriate_behavior(context)
+
+        # Generate response components
+        response = {
+            &#x27;speech&#x27;: self.generate_speech_response(context),
+            &#x27;gesture&#x27;: behaviors[&#x27;gesture&#x27;],
+            &#x27;gaze&#x27;: behaviors[&#x27;gaze&#x27;],
+            &#x27;emotional_expression&#x27;: self.generate_emotional_response(context)
+        }
+
+        return response
+
+    def generate_speech_response(self, context):
+        &quot;&quot;&quot;Generate appropriate speech response&quot;&quot;&quot;
+        engagement = context[&#x27;engagement_level&#x27;]
+
+        if engagement &gt; 0.7:
+            return &quot;I&#x27;m happy to help you with that!&quot;
+        elif engagement &gt; 0.4:
+            return &quot;I can assist you. What would you like to do?&quot;
+        else:
+            return &quot;Hello there! How can I help you today?&quot;
+
+    def generate_emotional_response(self, context):
+        &quot;&quot;&quot;Generate emotional expression response&quot;&quot;&quot;
+        engagement = context[&#x27;engagement_level&#x27;]
+
+        if engagement &gt; 0.7:
+            return EmotionalState.HAPPY
+        elif engagement &gt; 0.4:
+            return EmotionalState.NEUTRAL
+        else:
+            return EmotionalState.CONCERNED
+
+    def execute_response(self, response):
+        &quot;&quot;&quot;Execute the multimodal response&quot;&quot;&quot;
+        # Execute speech
+        print(f&quot;Robot says: {response[&#x27;speech&#x27;]}&quot;)
+
+        # Execute gesture
+        if response[&#x27;gesture&#x27;]:
+            gesture_name = response[&#x27;gesture&#x27;].value
+            self.gesture_generator.execute_gesture(gesture_name)
+
+        # Execute emotional expression
+        if response[&#x27;emotional_expression&#x27;]:
+            expr_controller = EmotionalExpressionController()
+            emotion_response = expr_controller.generate_emotional_response(
+                response[&#x27;emotional_expression&#x27;], {}
+            )
+            print(f&quot;Robot expresses: {emotion_response}&quot;)
+</code></pre>
+<h2 id="ros-2-integration-for-hri">ROS 2 Integration for HRI</h2>
+<h3 id="human-robot-interaction-node">Human-Robot Interaction Node</h3>
+<pre><code class="language-python">import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String, Bool, Float32
+from sensor_msgs.msg import Image, JointState
+from geometry_msgs.msg import PointStamped
+from hri_msgs.msg import HumanState, RobotExpression, InteractionEvent
+
+class HRIManager(Node):
+    def __init__(self):
+        super().__init__(&#x27;hri_manager&#x27;)
+
+        # Publishers
+        self.speech_pub = self.create_publisher(String, &#x27;robot_speech&#x27;, 10)
+        self.expression_pub = self.create_publisher(RobotExpression, &#x27;robot_expression&#x27;, 10)
+        self.gesture_pub = self.create_publisher(String, &#x27;robot_gesture&#x27;, 10)
+        self.interaction_pub = self.create_publisher(InteractionEvent, &#x27;interaction_events&#x27;, 10)
+
+        # Subscribers
+        self.speech_sub = self.create_subscription(
+            String, &#x27;human_speech&#x27;, self.speech_callback, 10
+        )
+        self.image_sub = self.create_subscription(
+            Image, &#x27;camera/image_raw&#x27;, self.image_callback, 10
+        )
+        self.human_state_sub = self.create_subscription(
+            HumanState, &#x27;human_state&#x27;, self.human_state_callback, 10
+        )
+
+        # Initialize interaction components
+        self.nlp_processor = NaturalLanguageProcessor()
+        self.social_controller = SocialBehaviorController(self.get_namespace())
+        self.gesture_generator = GestureGenerator([])
+
+        # Timer for periodic interaction updates
+        self.interaction_timer = self.create_timer(0.1, self.interaction_step)
+
+        # Internal state
+        self.human_states = {}
+        self.current_interaction = None
+
+        self.get_logger().info(&#x27;HRI Manager initialized&#x27;)
+
+    def speech_callback(self, msg: String):
+        &quot;&quot;&quot;Handle incoming human speech&quot;&quot;&quot;
+        intent_info = self.nlp_processor.classify_intent(msg.data.lower())
+
+        # Publish interaction event
+        event_msg = InteractionEvent()
+        event_msg.type = &quot;speech_input&quot;
+        event_msg.content = msg.data
+        event_msg.intent = intent_info[&#x27;intent&#x27;]
+        self.interaction_pub.publish(event_msg)
+
+        # Generate and publish response
+        response = self.nlp_processor.generate_response(msg.data)
+        response_msg = String()
+        response_msg.data = response
+        self.speech_pub.publish(response_msg)
+
+    def image_callback(self, msg: Image):
+        &quot;&quot;&quot;Process camera image for gesture recognition&quot;&quot;&quot;
+        # Convert ROS Image to OpenCV format and process
+        # This would involve calling gesture recognition algorithms
+        pass
+
+    def human_state_callback(self, msg: HumanState):
+        &quot;&quot;&quot;Update with human state information&quot;&quot;&quot;
+        self.human_states[msg.human_id] = {
+            &#x27;position&#x27;: msg.position,
+            &#x27;gaze_direction&#x27;: msg.gaze_direction,
+            &#x27;engagement&#x27;: msg.engagement_level
+        }
+
+        # Update social controller
+        self.social_controller.update_human_tracking(
+            msg.human_id,
+            np.array([msg.position.x, msg.position.y, msg.position.z]),
+            msg.is_looking_at_robot
+        )
+
+    def interaction_step(self):
+        &quot;&quot;&quot;Main interaction processing step&quot;&quot;&quot;
+        if self.human_states:
+            # Determine primary human for interaction
+            primary_human = self.select_primary_human()
+
+            if primary_human:
+                context = {
+                    &#x27;target_human&#x27;: primary_human,
+                    &#x27;human_count&#x27;: len(self.human_states),
+                    &#x27;interaction_type&#x27;: &#x27;unknown&#x27;  # Would be determined from context
+                }
+
+                # Select appropriate behaviors
+                behaviors = self.social_controller.select_appropriate_behavior(context)
+
+                # Execute gaze behavior
+                gaze_msg = String()
+                gaze_msg.data = behaviors[&#x27;gaze&#x27;].value
+                self.gesture_pub.publish(gaze_msg)
+
+                # Execute gesture if appropriate
+                if behaviors[&#x27;gesture&#x27;]:
+                    gesture_msg = String()
+                    gesture_msg.data = behaviors[&#x27;gesture&#x27;].value
+                    self.gesture_pub.publish(gesture_msg)
+
+    def select_primary_human(self):
+        &quot;&quot;&quot;Select the primary human for interaction&quot;&quot;&quot;
+        if not self.human_states:
+            return None
+
+        # Select human with highest engagement level
+        primary_human = max(
+            self.human_states.items(),
+            key=lambda x: x[1].get(&#x27;engagement&#x27;, 0)
+        )[0]
+
+        return primary_human
+</code></pre>
+<h2 id="challenges-in-human-robot-interaction">Challenges in Human-Robot Interaction</h2>
+<h3 id="social-acceptance">Social Acceptance</h3>
+<p>Humanoid robots must be designed to be socially acceptable:</p>
+<ul>
+<li>Appropriate appearance and behavior</li>
+<li>Respect for cultural norms</li>
+<li>Privacy considerations</li>
+</ul>
+<h3 id="safety-and-trust">Safety and Trust</h3>
+<p>Ensuring safe and trustworthy interactions:</p>
+<ul>
+<li>Predictable behavior</li>
+<li>Clear communication of robot capabilities</li>
+<li>Safe physical interaction</li>
+</ul>
+<h3 id="technical-challenges">Technical Challenges</h3>
+<p>Various technical challenges in HRI:</p>
+<ul>
+<li>Robust perception in real environments</li>
+<li>Real-time processing requirements</li>
+<li>Multi-modal integration complexity</li>
+</ul>
+<h2 id="practice-tasks">Practice Tasks</h2>
+<ol>
+<li>Implement a simple speech recognition and response system</li>
+<li>Create gesture recognition using computer vision</li>
+<li>Develop emotional expression capabilities</li>
+<li>Design a multimodal interaction system</li>
+<li>Test HRI system with human subjects in simulation</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<p>Human-Robot Interaction is crucial for humanoid robots to effectively collaborate with humans. By implementing natural communication modalities, social behaviors, and emotional expressions, humanoid robots can create more intuitive and engaging interactions that facilitate human-robot collaboration.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/Ayesha788/my_book/tree/main/docs/chapter10-hri.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/my_book/docs/chapter9-learning"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Chapter 9: Learning and Adaptation for Humanoid Robots</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my_book/docs/chapter11-safety"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Chapter 11: Safety and Ethics in Humanoid Robotics</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduction-to-human-robot-interaction" class="table-of-contents__link toc-highlight">Introduction to Human-Robot Interaction</a></li><li><a href="#social-robotics-principles" class="table-of-contents__link toc-highlight">Social Robotics Principles</a><ul><li><a href="#anthropomorphic-design-considerations" class="table-of-contents__link toc-highlight">Anthropomorphic Design Considerations</a></li></ul></li><li><a href="#natural-language-processing-for-hri" class="table-of-contents__link toc-highlight">Natural Language Processing for HRI</a><ul><li><a href="#speech-recognition-and-understanding" class="table-of-contents__link toc-highlight">Speech Recognition and Understanding</a></li></ul></li><li><a href="#gesture-recognition-and-generation" class="table-of-contents__link toc-highlight">Gesture Recognition and Generation</a><ul><li><a href="#human-gesture-recognition" class="table-of-contents__link toc-highlight">Human Gesture Recognition</a></li><li><a href="#robot-gesture-generation" class="table-of-contents__link toc-highlight">Robot Gesture Generation</a></li></ul></li><li><a href="#emotional-interaction-and-expression" class="table-of-contents__link toc-highlight">Emotional Interaction and Expression</a><ul><li><a href="#emotional-state-management" class="table-of-contents__link toc-highlight">Emotional State Management</a></li></ul></li><li><a href="#multi-modal-interaction-framework" class="table-of-contents__link toc-highlight">Multi-Modal Interaction Framework</a><ul><li><a href="#integration-of-multiple-interaction-modalities" class="table-of-contents__link toc-highlight">Integration of Multiple Interaction Modalities</a></li></ul></li><li><a href="#ros-2-integration-for-hri" class="table-of-contents__link toc-highlight">ROS 2 Integration for HRI</a><ul><li><a href="#human-robot-interaction-node" class="table-of-contents__link toc-highlight">Human-Robot Interaction Node</a></li></ul></li><li><a href="#challenges-in-human-robot-interaction" class="table-of-contents__link toc-highlight">Challenges in Human-Robot Interaction</a><ul><li><a href="#social-acceptance" class="table-of-contents__link toc-highlight">Social Acceptance</a></li><li><a href="#safety-and-trust" class="table-of-contents__link toc-highlight">Safety and Trust</a></li><li><a href="#technical-challenges" class="table-of-contents__link toc-highlight">Technical Challenges</a></li></ul></li><li><a href="#practice-tasks" class="table-of-contents__link toc-highlight">Practice Tasks</a></li><li><a href="#summary" class="table-of-contents__link toc-highlight">Summary</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Chapters</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter1-ros2">ROS 2 Fundamentals</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter2-digital-twin">Digital Twin</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter3-isaac">AI-Robot Brain</a></li><li class="footer__item"><a class="footer__link-item" href="/my_book/docs/chapter4-vla">Vision-Language-Action</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/ros2" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://answers.ros.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">ROS Answers<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://developer.nvidia.com/" target="_blank" rel="noopener noreferrer" class="footer__link-item">NVIDIA Developer<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/Ayesha788/my_book" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Physical AI & Humanoid Robotics Hackathon Project. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

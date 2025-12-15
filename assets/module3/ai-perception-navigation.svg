@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700" height="500" xmlns="http://www.w3.org/2000/svg">
+  <title>AI Perception and Navigation System</title>
+  <desc>Diagram showing the AI perception and navigation pipeline from sensors to actions</desc>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="350" y="30" font-family="Arial" font-size="18" text-anchor="middle" fill="#000000">AI Perception and Navigation System</text>
+
+  <!-- Robot with sensors -->
+  <g transform="translate(50, 100)">
+    <!-- Robot body -->
+    <rect x="0" y="0" width="80" height="60" fill="#4CAF50" stroke="#2E7D32" stroke-width="2" rx="5"/>
+    <text x="40" y="35" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Robot</text>
+
+    <!-- Camera sensor -->
+    <circle cx="80" cy="20" r="10" fill="#2196F3" stroke="#0D47A1" stroke-width="2"/>
+    <text x="95" y="25" font-family="Arial" font-size="10" text-anchor="start" fill="#000000">Camera</text>
+
+    <!-- LiDAR sensor -->
+    <circle cx="80" cy="40" r="10" fill="#2196F3" stroke="#0D47A1" stroke-width="2"/>
+    <text x="95" y="45" font-family="Arial" font-size="10" text-anchor="start" fill="#000000">LiDAR</text>
+
+    <!-- IMU sensor -->
+    <circle cx="60" cy="-20" r="10" fill="#2196F3" stroke="#0D47A1" stroke-width="2"/>
+    <text x="75" y="-15" font-family="Arial" font-size="10" text-anchor="start" fill="#000000">IMU</text>
+  </g>
+
+  <!-- Perception Pipeline -->
+  <g transform="translate(180, 80)">
+    <rect x="0" y="0" width="120" height="40" fill="#FF9800" stroke="#E65100" stroke-width="2" rx="5"/>
+    <text x="60" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Perception</text>
+    <text x="60" y="40" font-family="Arial" font-size="10" text-anchor="middle" fill="#ffffff">Pipeline</text>
+  </g>
+
+  <!-- Object Detection -->
+  <g transform="translate(180, 150)">
+    <rect x="0" y="0" width="120" height="40" fill="#9C27B0" stroke="#4A148C" stroke-width="2" rx="5"/>
+    <text x="60" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Object Detection</text>
+  </g>
+
+  <!-- SLAM -->
+  <g transform="translate(180, 220)">
+    <rect x="0" y="0" width="120" height="40" fill="#9C27B0" stroke="#4A148C" stroke-width="2" rx="5"/>
+    <text x="60" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">SLAM</text>
+  </g>
+
+  <!-- Path Planning -->
+  <g transform="translate(350, 150)">
+    <rect x="0" y="0" width="120" height="40" fill="#F44336" stroke="#B71C1C" stroke-width="2" rx="5"/>
+    <text x="60" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Path Planning</text>
+  </g>
+
+  <!-- Navigation -->
+  <g transform="translate(520, 150)">
+    <rect x="0" y="0" width="120" height="40" fill="#2196F3" stroke="#0D47A1" stroke-width="2" rx="5"/>
+    <text x="60" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Navigation</text>
+  </g>
+
+  <!-- Decision Making -->
+  <g transform="translate(350, 250)">
+    <rect x="0" y="0" width="120" height="40" fill="#FF9800" stroke="#E65100" stroke-width="2" rx="5"/>
+    <text x="60" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Decision Making</text>
+  </g>
+
+  <!-- Environment Map -->
+  <g transform="translate(520, 250)">
+    <rect x="0" y="0" width="120" height="40" fill="#8BC34A" stroke="#558B2F" stroke-width="2" rx="5"/>
+    <text x="60" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Environment Map</text>
+  </g>
+
+  <!-- World Model -->
+  <g transform="translate(350, 350)">
+    <rect x="0" y="0" width="120" height="40" fill="#3F51B5" stroke="#1A237E" stroke-width="2" rx="5"/>
+    <text x="60" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">World Model</text>
+  </g>
+
+  <!-- Action Execution -->
+  <g transform="translate(520, 350)">
+    <rect x="0" y="0" width="120" height="40" fill="#4CAF50" stroke="#2E7D32" stroke-width="2" rx="5"/>
+    <text x="60" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Action Execution</text>
+  </g>
+
+  <!-- Connection arrows -->
+  <line x1="130" y1="130" x2="180" y2="100" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <line x1="240" y1="120" x2="240" y2="150" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="240" y1="190" x2="240" y2="220" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <line x1="120" y1="120" x2="350" y2="170" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="300" y1="170" x2="350" y2="170" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <line x1="470" y1="170" x2="520" y2="170" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <line x1="410" y1="290" x2="410" y2="350" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="470" y1="270" x2="520" y2="270" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <line x1="410" y1="390" x2="410" y2="450" stroke="#000000" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  <line x1="470" y1="370" x2="520" y2="370" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <line x1="640" y1="370" x2="640" y2="130" stroke="#000000" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  <line x1="640" y1="130" x2="90" y2="130" stroke="#000000" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+
+  <!-- Arrowhead definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7"
+      refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000000"/>
+    </marker>
+  </defs>
+
+  <!-- Labels -->
+  <text x="155" y="90" font-family="Arial" font-size="10" text-anchor="middle" fill="#000000">Sensory</text>
+  <text x="155" y="100" font-family="Arial" font-size="10" text-anchor="middle" fill="#000000">Input</text>
+  <text x="260" y="140" font-family="Arial" font-size="10" text-anchor="start" fill="#000000">Process</text>
+  <text x="260" y="210" font-family="Arial" font-size="10" text-anchor="start" fill="#000000">Map</text>
+  <text x="380" y="160" font-family="Arial" font-size="10" text-anchor="start" fill="#000000">Plan</text>
+  <text x="550" y="160" font-family="Arial" font-size="10" text-anchor="start" fill="#000000">Execute</text>
+  <text x="550" y="260" font-family="Arial" font-size="10" text-anchor="start" fill="#000000">Update</text>
+  <text x="450" y="340" font-family="Arial" font-size="10" text-anchor="start" fill="#000000">Model</text>
+  <text x="550" y="340" font-family="Arial" font-size="10" text-anchor="start" fill="#000000">Control</text>
+
+  <!-- Legend -->
+  <rect x="20" y="430" width="280" height="60" fill="none" stroke="#000000" stroke-width="1"/>
+  <text x="30" y="445" font-family="Arial" font-size="12" fill="#000000">Legend:</text>
+  <rect x="30" y="455" width="15" height="10" fill="#4CAF50" stroke="#2E7D32"/>
+  <text x="50" y="465" font-family="Arial" font-size="10" fill="#000000">Robot/Action</text>
+  <rect x="30" y="470" width="15" height="10" fill="#FF9800" stroke="#E65100"/>
+  <text x="50" y="480" font-family="Arial" font-size="10" fill="#000000">Perception/Decision</text>
+  <rect x="150" y="455" width="15" height="10" fill="#2196F3" stroke="#0D47A1"/>
+  <text x="170" y="465" font-family="Arial" font-size="10" fill="#000000">Navigation</text>
+  <rect x="150" y="470" width="15" height="10" fill="#9C27B0" stroke="#4A148C"/>
+  <text x="170" y="480" font-family="Arial" font-size="10" fill="#000000">Processing</text>
+</svg>

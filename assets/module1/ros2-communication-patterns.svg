@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <title>ROS 2 Communication Patterns</title>
+  <desc>Diagram showing different communication patterns in ROS 2: Publisher/Subscriber, Client/Service, Action</desc>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="300" y="30" font-family="Arial" font-size="18" text-anchor="middle" fill="#000000">ROS 2 Communication Patterns</text>
+
+  <!-- Publisher/Subscriber Pattern -->
+  <g transform="translate(50, 60)">
+    <!-- Publisher Node -->
+    <rect x="0" y="0" width="100" height="40" fill="#4CAF50" stroke="#2E7D32" stroke-width="2" rx="5"/>
+    <text x="50" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Publisher</text>
+
+    <!-- Topic -->
+    <ellipse cx="175" cy="20" rx="50" ry="20" fill="#F44336" stroke="#B71C1C" stroke-width="2"/>
+    <text x="175" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">/topic</text>
+
+    <!-- Subscriber Nodes -->
+    <rect x="275" y="0" width="100" height="40" fill="#2196F3" stroke="#0D47A1" stroke-width="2" rx="5"/>
+    <text x="325" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Subscriber</text>
+
+    <rect x="275" y="60" width="100" height="40" fill="#2196F3" stroke="#0D47A1" stroke-width="2" rx="5"/>
+    <text x="325" y="85" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Subscriber</text>
+
+    <!-- Arrows -->
+    <line x1="100" y1="20" x2="125" y2="20" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <line x1="225" y1="20" x2="275" y2="20" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <line x1="225" y1="20" x2="275" y2="80" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+    <!-- Label -->
+    <text x="150" y="120" font-family="Arial" font-size="14" text-anchor="middle" fill="#000000">Publisher/Subscriber</text>
+  </g>
+
+  <!-- Client/Service Pattern -->
+  <g transform="translate(50, 180)">
+    <!-- Client Node -->
+    <rect x="0" y="0" width="100" height="40" fill="#FF9800" stroke="#E65100" stroke-width="2" rx="5"/>
+    <text x="50" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Client</text>
+
+    <!-- Service -->
+    <rect x="175" y="10" width="80" height="30" fill="#9C27B0" stroke="#4A148C" stroke-width="2" rx="3"/>
+    <text x="215" y="30" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Service</text>
+
+    <!-- Server Node -->
+    <rect x="300" y="0" width="100" height="40" fill="#2196F3" stroke="#0D47A1" stroke-width="2" rx="5"/>
+    <text x="350" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Server</text>
+
+    <!-- Arrows -->
+    <line x1="100" y1="20" x2="175" y2="25" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <line x1="255" y1="25" x2="300" y2="20" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+    <!-- Label -->
+    <text x="150" y="70" font-family="Arial" font-size="14" text-anchor="middle" fill="#000000">Client/Service</text>
+  </g>
+
+  <!-- Action Pattern -->
+  <g transform="translate(350, 60)">
+    <!-- Action Client -->
+    <rect x="0" y="0" width="100" height="40" fill="#FF9800" stroke="#E65100" stroke-width="2" rx="5"/>
+    <text x="50" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Action</text>
+    <text x="50" y="40" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Client</text>
+
+    <!-- Action Server -->
+    <rect x="175" y="0" width="100" height="40" fill="#2196F3" stroke="#0D47A1" stroke-width="2" rx="5"/>
+    <text x="225" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Action</text>
+    <text x="225" y="40" font-family="Arial" font-size="12" text-anchor="middle" fill="#ffffff">Server</text>
+
+    <!-- Feedback/Result arrows -->
+    <line x1="50" y1="40" x2="225" y2="40" stroke="#000000" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+    <line x1="225" y1="0" x2="50" y2="0" stroke="#000000" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+
+    <!-- Label -->
+    <text x="110" y="80" font-family="Arial" font-size="14" text-anchor="middle" fill="#000000">Action</text>
+  </g>
+
+  <!-- Arrowhead definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7"
+      refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000000"/>
+    </marker>
+  </defs>
+
+  <!-- Legend -->
+  <rect x="350" y="180" width="230" height="80" fill="none" stroke="#000000" stroke-width="1"/>
+  <text x="360" y="195" font-family="Arial" font-size="12" fill="#000000">Legend:</text>
+  <rect x="360" y="205" width="15" height="10" fill="#4CAF50" stroke="#2E7D32"/>
+  <text x="380" y="215" font-family="Arial" font-size="10" fill="#000000">Publisher/Client</text>
+  <rect x="360" y="225" width="15" height="10" fill="#2196F3" stroke="#0D47A1"/>
+  <text x="380" y="235" font-family="Arial" font-size="10" fill="#000000">Subscriber/Server</text>
+  <rect x="360" y="245" width="15" height="10" fill="#F44336" stroke="#B71C1C"/>
+  <text x="380" y="255" font-family="Arial" font-size="10" fill="#000000">Topic</text>
+  <rect x="470" y="205" width="15" height="10" fill="#9C27B0" stroke="#4A148C"/>
+  <text x="490" y="215" font-family="Arial" font-size="10" fill="#000000">Service</text>
+</svg>

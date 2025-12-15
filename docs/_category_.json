@@ -1,0 +1,8 @@
+{
+  "label": "Physical AI & Humanoid Robotics Book",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "A comprehensive guide to Physical AI and Humanoid Robotics using ROS 2, Gazebo, NVIDIA Isaac, and Vision-Language-Action systems."
+  }
+}

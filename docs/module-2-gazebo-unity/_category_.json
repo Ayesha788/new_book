@@ -1,0 +1,8 @@
+{
+  "label": "Module 2: Gazebo & Unity (Digital Twin Simulation)",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Simulation environments for testing and validating robotic behaviors in digital twins."
+  }
+}

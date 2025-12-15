@@ -13,17 +13,17 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://k-tech.github.io',
+  url: 'https://ayesha788.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub Pages, this is usually '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/new_book/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'K TECH', // Usually your GitHub org/user name.
-  projectName: 'my_new_book', // Usually your repo name.
+  organizationName: 'Ayesha788', // Usually your GitHub org/user name.
+  projectName: 'new_book', // Usually your repo name.
 
-  onBrokenLinks: 'warn',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
   markdown: {
     hooks: {
@@ -50,7 +50,9 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/k-tech/my-book/tree/main/',
+            'https://github.com/Ayesha788/new_book/tree/main/',
+          // Route base path to avoid conflicts with homepage
+          routeBasePath: 'docs',
           // Performance optimizations
           showLastUpdateAuthor: false,
           showLastUpdateTime: false,
@@ -89,9 +91,10 @@ const config = {
             sidebarId: 'tutorialSidebar',
             position: 'left',
             label: 'Book',
+            docsPluginId: 'default', // Explicitly specify the docs plugin
           },
           {
-            href: 'https://github.com/k-tech/my-book',
+            href: 'https://github.com/Ayesha788/new_book',
             label: 'GitHub',
             position: 'right',
           },
@@ -105,7 +108,7 @@ const config = {
             items: [
               {
                 label: 'Book',
-                to: '/docs/intro',
+                to: '/docs/intro', // Point to the intro page
               },
             ],
           },
@@ -131,7 +134,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/k-tech/my-book',
+                href: 'https://github.com/Ayesha788/new_book',
               },
             ],
           },

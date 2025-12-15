@@ -1,7 +1,6 @@
 ---
 title: Home
 hide_table_of_contents: true
-slug: /
 ---
 
 # Welcome to Physical AI & Humanoid Robotics Book

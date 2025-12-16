@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Robot head -->
+  <rect x="25" y="25" width="50" height="40" rx="5" fill="#1a2a6c"/>
+
+  <!-- Eyes -->
+  <circle cx="40" cy="40" r="5" fill="white"/>
+  <circle cx="60" cy="40" r="5" fill="white"/>
+  <circle cx="40" cy="40" r="2" fill="#b21f1f"/>
+  <circle cx="60" cy="40" r="2" fill="#b21f1f"/>
+
+  <!-- Mouth/Scanner -->
+  <rect x="45" y="55" width="10" height="3" rx="1" fill="#b21f1f"/>
+
+  <!-- Body -->
+  <rect x="35" y="65" width="30" height="20" rx="3" fill="#1a2a6c"/>
+
+  <!-- Arms -->
+  <rect x="20" y="68" width="15" height="5" rx="2" fill="#1a2a6c"/>
+  <rect x="65" y="68" width="15" height="5" rx="2" fill="#1a2a6c"/>
+
+  <!-- AI Circuit Pattern -->
+  <path d="M30 30 L35 35 M40 30 L45 35 M50 30 L55 35 M60 30 L65 35" stroke="white" stroke-width="1" fill="none"/>
+  <path d="M30 35 L35 30 M40 35 L45 30 M50 35 L55 30 M60 35 L65 30" stroke="white" stroke-width="1" fill="none"/>
+
+  <!-- Title text -->
+  <text x="50" y="95" font-family="Arial" font-size="8" fill="white" text-anchor="middle">AI & ROBOTICS</text>
+</svg>

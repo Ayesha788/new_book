@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - master
+      - 01-physical-ai-book
 
 jobs:
   build:

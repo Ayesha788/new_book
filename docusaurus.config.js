@@ -13,10 +13,15 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-vercel-project.vercel.app', // Will be overridden by Vercel
+  url: 'https://ayesha788.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For Vercel deployment, use '/'
-  baseUrl: '/',
+  // For GitHub Pages, this is usually '/<projectName>/'
+  baseUrl: '/new_book/',
+
+  // GitHub pages deployment config.
+  // If you aren't using GitHub pages, you don't need these.
+  organizationName: 'Ayesha788', // Usually your GitHub org/user name.
+  projectName: 'new_book', // Usually your repo name.
 
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',

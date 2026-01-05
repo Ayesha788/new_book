@@ -1,4 +1,4 @@
- sidebar_position
+sidebar_position
 1
 Introduction to Physical AI & Humanoid Robotics
 Welcome to the Future of AI

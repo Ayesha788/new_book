@@ -7,16 +7,21 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
+const isVercel = process.env.VERCEL === '1';
+
 const config = {
   title: 'Physical AI & Humanoid Robotics Book',
   tagline: 'Bridging Digital AI and Embodied Intelligence in the Physical World',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://ayesha788.github.io',
+  url: isVercel
+  ? 'https://physical-ai-book.vercel.app'
+  : 'https://ayesha788.github.io',
+
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub Pages, this is usually '/<projectName>/'
-  baseUrl: '/new_book/',
+  baseUrl:isVercel ? '/' : '/new_book/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.

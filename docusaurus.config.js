@@ -8,7 +8,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   url: 'https://ayesha788.github.io',
-  baseUrl: '/',
+  baseUrl: /,
   trailingSlash: false,
 
   organizationName: 'Ayesha788',
